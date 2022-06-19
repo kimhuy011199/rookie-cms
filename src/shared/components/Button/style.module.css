@@ -1,0 +1,19 @@
+.button {
+  @apply px-5 py-2 rounded-md ease-in duration-200 font-medium;
+}
+
+.primary {
+  @apply bg-primary text-white disabled:bg-light-1 disabled:text-dark-1 hover:bg-secondary;
+}
+
+.outline {
+  @apply bg-light-3 text-white disabled:bg-transparent;
+}
+
+.blank {
+  @apply text-light-3;
+}
+
+.full {
+  @apply w-full;
+}

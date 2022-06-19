@@ -1,0 +1,45 @@
+.comment {
+  @apply flex items-start;
+}
+
+.avatar {
+  @apply w-10 h-10 mr-3 relative;
+  min-width: 2.5rem;
+}
+
+.main {
+  @apply bg-dark-1 rounded-xl flex-1 border border-dark-3;
+  width: calc(100% - 4.5rem);
+}
+
+.header {
+  @apply flex items-center bg-dark-2 px-4 py-3 rounded-t-xl border-b border-dark-3;
+}
+
+.info {
+  @apply mr-auto;
+}
+
+.content {
+  @apply px-4 py-1.5;
+}
+
+.user {
+  @apply font-medium;
+}
+
+.date {
+  @apply text-light-3;
+}
+
+.edit {
+  @apply w-full;
+}
+
+.footer {
+  @apply px-4 pb-3 flex justify-between;
+}
+
+.tags {
+  @apply ml-auto;
+}

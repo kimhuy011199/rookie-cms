@@ -1,0 +1,11 @@
+.inputText {
+  @apply bg-dark-2 border border-dark-3 rounded-md p-2.5 block w-full focus:outline-none focus:outline-primary;
+}
+
+.errorInput {
+  @apply border-red-500 focus:outline-none;
+}
+
+.resize {
+  @apply resize-none;
+}

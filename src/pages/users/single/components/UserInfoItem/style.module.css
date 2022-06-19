@@ -1,0 +1,11 @@
+.info {
+  @apply flex;
+}
+
+.label {
+  min-width: 9rem;
+}
+
+.title {
+  @apply whitespace-pre-wrap;
+}

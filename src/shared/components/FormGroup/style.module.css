@@ -1,0 +1,15 @@
+.errorMessage {
+  @apply text-red-500 text-sm mt-1 block;
+}
+
+.formGroup {
+  @apply flex flex-col gap-1 mb-3;
+}
+
+.subLabel {
+  @apply text-gray-400 text-sm font-light;
+}
+
+.label {
+  min-width: 10rem;
+}

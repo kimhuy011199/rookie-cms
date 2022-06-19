@@ -1,0 +1,15 @@
+.menu {
+  @apply relative flex items-center;
+}
+
+.menuBackdrop {
+  @apply fixed inset-0 z-10 bg-transparent;
+}
+
+.menuList {
+  @apply shadow-sm py-1 z-20 absolute -bottom-1 transform translate-y-full right-0 rounded-md overflow-hidden bg-dark-1 border border-dark-3;
+}
+
+.menuItem {
+  @apply ease-in duration-100 flex items-center z-30 py-1.5 px-3 cursor-pointer hover:bg-primary hover:text-white;
+}

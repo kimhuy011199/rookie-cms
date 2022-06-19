@@ -1,0 +1,12 @@
+.form {
+  @apply flex;
+  width: 30rem;
+}
+
+.btn {
+  @apply bg-dark-3 rounded-md px-3 ml-1.5 hover:bg-primary;
+}
+
+.icon {
+  @apply text-xl;
+}

@@ -1,0 +1,7 @@
+.inputText {
+  @apply border bg-dark-2 border-dark-3 rounded-md p-2.5 py-2 block w-full focus:outline-none focus:outline-primary disabled:bg-dark-1;
+}
+
+.errorInput {
+  @apply border-red-500 focus:outline-none;
+}

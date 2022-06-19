@@ -1,0 +1,7 @@
+.btn {
+  @apply flex items-center gap-1.5;
+}
+
+.icon {
+  @apply text-primary text-lg;
+}

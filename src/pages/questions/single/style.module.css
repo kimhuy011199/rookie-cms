@@ -1,0 +1,19 @@
+.container {
+  @apply grid grid-cols-3 gap-6;
+}
+
+.main {
+  @apply col-span-2;
+}
+
+.heading {
+  @apply text-2xl font-semibold mb-8;
+}
+
+.answers {
+  @apply flex flex-col gap-4 mt-4;
+}
+
+.comment {
+  @apply mt-4;
+}

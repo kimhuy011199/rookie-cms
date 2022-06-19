@@ -1,0 +1,11 @@
+.heading {
+  @apply text-xl font-semibold border-b border-dark-3 pb-4 mb-4;
+}
+
+.button {
+  @apply px-2 py-1 rounded-md  bg-dark-3 m-1.5 ml-0;
+}
+
+.active {
+  @apply bg-primary text-dark-2;
+}

@@ -1,0 +1,11 @@
+.form {
+  @apply col-span-2 bg-dark-1 p-3.5 rounded-xl border-dark-3 border;
+}
+
+.action {
+  @apply flex justify-between;
+}
+
+.serverError {
+  @apply block mx-auto text-red-500 mt-3 -mb-1 text-sm;
+}

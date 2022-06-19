@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "label": {
+      "email": "Địa chỉ email",
+      "password": "Mật khẩu",
+      "password2": "Nhập lại mật khẩu",
+      "login_desc": "Đăng nhập và bắt đầu sử dụng"
+    }
+  }
+}

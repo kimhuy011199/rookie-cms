@@ -1,0 +1,144 @@
+{
+  "auth": {
+    "label": {
+      "email": "Email",
+      "password": "Password",
+      "submit": "Submit"
+    },
+    "login": {
+      "desc": "Welcome 👋",
+      "sub": "Login to manage your content",
+      "q": "Don't have an account?",
+      "a": "Create account"
+    }
+  },
+  "header": {
+    "login": "Login",
+    "register": "Register",
+    "ask": "Ask question"
+  },
+  "footer": {
+    "copyright": "Made by Nguyen Kim Huy"
+  },
+  "questions": {
+    "ask_question_title": "Ask a public question",
+    "update_question_title": "Update your question",
+    "label": {
+      "question": "Question",
+      "title": "Title",
+      "sub_title": "Be specific and imagine you’re asking a question to another person",
+      "content": "Content",
+      "sub_content": "Include all the information someone would need to answer your question",
+      "tags": "Tags",
+      "sub_tags": "Add up to 3 tags to describe what your question is about",
+      "submit": "Submit",
+      "preview": "Preview",
+      "cancel": "Cancel"
+    },
+    "asked": "asked",
+    "answered": "answered",
+    "recommendation": "Recommendation",
+    "all_questions": "All Questions",
+    "no_recommendation": "No recommendation questions",
+    "no_questions": "No questions to show",
+    "guide": {
+      "title": "Asking a good question",
+      "desc": "The community is here to help you with specific coding, algorithm, or language problems. Here are some tips for you:",
+      "tips": [
+        "Include details about your goal",
+        "Describe expected and actual results",
+        "Include any error messages",
+        "Describe what you tried",
+        "Show some code"
+      ],
+      "markdown": "We are using markdown for writing question content. You can preview your content before submitting. If you are not similar to markdown, find more information about it ",
+      "link": "here"
+    },
+    "search": {
+      "title": "Search question guide",
+      "desc": "Enter search terms in the search box that appears on the center of the header on every page, and press `Enter`.\n\nTo search within specific tag(s), enter them in square brackets: `[javascript] timestamp` searches for mentions of 'timestamp' within the `[javascript]` tag.",
+      "result_title": "Search Results",
+      "result_for": "Result for "
+    },
+    "login_required": {
+      "link": "join the community",
+      "text_1": "You need ",
+      "text_2": " to answer on this question."
+    }
+  },
+  "placeholder": {
+    "add_answer": "Leave your answer",
+    "search": "Search ..."
+  },
+  "toast": {
+    "add_answer_success": "Your answer was added",
+    "delete_answer_success": "Your answer was deleted",
+    "edit_answer_success": "Your answer was updated",
+    "update_user_success": "Your profile was updated",
+    "update_avatar_success": "Your avatar was updated",
+    "unsuccess": "There was an error. Try again!"
+  },
+  "dialog": {
+    "delete_answer": "Delete answer",
+    "delete_answer_content": "Are you sure to delete your answer?",
+    "delete_question": "Delete question",
+    "delete_question_content": "Are you sure to delete your question?",
+    "answer_question": "answered on your question",
+    "like_answer": "liked your answer on question",
+    "preview": "Preview",
+    "tag": "Choose tags",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "menu": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "view_profile": "View profile",
+    "settings": "User settings",
+    "change_pass": "Change password",
+    "logout": "Logout"
+  },
+  "not_found": {
+    "title": "404",
+    "content": "Page not found",
+    "action": "Go to homepage"
+  },
+  "forbidden": {
+    "title": "403",
+    "content": "Access denied",
+    "action": "Go to homepage"
+  },
+  "unauthenticated": {
+    "title": "401",
+    "content": "Unauthenticated",
+    "action": "Login now"
+  },
+  "settings": {
+    "label": {
+      "display_name": "Display name",
+      "email": "Email",
+      "about": "About",
+      "github": "Github",
+      "linkedin": "LinkedIn",
+      "old_password": "Old password",
+      "new_password": "New password",
+      "confirm_password": "Confirm password",
+      "choose_image": "Choose image",
+      "submit": "Submit"
+    },
+    "heading": {
+      "personal_info": "Personal Information",
+      "user_questions": "User Questions",
+      "settings": "User Settings",
+      "change_pass": "Change Password"
+    }
+  },
+  "home": {
+    "heading": "A public platform building the definitive collection of ",
+    "heading_bold": "coding questions & answers",
+    "desc": "A community-based space to find and contribute answers to technical challenges, and one of the most popular websites in the world.",
+    "login": "Join the community",
+    "link": "View questions",
+    "or": "or "
+  }
+}

@@ -1,0 +1,15 @@
+.dialogWrapper {
+  @apply fixed flex justify-center items-center inset-0;
+}
+
+.dialogBackdrop {
+  @apply fixed inset-0 bg-black opacity-70;
+}
+
+.dialogContainer {
+  @apply relative z-50 bg-dark-1 max-w-md w-full rounded-xl p-5 border border-dark-3;
+}
+
+.close {
+  @apply absolute right-4 top-6 text-white text-lg;
+}

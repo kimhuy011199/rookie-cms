@@ -1,0 +1,29 @@
+.header {
+  @apply py-3.5 fixed w-full z-10 border-b border-dark-1 bg-black-default;
+}
+
+.container {
+  @apply max-w-7xl mx-auto flex justify-between items-center px-8;
+}
+
+.logo {
+  @apply w-24;
+}
+
+.list {
+  @apply flex items-center;
+}
+
+.item {
+  @apply ml-4;
+}
+
+.link {
+  @apply flex items-center;
+}
+
+.circle {
+  @apply bg-dark-2 flex justify-center items-center rounded-full hover:bg-dark-3;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+}

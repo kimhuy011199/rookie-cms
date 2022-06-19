@@ -1,0 +1,25 @@
+.container {
+  @apply flex gap-8;
+}
+
+.avatar {
+  @apply relative;
+  width: 12rem;
+  height: 12rem;
+}
+
+.profile {
+  @apply bg-dark-1 rounded-xl border border-dark-3 flex-1;
+}
+
+.heading {
+  @apply text-xl font-semibold border-b border-dark-3 px-5 py-4;
+}
+
+.form {
+  @apply p-5 pt-4;
+}
+
+.actions {
+  @apply flex justify-end;
+}

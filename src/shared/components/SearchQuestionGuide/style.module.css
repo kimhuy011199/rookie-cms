@@ -1,0 +1,11 @@
+.guide {
+  @apply bg-dark-1 rounded-xl border border-dark-3 pb-3 h-fit;
+}
+
+.title {
+  @apply text-xl font-semibold border-b border-dark-3 px-5 py-4;
+}
+
+.content {
+  @apply px-5;
+}

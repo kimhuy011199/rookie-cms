@@ -1,0 +1,13 @@
+.loadingIcon {
+  @apply w-16 h-16 border-8 rounded-full border-l-dark-3 border-r-dark-3 border-t-primary border-b-primary;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

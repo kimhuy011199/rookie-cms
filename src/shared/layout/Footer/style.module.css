@@ -1,0 +1,7 @@
+.footer {
+  @apply mt-auto p-5 flex flex-col items-center z-10 border-t border-dark-1 bg-black-default;
+}
+
+.copyright {
+  @apply text-center text-sm;
+}

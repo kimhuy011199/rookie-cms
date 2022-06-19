@@ -1,0 +1,13 @@
+.container {
+  @apply flex gap-8;
+}
+
+.avatar {
+  @apply relative;
+  width: 12rem;
+  height: 12rem;
+}
+
+.information {
+  @apply flex-1 flex flex-col gap-6;
+}

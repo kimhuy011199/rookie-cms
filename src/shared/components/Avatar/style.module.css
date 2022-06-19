@@ -1,0 +1,25 @@
+.img {
+  @apply overflow-hidden rounded-full absolute bottom-0 w-full h-full;
+}
+
+.avatar {
+  @apply w-full h-full;
+}
+
+.avatarImg {
+  @apply absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.sm {
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+}
+
+.lg {
+  min-height: 12rem;
+  min-width: 12rem;
+}

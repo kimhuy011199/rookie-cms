@@ -1,0 +1,16 @@
+.link {
+  @apply flex-1 p-1 pr-5 whitespace-pre font-semibold;
+}
+
+.logout {
+  @apply flex-1 p-1 pr-5 text-left font-semibold;
+}
+
+.email {
+  @apply block font-normal text-light-1 mt-1;
+}
+
+.avatar {
+  @apply w-10 h-10;
+  min-width: 2.5rem;
+}

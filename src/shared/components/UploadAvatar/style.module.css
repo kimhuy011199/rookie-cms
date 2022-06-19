@@ -1,0 +1,35 @@
+.container {
+  @apply rounded-full relative;
+  width: 12rem;
+  height: 12rem;
+}
+
+.input {
+  @apply flex items-center justify-center w-full h-full z-20 cursor-pointer opacity-0 rounded-full transition-all duration-200 hover:bg-dark-3 hover:opacity-80;
+}
+
+.submit {
+  @apply absolute bottom-2 right-2 w-10 h-10 rounded-full flex justify-center items-center border border-dark-3 bg-dark-1 z-10;
+}
+
+.icon {
+  @apply w-3/5 h-3/5 text-primary;
+}
+
+.imgContainer {
+  @apply overflow-hidden rounded-full absolute bottom-0 w-full h-full;
+}
+
+.preview {
+  @apply absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  min-height: 12rem;
+  min-width: 12rem;
+}
+
+.loading {
+  @apply flex items-center justify-center w-full h-full z-20 rounded-full;
+}
