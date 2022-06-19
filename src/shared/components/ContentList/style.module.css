@@ -1,0 +1,20 @@
+.listContainer {
+  @apply bg-dark-1 rounded-xl border border-dark-3 pb-2 overflow-hidden;
+}
+
+.header {
+  @apply px-5 py-3 bg-dark-2 grid;
+  grid-template-columns: 2fr 7fr 14fr;
+}
+
+.item {
+  @apply px-5 py-3.5 border-t border-t-dark-3 hover:bg-dark-3;
+}
+
+.emptyListContent {
+  @apply pt-3 pb-1 pl-5;
+}
+
+.pagination {
+  @apply flex justify-end mt-1;
+}
