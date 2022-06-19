@@ -1,0 +1,12 @@
+.contentItem {
+  @apply grid;
+  grid-template-columns: 2fr 7fr 14fr;
+}
+
+.title {
+  @apply overflow-hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+}
