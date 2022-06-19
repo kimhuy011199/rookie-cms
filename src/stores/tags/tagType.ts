@@ -1,3 +1,4 @@
 export const tagType = {
   GET_PAGINATION_TAGS: 'GET_PAGINATION_TAGS',
+  CREATE_TAG: 'CREATE_TAG',
 };

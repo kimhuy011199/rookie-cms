@@ -25,6 +25,19 @@ export const getPaginationTags = createAsyncThunk(
   }
 );
 
+// Create new tag
+export const createTag = createAsyncThunk(
+  `tags/${tagType.CREATE_TAG}`,
+  async (tagData: any, thunkAPI) => {
+    try {
+      return await tagService.createTag(tagData);
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const tagSlice = createSlice({
   name: 'tags',
   initialState,
@@ -49,6 +62,19 @@ export const tagSlice = createSlice({
       .addCase(getPaginationTags.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = tagType.GET_PAGINATION_TAGS;
+        state.message = action.payload;
+      })
+      .addCase(createTag.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createTag.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = tagType.CREATE_TAG;
+        state.tag = action.payload;
+      })
+      .addCase(createTag.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = tagType.CREATE_TAG;
         state.message = action.payload;
       });
   },

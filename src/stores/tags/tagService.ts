@@ -9,8 +9,16 @@ const getPaginationTags = async (queryString: string) => {
   return response.data;
 };
 
+// Get all pagination tags
+const createTag = async (tagData: any) => {
+  console.log(tagData);
+  const response = await api().post(endpoint, tagData);
+  return response.data;
+};
+
 const tagService = {
   getPaginationTags,
+  createTag,
 };
 
 export default tagService;
