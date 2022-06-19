@@ -59,13 +59,17 @@ const TagForm = (props: TagFormInterface) => {
             })}
           />
         </FormGroup>
-
-        <div className={style.action}>
-          <Button
-            label={t('tags.label.submit')}
-            loading={isLoading}
-            variant="primary"
-          />
+        <div className={style.footer}>
+          <div>
+            {isError && <span className={style.serverError}>{message}</span>}
+          </div>
+          <div className={style.action}>
+            <Button
+              label={t('tags.label.submit')}
+              loading={isLoading}
+              variant="primary"
+            />
+          </div>
         </div>
       </form>
     </div>

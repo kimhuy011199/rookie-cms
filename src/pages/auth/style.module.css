@@ -25,5 +25,5 @@
 }
 
 .serverError {
-  @apply block mx-auto text-red-500 text-center mt-3 -mb-1 text-sm;
+  @apply block mx-auto text-red-500 text-center mt-3 -mb-1;
 }

@@ -2,10 +2,15 @@
   @apply col-span-2 bg-dark-1 p-3.5 pt-6 rounded-xl border-dark-3 border;
 }
 
+.footer {
+  @apply flex justify-between items-center;
+}
+
 .action {
-  @apply flex justify-end gap-3 mt-6;
+  @apply flex gap-3 mt-2 items-center;
 }
 
 .serverError {
-  @apply block mx-auto text-red-500 mt-3 -mb-1 text-sm;
+  @apply block mx-auto mt-1 text-red-500;
+  margin-left: 10.5rem;
 }
