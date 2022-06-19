@@ -29,6 +29,7 @@ const Tab = () => {
       <ul>
         {tabList.map((item) => (
           <li
+            key={item.link}
             className={`${style.item} ${
               currentTab === item.link && style.active
             }`}
