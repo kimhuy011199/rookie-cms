@@ -38,6 +38,47 @@ export const createTag = createAsyncThunk(
   }
 );
 
+// Get tag by id
+export const getTagById = createAsyncThunk(
+  `tags/${tagType.GET_TAG}`,
+  async (id: string, thunkAPI) => {
+    try {
+      return await tagService.getTagById(id);
+    } catch (error: any) {
+      const errorCode = error?.response?.status;
+      const message = error?.response?.data?.message;
+      const errorResponse = { errorCode, message };
+      return thunkAPI.rejectWithValue(errorResponse);
+    }
+  }
+);
+
+// Update tag
+export const updateTag = createAsyncThunk(
+  `tags/${tagType.UPDATE_TAG}`,
+  async (data: any, thunkAPI) => {
+    try {
+      return await tagService.updateTag(data.id, data.updatedData);
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Delete tag
+export const deleteTag = createAsyncThunk(
+  `tags/${tagType.DELETE_TAG}`,
+  async (id: string, thunkAPI) => {
+    try {
+      return await tagService.deleteTag(id);
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const tagSlice = createSlice({
   name: 'tags',
   initialState,
@@ -75,6 +116,44 @@ export const tagSlice = createSlice({
       .addCase(createTag.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = tagType.CREATE_TAG;
+        state.message = action.payload;
+      })
+      .addCase(getTagById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getTagById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = tagType.GET_PAGINATION_TAGS;
+        state.tag = action.payload;
+      })
+      .addCase(getTagById.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = tagType.GET_PAGINATION_TAGS;
+        state.message = action.payload;
+      })
+      .addCase(updateTag.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateTag.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = tagType.UPDATE_TAG;
+        state.tag = action.payload;
+      })
+      .addCase(updateTag.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = tagType.UPDATE_TAG;
+        state.message = action.payload;
+      })
+      .addCase(deleteTag.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteTag.fulfilled, (state: any, action: any) => {
+        state.isLoading = false;
+        state.isSuccess = tagType.DELETE_TAG;
+      })
+      .addCase(deleteTag.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = tagType.DELETE_TAG;
         state.message = action.payload;
       });
   },
