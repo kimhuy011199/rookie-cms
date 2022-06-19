@@ -1,4 +1,7 @@
 {
+  "tab": {
+    "heading": "Content"
+  },
   "auth": {
     "label": {
       "email": "Email",
