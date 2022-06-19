@@ -24,7 +24,7 @@ const NewQuestion = () => {
       toast(t('toast.create_question_success'));
       navigate('/questions');
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, t]);
 
   useEffect(() => {
     if (isError === questionType.CREATE_QUESTION) {

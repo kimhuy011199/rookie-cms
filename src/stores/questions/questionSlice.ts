@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Question } from '../../shared/constants/types/Question';
 import { questionType } from './questionType';
 import questionService from './questionService';
 

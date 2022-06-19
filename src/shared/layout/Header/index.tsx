@@ -5,8 +5,6 @@ import styles from './style.module.css';
 import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
 import Button from '../../components/Button';
 import { useTranslation } from 'react-i18next';
-import UserMenu from '../../components/UserMenu';
-import SearchQuestion from '../../components/SearchQuestion';
 
 function Header() {
   const { user } = useSelector((state: any) => state.auth);

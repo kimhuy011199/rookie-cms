@@ -25,7 +25,7 @@ const NewTag = () => {
       toast(t('toast.create_tag_success'));
       navigate('/tags');
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, t]);
 
   useEffect(() => {
     if (isError === tagType.CREATE_TAG) {

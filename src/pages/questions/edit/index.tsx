@@ -60,7 +60,7 @@ const EditQuestion = () => {
       toast(t('toast.delete_question_success'));
       navigate('/questions');
     }
-  }, [isSuccess, navigate, question]);
+  }, [isSuccess, navigate, question, t]);
 
   useEffect(() => {
     if (

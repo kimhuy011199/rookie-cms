@@ -59,7 +59,7 @@ const EditTag = () => {
       toast(t('toast.delete_tag_success'));
       navigate('/tags');
     }
-  }, [isSuccess, navigate, tag]);
+  }, [isSuccess, navigate, tag, t]);
 
   useEffect(() => {
     if (

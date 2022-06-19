@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
+import { TAB_LIST } from '../../constants/constants';
 import style from './style.module.css';
 
 const Tab = () => {
@@ -8,15 +9,8 @@ const Tab = () => {
   const { pathname } = useLocation();
   const [currentTab, setCurrentTab] = useState('');
 
-  const tabList = [
-    { text: 'Questions', link: '/questions' },
-    { text: 'Answer', link: '/answers' },
-    { text: 'Users', link: '/users' },
-    { text: 'Tags', link: '/tags' },
-  ];
-
   useEffect(() => {
-    tabList.forEach((tab) => {
+    TAB_LIST.forEach((tab) => {
       if (pathname.includes(tab.link)) {
         setCurrentTab(tab.link);
       }
@@ -27,7 +21,7 @@ const Tab = () => {
     <div className={style.tabContainer}>
       <h3 className={style.heading}>{t('tab.heading')}</h3>
       <ul>
-        {tabList.map((item) => (
+        {TAB_LIST.map((item) => (
           <li
             key={item.link}
             className={`${style.item} ${
