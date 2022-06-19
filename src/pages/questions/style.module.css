@@ -1,10 +1,6 @@
-.container {
-  @apply grid gap-6;
-  grid-template-columns: 3fr 1fr;
-}
-
-.questions {
-  @apply mx-auto w-full max-w-7xl;
+.pageContainer {
+  @apply grid gap-6 mx-auto w-full max-w-7xl;
+  grid-template-columns: 1fr 4fr;
 }
 
 .questionsList {

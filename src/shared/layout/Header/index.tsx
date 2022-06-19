@@ -26,14 +26,14 @@ function Header() {
         <ul className={styles.list}>
           {user ? (
             <>
-              <li className={styles.item}>
+              {/* <li className={styles.item}>
                 <Link className={styles.link} to="/questions/ask">
                   <Button label={t('header.ask')} variant="primary" />
                 </Link>
               </li>
               <li className={styles.item}>
                 <UserMenu />
-              </li>
+              </li> */}
             </>
           ) : (
             <>

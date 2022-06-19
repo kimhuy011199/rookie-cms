@@ -31,7 +31,7 @@ export default function App() {
     if (token && !user?._id) {
       dispatch(getUserMe());
     }
-  }, [user, dispatch, token, pathname]);
+  }, [user, dispatch, token, pathname, navigate]);
 
   return (
     <>

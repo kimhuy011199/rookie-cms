@@ -8,7 +8,6 @@ import { Question } from '../../shared/constants/types/Question';
 import QuestionItem from '../../shared/components/QuestionItem';
 import Pagination from '../../shared/components/Pagination';
 import { useTranslation } from 'react-i18next';
-import SearchQuestionGuide from '../../shared/components/SearchQuestionGuide';
 import { questionType } from '../../stores/questions/questionType';
 import { toast } from 'react-toastify';
 
@@ -82,7 +81,6 @@ function Questions() {
             <p className={style.noQuestions}>{t('questions.no_questions')}</p>
           )}
         </div>
-        <SearchQuestionGuide />
       </div>
     </>
   );
