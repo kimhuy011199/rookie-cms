@@ -35,7 +35,6 @@ const Tags = () => {
       dispatch(reset());
     };
   }, [navigate, dispatch, currentPage, searchValue]);
-  console.log({ tags });
 
   return (
     <>

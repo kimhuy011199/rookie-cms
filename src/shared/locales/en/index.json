@@ -60,11 +60,12 @@
     "create_question_success": "Create new question successfully",
     "update_question_success": "Update question successfully",
     "delete_question_success": "Delete question successfully",
-    "add_answer_success": "Your answer was added",
-    "delete_answer_success": "Your answer was deleted",
-    "edit_answer_success": "Your answer was updated",
-    "update_user_success": "Your profile was updated",
-    "update_avatar_success": "Your avatar was updated",
+    "create_tag_success": "Create new tag successfully",
+    "update_tag_success": "Update tag successfully",
+    "delete_tag_success": "Delete tag successfully",
+    "create_answer_success": "Create new answer successfully",
+    "update_answer_success": "Update answer successfully",
+    "delete_answer_success": "Delete answer successfully",
     "unsuccess": "There was an error. Try again!"
   },
   "dialog": {
