@@ -15,7 +15,7 @@ const ContentItem = (props: ContentItemProps) => {
     <Link to={linkTo} className={style.contentItem}>
       <span></span>
       <span>{item._id}</span>
-      <span className={style.title}>{item.title}</span>
+      <span className={style.title}>{item.title || item.name}</span>
     </Link>
   );
 };

@@ -16,6 +16,7 @@ import Footer from './shared/layout/Footer';
 import UsersRoutes from './pages/users/users.routes';
 import AuthRoutes from './pages/auth/auth.routes';
 import QuestionsRoutes from './pages/questions/questions.routes';
+import TagsRoutes from './pages/tags/tags.routes';
 
 export default function App() {
   const token = authStorageService().getToken();
@@ -40,8 +41,9 @@ export default function App() {
         <main className="main">
           <Routes>
             <Route path="/" element={<Navigate to="/auth/login" replace />} />
-            <Route path="/questions/*" element={<QuestionsRoutes />} />
             <Route path="/auth/*" element={<AuthRoutes />} />
+            <Route path="/questions/*" element={<QuestionsRoutes />} />
+            <Route path="/tags/*" element={<TagsRoutes />} />
             <Route path="/users/*" element={<UsersRoutes />} />
           </Routes>
         </main>

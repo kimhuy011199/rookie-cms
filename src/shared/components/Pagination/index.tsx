@@ -9,16 +9,15 @@ interface PaginationInterface {
   totalPages: number;
   currentPage: number;
   totalItems: number;
+  type: string;
 }
 
 const Pagination = (props: PaginationInterface) => {
-  const { totalPages, currentPage } = props;
+  const { totalPages, currentPage, type } = props;
   const [searchParams] = useSearchParams();
   const search = searchParams.get('search');
   const linkTo = (item: number) =>
-    search
-      ? `/questions?search=${search}&page=${item}`
-      : `/questions?page=${item}`;
+    search ? `/${type}?search=${search}&page=${item}` : `/${type}?page=${item}`;
   let range: any = generatePageRange(1, totalPages);
 
   if (totalPages > 6) {

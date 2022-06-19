@@ -5,18 +5,19 @@ import tagService from './tagService';
 
 const initialState = {
   tags: [] as Tag[],
+  tag: null,
   isError: '',
   isSuccess: '',
   isLoading: false,
   message: '',
 };
 
-// Get all tags
-export const getTags = createAsyncThunk(
-  `tags/${tagType.GET_TAGS}`,
-  async (_, thunkAPI) => {
+// Get all pagination tags
+export const getPaginationTags = createAsyncThunk(
+  `tags/${tagType.GET_PAGINATION_TAGS}`,
+  async (queryString: string, thunkAPI) => {
     try {
-      return await tagService.getTags();
+      return await tagService.getPaginationTags(queryString);
     } catch (error: any) {
       const message = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(message);
@@ -37,17 +38,17 @@ export const tagSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getTags.pending, (state) => {
+      .addCase(getPaginationTags.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getTags.fulfilled, (state, action) => {
+      .addCase(getPaginationTags.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = tagType.GET_TAGS;
+        state.isSuccess = tagType.GET_PAGINATION_TAGS;
         state.tags = action.payload;
       })
-      .addCase(getTags.rejected, (state, action: any) => {
+      .addCase(getPaginationTags.rejected, (state, action: any) => {
         state.isLoading = false;
-        state.isError = tagType.GET_TAGS;
+        state.isError = tagType.GET_PAGINATION_TAGS;
         state.message = action.payload;
       });
   },

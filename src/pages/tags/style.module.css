@@ -1,0 +1,28 @@
+.pageContainer {
+  @apply grid gap-6 mx-auto w-full max-w-7xl;
+  grid-template-columns: 1fr 4fr;
+}
+
+.questionsList {
+  @apply flex flex-col gap-4;
+}
+
+.header {
+  @apply border-b border-dark-3 pb-4 mb-4;
+}
+
+.heading {
+  @apply text-2xl font-semibold;
+}
+
+.desc {
+  @apply text-light-2 mt-3;
+}
+
+.pagination {
+  @apply mt-2 flex justify-center;
+}
+
+.searchValue {
+  @apply font-bold text-white text-lg;
+}

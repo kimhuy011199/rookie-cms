@@ -22,6 +22,8 @@ const ContentList = (props: ContentListInterface) => {
     switch (type) {
       case CONTENT_TYPE.QUESTION:
         return ['No.', 'Id', 'Title'];
+      case CONTENT_TYPE.TAG:
+        return ['No.', 'Id', 'Name'];
       default:
         return ['No.', 'Id', 'Title'];
     }
@@ -52,7 +54,7 @@ const ContentList = (props: ContentListInterface) => {
       </div>
       {data.totalPages > 1 && (
         <div className={style.pagination}>
-          <Pagination {...data} />
+          <Pagination {...data} type={type} />
         </div>
       )}
     </>

@@ -3,14 +3,14 @@ import { ENDPOINT } from '../../shared/constants/constants';
 
 const endpoint = ENDPOINT.TAGS;
 
-// Get all tags
-const getTags = async () => {
-  const response = await api().get(endpoint);
+// Get all pagination tags
+const getPaginationTags = async (queryString: string) => {
+  const response = await api().get(`${endpoint}/pagination?${queryString}`);
   return response.data;
 };
 
 const tagService = {
-  getTags,
+  getPaginationTags,
 };
 
 export default tagService;
