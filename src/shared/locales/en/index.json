@@ -37,6 +37,21 @@
     },
     "no_questions": "No questions to show"
   },
+  "tags": {
+    "heading": "Tags",
+    "new": "Add tag",
+    "create_new_tag": "Create new tag",
+    "update_current_tag": "Update current tag",
+    "delete_tag": "Delete this tag?",
+    "label": {
+      "tag": "Tag",
+      "name": "Name",
+      "submit": "Submit",
+      "preview": "Preview",
+      "cancel": "Cancel"
+    },
+    "no_tags": "No tags to show"
+  },
   "placeholder": {
     "add_answer": "Leave your answer",
     "search": "Search ..."
