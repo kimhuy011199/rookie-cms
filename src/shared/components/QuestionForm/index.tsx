@@ -56,12 +56,11 @@ const QuestionForm = (props: QuestionFormInterface) => {
   };
 
   return (
-    <>
+    <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         <FormGroup
           label={t('questions.label.title')}
-          boldLabel
-          subLabel={t('questions.label.sub_title')}
+          flexRow
           error={errors.title?.message}
         >
           <Input
@@ -78,8 +77,7 @@ const QuestionForm = (props: QuestionFormInterface) => {
         </FormGroup>
         <FormGroup
           label={t('questions.label.content')}
-          boldLabel
-          subLabel={t('questions.label.sub_content')}
+          flexRow
           error={errors.content?.message}
         >
           <TextArea
@@ -95,29 +93,25 @@ const QuestionForm = (props: QuestionFormInterface) => {
             })}
           />
         </FormGroup>
-        <FormGroup
-          label={t('questions.label.tags')}
-          boldLabel
-          subLabel={t('questions.label.sub_tags')}
-        >
+        <FormGroup label={t('questions.label.tags')} flexRow>
           <TagInput tags={tags} setTags={setTags} />
         </FormGroup>
         <div className={style.action}>
-          <Button
-            label={t('questions.label.submit')}
-            loading={isLoading}
-            variant="primary"
-          />
           <Button
             label={t('questions.label.preview')}
             type="button"
             variant="outline"
             handleFuncion={previewQuestion}
           />
+          <Button
+            label={t('questions.label.submit')}
+            loading={isLoading}
+            variant="primary"
+          />
         </div>
         {isError && <span className={style.serverError}>{message}</span>}
       </form>
-    </>
+    </div>
   );
 };
 

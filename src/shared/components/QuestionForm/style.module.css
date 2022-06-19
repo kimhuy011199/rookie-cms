@@ -1,9 +1,9 @@
 .form {
-  @apply col-span-2 bg-dark-1 p-3.5 rounded-xl border-dark-3 border;
+  @apply col-span-2 bg-dark-1 p-3.5 pt-6 rounded-xl border-dark-3 border;
 }
 
 .action {
-  @apply flex justify-between;
+  @apply flex justify-end gap-3 mt-6;
 }
 
 .serverError {

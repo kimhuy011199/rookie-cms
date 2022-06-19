@@ -63,7 +63,7 @@ function Questions() {
           <Heading
             heading={t('questions.heading')}
             addContentText={t('questions.new')}
-            addContentLink="/question/new"
+            addContentLink="/questions/new"
           />
           {questions?.list?.length > 0 && (
             <ContentList data={questions} type={CONTENT_TYPE.QUESTION} />
