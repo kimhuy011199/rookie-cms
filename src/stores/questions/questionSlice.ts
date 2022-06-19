@@ -149,7 +149,10 @@ export const questionSlice = createSlice({
       .addCase(getQuestions.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = questionType.GET_ALL_QUESTIONS;
-        state.questions = action.payload;
+        state.questions = {
+          ...action.payload,
+          list: action.payload.questionsList,
+        };
       })
       .addCase(getQuestions.rejected, (state, action: any) => {
         state.isLoading = false;
@@ -214,7 +217,7 @@ export const questionSlice = createSlice({
       .addCase(deleteQuestion.fulfilled, (state: any, action: any) => {
         state.isLoading = false;
         state.isSuccess = questionType.DELETE_QUESTION;
-        state.questions = state.questions.questionsList.filter(
+        state.questions = state.questions.list.filter(
           (question: Question) => question._id !== action.payload.id
         );
         state.userQuestions = state.userQuestions.filter(

@@ -27,3 +27,7 @@ export enum USER_ACTIONS {
   CHANGE_PASS = 3,
   LOG_OUT = 4,
 }
+
+export enum CONTENT_TYPE {
+  QUESTION = 'questions',
+}

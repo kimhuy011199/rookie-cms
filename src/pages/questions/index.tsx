@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../../shared/components/Spinner';
 import { getQuestions, reset } from '../../stores/questions/questionSlice';
 import style from './style.module.css';
-import { Question } from '../../shared/constants/types/Question';
-import QuestionItem from '../../shared/components/QuestionItem';
 import Pagination from '../../shared/components/Pagination';
 import { useTranslation } from 'react-i18next';
 import { questionType } from '../../stores/questions/questionType';
 import { toast } from 'react-toastify';
 import Heading from '../../shared/components/Heading';
+import ContentList from '../../shared/components/ContentList';
+import { CONTENT_TYPE } from '../../shared/constants/enums';
 
 function Questions() {
   const { t } = useTranslation();
@@ -65,25 +65,8 @@ function Questions() {
             addContentText={t('questions.new')}
             addContentLink="/question/new"
           />
-          {questions?.questionsList?.length > 0 ? (
-            <>
-              <div className={style.questions}>
-                <ul className={style.questionsList}>
-                  {questions?.questionsList.map((question: Question) => (
-                    <li key={question._id}>
-                      <QuestionItem question={question} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              {questions.totalPages > 1 && (
-                <div className={style.pagination}>
-                  <Pagination {...questions} />
-                </div>
-              )}
-            </>
-          ) : (
-            <p className={style.noQuestions}>{t('questions.no_questions')}</p>
+          {questions?.list?.length > 0 && (
+            <ContentList data={questions} type={CONTENT_TYPE.QUESTION} />
           )}
         </div>
       </div>
