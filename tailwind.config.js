@@ -7,6 +7,7 @@ module.exports = {
         current: 'currentColor',
         primary: '#36bcfb',
         secondary: '#5ec9fc',
+        danger: '#dc2626',
         'black-default': '#070b0d',
         'white-dafault': '#ffffff',
         'dark-1': '#151a1e',

@@ -6,6 +6,10 @@
   @apply bg-primary text-white disabled:bg-light-1 disabled:text-dark-1 hover:bg-secondary;
 }
 
+.danger {
+  @apply bg-danger text-white disabled:bg-light-1 disabled:text-dark-1;
+}
+
 .outline {
   @apply bg-light-4 text-white disabled:bg-transparent;
 }
