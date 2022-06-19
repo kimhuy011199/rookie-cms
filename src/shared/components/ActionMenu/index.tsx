@@ -4,7 +4,6 @@ import { COMMENT_ACTIONS, COMMENT_TYPE } from '../../constants/enums';
 import { useDialog } from '../Dialog/Provider';
 import { Menu } from '../Menu';
 import { FiMoreHorizontal } from 'react-icons/fi';
-import DeleteCommentDialog from '../Dialog/dialogs/delete-comment';
 import style from './style.module.css';
 
 interface ActionMenuInterface {
@@ -30,7 +29,6 @@ const ActionMenu = (props: ActionMenuInterface) => {
         onEdit && onEdit();
         break;
       case COMMENT_ACTIONS.DELETE:
-        appendDialog(<DeleteCommentDialog data={data} type={type} />);
         break;
       default:
         break;

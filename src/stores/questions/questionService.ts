@@ -22,18 +22,6 @@ const getQuestionById = async (questionId: string) => {
   return response.data;
 };
 
-// Get question by user id
-const getQuestionByUserId = async (userId: string) => {
-  const response = await api().get(`${endpoint}/user/${userId}`);
-  return response.data;
-};
-
-// Get recommend questions
-const getRecommendQuestions = async (questionId: string) => {
-  const response = await api().get(`${endpoint}/${questionId}/recommendation`);
-  return response.data;
-};
-
 // Update user question
 const updateQuestion = async (
   questionId: string,
@@ -53,10 +41,8 @@ const questionService = {
   createQuestion,
   getQuestions,
   getQuestionById,
-  getQuestionByUserId,
   updateQuestion,
   deleteQuestion,
-  getRecommendQuestions,
 };
 
 export default questionService;

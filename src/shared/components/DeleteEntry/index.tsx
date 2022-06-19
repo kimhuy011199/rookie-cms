@@ -1,15 +1,16 @@
-import { t } from 'i18next';
 import React from 'react';
 import Button from '../Button';
 import style from './style.module.css';
+import { useTranslation } from 'react-i18next';
 
 interface DeleteEntryInterface {
-  deleteFunc: () => void;
+  showDeleteDialog: () => void;
   content: string;
 }
 
 const DeleteEntry = (props: DeleteEntryInterface) => {
-  const { deleteFunc, content } = props;
+  const { showDeleteDialog, content } = props;
+  const { t } = useTranslation();
 
   return (
     <div className={style.deleteContainer}>
@@ -17,7 +18,7 @@ const DeleteEntry = (props: DeleteEntryInterface) => {
       <Button
         variant="danger"
         label={t('dialog.delete')}
-        handleFuncion={deleteFunc}
+        handleFuncion={showDeleteDialog}
       />
     </div>
   );

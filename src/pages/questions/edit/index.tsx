@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
+  deleteQuestion,
   getQuestionById,
   updateQuestion,
 } from '../../../stores/questions/questionSlice';
@@ -15,7 +16,7 @@ import { questionType } from '../../../stores/questions/questionType';
 import { toast } from 'react-toastify';
 import DeleteEntry from '../../../shared/components/DeleteEntry';
 import { useDialog } from '../../../shared/components/Dialog/Provider';
-import DeleteCommentDialog from '../../../shared/components/Dialog/dialogs/delete-comment';
+import DeleteEntryDialog from '../../../shared/components/Dialog/dialogs/delete-entry';
 
 const EditQuestion = () => {
   const { id } = useParams();
@@ -28,9 +29,19 @@ const EditQuestion = () => {
     (state: any) => state.questions
   );
 
-  const handleDelete = () => {
+  const showDeleteDialog = () => {
+    const handleDelete = () => {
+      if (question?._id) {
+        dispatch(deleteQuestion(question?._id));
+      }
+    };
     appendDialog(
-      <DeleteCommentDialog data={question} type={COMMENT_TYPE.QUESTION} />
+      <DeleteEntryDialog
+        type={COMMENT_TYPE.QUESTION}
+        submitDelete={handleDelete}
+        title={t('dialog.delete_question')}
+        content={t('dialog.delete_question_content')}
+      />
     );
   };
 
@@ -85,7 +96,7 @@ const EditQuestion = () => {
               content={question.content}
             />
             <DeleteEntry
-              deleteFunc={handleDelete}
+              showDeleteDialog={showDeleteDialog}
               content={t('questions.delete_question')}
             />
           </div>

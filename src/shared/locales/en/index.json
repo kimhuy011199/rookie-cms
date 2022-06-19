@@ -10,15 +10,12 @@
     },
     "login": {
       "desc": "Welcome 👋",
-      "sub": "Login to manage your content",
-      "q": "Don't have an account?",
-      "a": "Create account"
+      "sub": "Login to manage your content"
     }
   },
   "header": {
     "login": "Login",
-    "register": "Register",
-    "ask": "Ask question"
+    "register": "Register"
   },
   "footer": {
     "copyright": "Made by Nguyen Kim Huy"
@@ -29,50 +26,16 @@
     "create_new_question": "Create new question",
     "update_current_question": "Update current question",
     "delete_question": "Delete this question?",
-    "ask_question_title": "Ask a public question",
-    "update_question_title": "Update your question",
     "label": {
       "question": "Question",
       "title": "Title",
-      "sub_title": "Be specific and imagine you’re asking a question to another person",
       "content": "Content",
-      "sub_content": "Include all the information someone would need to answer your question",
       "tags": "Tags",
-      "sub_tags": "Add up to 3 tags to describe what your question is about",
       "submit": "Submit",
       "preview": "Preview",
       "cancel": "Cancel"
     },
-    "asked": "asked",
-    "answered": "answered",
-    "recommendation": "Recommendation",
-    "all_questions": "All Questions",
-    "no_recommendation": "No recommendation questions",
-    "no_questions": "No questions to show",
-    "guide": {
-      "title": "Asking a good question",
-      "desc": "The community is here to help you with specific coding, algorithm, or language problems. Here are some tips for you:",
-      "tips": [
-        "Include details about your goal",
-        "Describe expected and actual results",
-        "Include any error messages",
-        "Describe what you tried",
-        "Show some code"
-      ],
-      "markdown": "We are using markdown for writing question content. You can preview your content before submitting. If you are not similar to markdown, find more information about it ",
-      "link": "here"
-    },
-    "search": {
-      "title": "Search question guide",
-      "desc": "Enter search terms in the search box that appears on the center of the header on every page, and press `Enter`.\n\nTo search within specific tag(s), enter them in square brackets: `[javascript] timestamp` searches for mentions of 'timestamp' within the `[javascript]` tag.",
-      "result_title": "Search Results",
-      "result_for": "Result for "
-    },
-    "login_required": {
-      "link": "join the community",
-      "text_1": "You need ",
-      "text_2": " to answer on this question."
-    }
+    "no_questions": "No questions to show"
   },
   "placeholder": {
     "add_answer": "Leave your answer",

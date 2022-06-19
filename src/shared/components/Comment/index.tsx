@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import ActionMenu from '../ActionMenu';
 import { COMMENT_TYPE } from '../../constants/enums';
 import CommentInput from '../CommentInput';
-import Like from '../Like';
 import Avatar from '../Avatar';
 import TagList from '../TagList';
 import { useNavigate } from 'react-router-dom';
@@ -75,14 +74,7 @@ const Comment = (props: CommentInterface) => {
         </div>
         {type !== COMMENT_TYPE.QUESTION && (
           <div className={style.footer}>
-            <div className={style.likes}>
-              <Like
-                userId={data?.userId}
-                id={data._id}
-                isLiked={user && data?.userLikes && data?.userLikes[user._id]}
-                likesCount={data?.likesCount}
-              />
-            </div>
+            <div className={style.likes}></div>
           </div>
         )}
         {type === COMMENT_TYPE.QUESTION && data.tags.length > 0 && (

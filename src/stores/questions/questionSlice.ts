@@ -12,8 +12,6 @@ export interface QuestionInputInterface {
 const initialState = {
   questions: {},
   question: null,
-  recommend: [],
-  userQuestions: [],
   isError: '',
   isSuccess: '',
   isLoading: false,
@@ -52,36 +50,6 @@ export const getQuestionById = createAsyncThunk(
   async (id: string, thunkAPI) => {
     try {
       return await questionService.getQuestionById(id);
-    } catch (error: any) {
-      const errorCode = error?.response?.status;
-      const message = error?.response?.data?.message;
-      const errorResponse = { errorCode, message };
-      return thunkAPI.rejectWithValue(errorResponse);
-    }
-  }
-);
-
-// Get question by user id
-export const getQuestionByUserId = createAsyncThunk(
-  `question/${questionType.GET_QUESTION_BY_USER_ID}`,
-  async (userId: string, thunkAPI) => {
-    try {
-      return await questionService.getQuestionByUserId(userId);
-    } catch (error: any) {
-      const errorCode = error?.response?.status;
-      const message = error?.response?.data?.message;
-      const errorResponse = { errorCode, message };
-      return thunkAPI.rejectWithValue(errorResponse);
-    }
-  }
-);
-
-// Get recommend questions by question id
-export const getRecommendQuestions = createAsyncThunk(
-  `question/${questionType.GET_RECOMMENDATION}`,
-  async (id: string, thunkAPI) => {
-    try {
-      return await questionService.getRecommendQuestions(id);
     } catch (error: any) {
       const errorCode = error?.response?.status;
       const message = error?.response?.data?.message;
@@ -159,19 +127,6 @@ export const questionSlice = createSlice({
         state.isError = questionType.GET_ALL_QUESTIONS;
         state.message = action.payload;
       })
-      .addCase(getRecommendQuestions.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getRecommendQuestions.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = questionType.GET_RECOMMENDATION;
-        state.recommend = action.payload;
-      })
-      .addCase(getRecommendQuestions.rejected, (state, action: any) => {
-        state.isLoading = false;
-        state.isError = questionType.GET_RECOMMENDATION;
-        state.message = action.payload;
-      })
       .addCase(getQuestionById.pending, (state) => {
         state.isLoading = true;
       })
@@ -183,19 +138,6 @@ export const questionSlice = createSlice({
       .addCase(getQuestionById.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = questionType.GET_QUESTION_BY_ID;
-        state.message = action.payload;
-      })
-      .addCase(getQuestionByUserId.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getQuestionByUserId.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = questionType.GET_QUESTION_BY_USER_ID;
-        state.userQuestions = action.payload;
-      })
-      .addCase(getQuestionByUserId.rejected, (state, action: any) => {
-        state.isLoading = false;
-        state.isError = questionType.GET_QUESTION_BY_USER_ID;
         state.message = action.payload;
       })
       .addCase(updateQuestion.pending, (state) => {
