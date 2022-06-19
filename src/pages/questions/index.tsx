@@ -10,6 +10,7 @@ import Pagination from '../../shared/components/Pagination';
 import { useTranslation } from 'react-i18next';
 import { questionType } from '../../stores/questions/questionType';
 import { toast } from 'react-toastify';
+import Heading from '../../shared/components/Heading';
 
 function Questions() {
   const { t } = useTranslation();
@@ -59,7 +60,11 @@ function Questions() {
       <Spinner isLoading={isLoading} />
       <div className={style.container}>
         <div className={style.main}>
-          <div className={style.header}>{resultContent()}</div>
+          <Heading
+            heading={t('questions.heading')}
+            addContentText={t('questions.new')}
+            addContentLink="/question/new"
+          />
           {questions?.questionsList?.length > 0 ? (
             <>
               <div className={style.questions}>

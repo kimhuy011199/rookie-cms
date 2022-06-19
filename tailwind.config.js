@@ -16,6 +16,7 @@ module.exports = {
         'light-1': '#e9ebed',
         'light-2': '#a4a8ac',
         'light-3': '#9ca1a5',
+        'light-4': '#4c5256',
       },
       fontFamily: {
         sans: ['Inter'],

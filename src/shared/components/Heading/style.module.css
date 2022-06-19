@@ -1,0 +1,11 @@
+.headingContainer {
+  @apply flex justify-between items-center border-b border-dark-3 pb-4 mb-5;
+}
+
+.heading {
+  @apply text-2xl font-semibold;
+}
+
+.link {
+  @apply bg-light-4 px-5 py-2 rounded-md ease-in duration-200 font-medium hover:bg-primary;
+}
