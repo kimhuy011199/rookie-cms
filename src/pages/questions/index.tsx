@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../../shared/components/Spinner';
 import { getQuestions, reset } from '../../stores/questions/questionSlice';
 import style from './style.module.css';
-import Pagination from '../../shared/components/Pagination';
 import { useTranslation } from 'react-i18next';
 import { questionType } from '../../stores/questions/questionType';
 import { toast } from 'react-toastify';
@@ -23,22 +22,6 @@ function Questions() {
   const { questions, isLoading, isError } = useSelector(
     (state: any) => state.questions
   );
-
-  const resultContent = () => {
-    if (!searchValue) {
-      return <h2 className={style.heading}>{t('questions.all_questions')}</h2>;
-    }
-
-    return (
-      <>
-        <h2 className={style.heading}>{t('questions.search.result_title')}</h2>
-        <p className={style.desc}>
-          {t('questions.search.result_for')}
-          <span className={style.searchValue}>{searchValue}</span>
-        </p>
-      </>
-    );
-  };
 
   useEffect(() => {
     if (isError === questionType.GET_ALL_QUESTIONS) {

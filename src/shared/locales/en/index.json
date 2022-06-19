@@ -28,6 +28,7 @@
     "new": "Add question",
     "create_new_question": "Create new question",
     "update_current_question": "Update current question",
+    "delete_question": "Delete this question?",
     "ask_question_title": "Ask a public question",
     "update_question_title": "Update your question",
     "label": {
@@ -80,6 +81,7 @@
   "toast": {
     "create_question_success": "Create new question successfully",
     "update_question_success": "Update question successfully",
+    "delete_question_success": "Delete question successfully",
     "add_answer_success": "Your answer was added",
     "delete_answer_success": "Your answer was deleted",
     "edit_answer_success": "Your answer was updated",
@@ -97,6 +99,7 @@
     "preview": "Preview",
     "tag": "Choose tags",
     "submit": "Submit",
+    "delete": "Delete",
     "cancel": "Cancel"
   },
   "menu": {

@@ -217,12 +217,6 @@ export const questionSlice = createSlice({
       .addCase(deleteQuestion.fulfilled, (state: any, action: any) => {
         state.isLoading = false;
         state.isSuccess = questionType.DELETE_QUESTION;
-        state.questions = state.questions.list.filter(
-          (question: Question) => question._id !== action.payload.id
-        );
-        state.userQuestions = state.userQuestions.filter(
-          (question: Question) => question._id !== action.payload.id
-        );
       })
       .addCase(deleteQuestion.rejected, (state, action: any) => {
         state.isLoading = false;
