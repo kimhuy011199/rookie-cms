@@ -26,6 +26,8 @@
   "questions": {
     "heading": "Questions",
     "new": "Add question",
+    "create_new_question": "Create new question",
+    "update_current_question": "Update current question",
     "ask_question_title": "Ask a public question",
     "update_question_title": "Update your question",
     "label": {
@@ -76,6 +78,8 @@
     "search": "Search ..."
   },
   "toast": {
+    "create_question_success": "Create new question successfully",
+    "update_question_success": "Update question successfully",
     "add_answer_success": "Your answer was added",
     "delete_answer_success": "Your answer was deleted",
     "edit_answer_success": "Your answer was updated",
