@@ -22,7 +22,7 @@ function Header() {
             </Link>
           </h1>
         </div>
-        <SearchQuestion />
+        {/* <SearchQuestion /> */}
         <ul className={styles.list}>
           {user ? (
             <>

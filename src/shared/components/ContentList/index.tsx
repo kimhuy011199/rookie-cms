@@ -21,9 +21,9 @@ const ContentList = (props: ContentListInterface) => {
   const getColHeading = () => {
     switch (type) {
       case CONTENT_TYPE.QUESTION:
-        return ['No,', 'Id', 'Title'];
+        return ['No.', 'Id', 'Title'];
       default:
-        return ['No,', 'Id', 'Title'];
+        return ['No.', 'Id', 'Title'];
     }
   };
 

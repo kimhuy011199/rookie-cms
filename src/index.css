@@ -13,7 +13,7 @@ body {
 }
 
 .main {
-  @apply mt-24 relative w-full max-w-7xl mx-auto pb-10 pt-2 px-8;
+  @apply mt-20 relative w-full max-w-7xl mx-auto pb-10 pt-2 px-8;
 }
 
 .prevent-scroll {
