@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import ConfirmDialog from '../confirm';
 
 interface DeleteEntryDialogInterface {
-  type: number;
+  type?: number;
   close?: any;
   title: string;
   content: string;
