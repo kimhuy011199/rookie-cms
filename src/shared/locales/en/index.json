@@ -57,11 +57,14 @@
     "update_current_answer": "Update current answer",
     "delete_answer": "Delete this answer?",
     "label": {
-      "user": "User",
+      "answer_id": "Answer ID",
+      "answer": "Answer",
+      "content": "Content",
+      "question_id": "Question ID",
       "user_id": "User ID",
       "created_at": "Created at",
+      "like_count": "Likes number",
       "submit": "Submit",
-      "preview": "Preview",
       "cancel": "Cancel"
     },
     "no_answers": "No answers to show"
@@ -73,14 +76,16 @@
     "update_current_user": "Update current user",
     "delete_user": "Delete this user?",
     "label": {
-      "answer_id": "Answer ID",
-      "answer": "Answer",
-      "content": "Content",
-      "question_id": "Question ID",
+      "user": "User",
       "user_id": "User ID",
       "created_at": "Created at",
-      "like_count": "Likes number",
+      "display_name": "Display name",
+      "email": "Email",
+      "about": "About",
+      "github": "Github",
+      "linkedin": "LinkedIn",
       "submit": "Submit",
+      "preview": "Preview",
       "cancel": "Cancel"
     },
     "no_users": "No users to show"
