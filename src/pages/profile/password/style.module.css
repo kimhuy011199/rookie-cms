@@ -1,13 +1,5 @@
-.container {
-  @apply flex gap-8;
-}
-
-.user {
-  @apply flex-1;
-}
-
 .profile {
-  @apply bg-dark-1 rounded-xl border border-dark-3;
+  @apply bg-dark-1 rounded-xl border border-dark-3 flex-1 max-w-2xl mt-4 mx-auto;
 }
 
 .heading {

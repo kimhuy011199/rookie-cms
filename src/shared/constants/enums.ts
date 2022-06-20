@@ -23,9 +23,8 @@ export enum COMMENT_ACTIONS {
 
 export enum USER_ACTIONS {
   VIEW_PROFILE = 1,
-  SETTINGS = 2,
-  CHANGE_PASS = 3,
-  LOG_OUT = 4,
+  CHANGE_PASS = 2,
+  LOG_OUT = 3,
 }
 
 export enum CONTENT_TYPE {

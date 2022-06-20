@@ -17,18 +17,13 @@ const UserMenu = () => {
   const actionMenuOptions = [
     {
       value: USER_ACTIONS.VIEW_PROFILE,
-      label: 'menu.view_profile',
-      link: '/users/me',
-    },
-    {
-      value: USER_ACTIONS.SETTINGS,
       label: 'menu.settings',
-      link: '/users/settings',
+      link: '/profile/settings',
     },
     {
       value: USER_ACTIONS.CHANGE_PASS,
       label: 'menu.change_pass',
-      link: '/users/change-password',
+      link: '/profile/change-password',
     },
     { value: USER_ACTIONS.LOG_OUT, label: 'menu.logout', link: '' },
   ];

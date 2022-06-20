@@ -1,15 +1,13 @@
 .container {
-  @apply flex gap-8;
+  @apply flex gap-8 mt-4;
 }
 
-.avatar {
-  @apply relative;
-  width: 12rem;
-  height: 12rem;
+.user {
+  @apply flex-1;
 }
 
 .profile {
-  @apply bg-dark-1 rounded-xl border border-dark-3 flex-1;
+  @apply bg-dark-1 rounded-xl border border-dark-3;
 }
 
 .heading {

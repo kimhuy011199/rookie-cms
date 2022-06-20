@@ -5,6 +5,7 @@ import styles from './style.module.css';
 import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
 import Button from '../../components/Button';
 import { useTranslation } from 'react-i18next';
+import UserMenu from '../../components/UserMenu';
 
 function Header() {
   const { user } = useSelector((state: any) => state.auth);
@@ -28,10 +29,13 @@ function Header() {
                 <Link className={styles.link} to="/questions/ask">
                   <Button label={t('header.ask')} variant="primary" />
                 </Link>
+              </li> */}
+              <li className={styles.item}>
+                <span>{user?.email}</span>
               </li>
               <li className={styles.item}>
                 <UserMenu />
-              </li> */}
+              </li>
             </>
           ) : (
             <>

@@ -86,6 +86,9 @@
     "create_answer_success": "Create new answer successfully",
     "update_answer_success": "Update answer successfully",
     "delete_answer_success": "Delete answer successfully",
+    "update_user_success": "Your profile was updated",
+    "update_avatar_success": "Your avatar was updated",
+    "change_password_success": "Your password was updated",
     "unsuccess": "There was an error. Try again!"
   },
   "dialog": {
