@@ -1,0 +1,11 @@
+.container {
+  @apply flex flex-col gap-4;
+}
+
+.heading {
+  @apply text-2xl font-semibold py-1;
+}
+
+.form {
+  @apply col-span-2 bg-dark-1 p-3.5 rounded-xl border-dark-3 border;
+}

@@ -59,10 +59,13 @@
     "update_current_answer": "Update current answer",
     "delete_answer": "Delete this answer?",
     "label": {
+      "answer_id": "Answer ID",
       "answer": "Answer",
-      "title": "Title",
       "content": "Content",
-      "tags": "Tags",
+      "question_id": "Question ID",
+      "user_id": "User ID",
+      "created_at": "Created at",
+      "like_count": "Likes number",
       "submit": "Submit",
       "preview": "Preview",
       "cancel": "Cancel"

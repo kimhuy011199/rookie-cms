@@ -8,6 +8,7 @@ import FormGroup from '../FormGroup';
 import Button from '../Button';
 import TextArea from '../TextArea';
 import style from './style.module.css';
+import Input from '../Input';
 
 interface AnswerFormInterface {
   submitFunc: Function;
@@ -31,8 +32,7 @@ const AnswerForm = (props: AnswerFormInterface) => {
   );
 
   const handleSubmitForm = (data: any) => {
-    console.log(data);
-    // submitFunc(data);
+    submitFunc(data);
   };
 
   const previewAnswer = () => {
@@ -46,13 +46,29 @@ const AnswerForm = (props: AnswerFormInterface) => {
   return (
     <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
+        <FormGroup label={t('answers.label.answer_id')} flexRow>
+          <Input type="text" defaultValue={currentAnswer?._id} disabled />
+        </FormGroup>
+        <FormGroup label={t('answers.label.question_id')} flexRow>
+          <Input
+            type="text"
+            defaultValue={currentAnswer?.questionId}
+            disabled
+          />
+        </FormGroup>
+        <FormGroup label={t('answers.label.user_id')} flexRow>
+          <Input type="text" defaultValue={currentAnswer?.userId} disabled />
+        </FormGroup>
+        <FormGroup label={t('answers.label.created_at')} flexRow>
+          <Input type="text" defaultValue={currentAnswer?.createdAt} disabled />
+        </FormGroup>
         <FormGroup
           label={t('answers.label.content')}
           flexRow
           error={errors.content?.message}
         >
           <TextArea
-            rows={12}
+            rows={8}
             canResized={false}
             defaultValue={currentAnswer?.content || ''}
             {...register('content', {
@@ -62,6 +78,13 @@ const AnswerForm = (props: AnswerFormInterface) => {
                 message: 'Content must be have at least 50 characters',
               },
             })}
+          />
+        </FormGroup>
+        <FormGroup label={t('answers.label.like_count')} flexRow>
+          <Input
+            type="text"
+            defaultValue={currentAnswer?.likesCount}
+            disabled
           />
         </FormGroup>
         <div className={style.footer}>
