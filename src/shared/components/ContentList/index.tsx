@@ -26,6 +26,8 @@ const ContentList = (props: ContentListInterface) => {
         return ['No.', 'Id', 'Name'];
       case CONTENT_TYPE.ANSWER:
         return ['No.', 'Id', 'Content'];
+      case CONTENT_TYPE.USER:
+        return ['No.', 'Id', 'Display name'];
       default:
         return ['No.', 'Id', 'Title'];
     }

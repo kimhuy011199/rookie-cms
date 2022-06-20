@@ -16,7 +16,7 @@ const ContentItem = (props: ContentItemProps) => {
       <span></span>
       <span>{item._id}</span>
       <span className={style.title}>
-        {item.title || item.name || item.content}
+        {item.title || item.name || item.content || item.displayName}
       </span>
     </Link>
   );

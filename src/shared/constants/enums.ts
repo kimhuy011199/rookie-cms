@@ -31,4 +31,5 @@ export enum CONTENT_TYPE {
   QUESTION = 'questions',
   TAG = 'tags',
   ANSWER = 'answers',
+  USER = 'users',
 }

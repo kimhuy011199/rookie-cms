@@ -14,8 +14,7 @@
     }
   },
   "header": {
-    "login": "Login",
-    "register": "Register"
+    "login": "Login"
   },
   "footer": {
     "copyright": "Made by Nguyen Kim Huy"
@@ -47,7 +46,6 @@
       "tag": "Tag",
       "name": "Name",
       "submit": "Submit",
-      "preview": "Preview",
       "cancel": "Cancel"
     },
     "no_tags": "No tags to show"
@@ -59,6 +57,22 @@
     "update_current_answer": "Update current answer",
     "delete_answer": "Delete this answer?",
     "label": {
+      "user": "User",
+      "user_id": "User ID",
+      "created_at": "Created at",
+      "submit": "Submit",
+      "preview": "Preview",
+      "cancel": "Cancel"
+    },
+    "no_answers": "No answers to show"
+  },
+  "users": {
+    "heading": "Users",
+    "new": "Add user",
+    "create_new_user": "Create new user",
+    "update_current_user": "Update current user",
+    "delete_user": "Delete this user?",
+    "label": {
       "answer_id": "Answer ID",
       "answer": "Answer",
       "content": "Content",
@@ -67,13 +81,11 @@
       "created_at": "Created at",
       "like_count": "Likes number",
       "submit": "Submit",
-      "preview": "Preview",
       "cancel": "Cancel"
     },
-    "no_answers": "No answers to show"
+    "no_users": "No users to show"
   },
   "placeholder": {
-    "add_answer": "Leave your answer",
     "search": "Search ..."
   },
   "toast": {
@@ -105,9 +117,6 @@
     "cancel": "Cancel"
   },
   "menu": {
-    "edit": "Edit",
-    "delete": "Delete",
-    "view_profile": "View profile",
     "settings": "User settings",
     "change_pass": "Change password",
     "logout": "Logout"
@@ -146,13 +155,5 @@
       "settings": "User Settings",
       "change_pass": "Change Password"
     }
-  },
-  "home": {
-    "heading": "A public platform building the definitive collection of ",
-    "heading_bold": "coding questions & answers",
-    "desc": "A community-based space to find and contribute answers to technical challenges, and one of the most popular websites in the world.",
-    "login": "Join the community",
-    "link": "View questions",
-    "or": "or "
   }
 }

@@ -18,6 +18,7 @@ import QuestionsRoutes from './pages/questions/questions.routes';
 import AnswersRoutes from './pages/answers/answers.routes';
 import TagsRoutes from './pages/tags/tags.routes';
 import ProfileRoutes from './pages/profile/profile.routes';
+import UsersRoutes from './pages/users/users.routes';
 
 export default function App() {
   const token = authStorageService().getToken();
@@ -46,6 +47,7 @@ export default function App() {
             <Route path="/questions/*" element={<QuestionsRoutes />} />
             <Route path="/answers/*" element={<AnswersRoutes />} />
             <Route path="/tags/*" element={<TagsRoutes />} />
+            <Route path="/users/*" element={<UsersRoutes />} />
             <Route path="/profile/*" element={<ProfileRoutes />} />
           </Routes>
         </main>
