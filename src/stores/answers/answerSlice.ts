@@ -35,11 +35,11 @@ export const createAnswer = createAsyncThunk(
 );
 
 // Get all answers by question id
-export const getAnswers = createAsyncThunk(
+export const getAnswersByQuestionId = createAsyncThunk(
   `answer/${answerType.GET_ALL_ANSWERS}`,
   async (questionId: string, thunkAPI) => {
     try {
-      return await answerService.getAnswers(questionId);
+      return await answerService.getAnswersByQuestionId(questionId);
     } catch (error: any) {
       const message = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(message);
@@ -56,6 +56,21 @@ export const paginateAnswers = createAsyncThunk(
     } catch (error: any) {
       const message = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get answer by id
+export const getAnswerById = createAsyncThunk(
+  `answer/${answerType.GET_ANSWER}`,
+  async (id: string, thunkAPI) => {
+    try {
+      return await answerService.getAnswerById(id);
+    } catch (error: any) {
+      const errorCode = error?.response?.status;
+      const message = error?.response?.data?.message;
+      const errorResponse = { errorCode, message };
+      return thunkAPI.rejectWithValue(errorResponse);
     }
   }
 );
@@ -125,17 +140,30 @@ export const answerSlice = createSlice({
         state.isError = answerType.CREATE_ANSWER;
         state.message = action.payload;
       })
-      .addCase(getAnswers.pending, (state) => {
+      .addCase(getAnswersByQuestionId.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getAnswers.fulfilled, (state, action) => {
+      .addCase(getAnswersByQuestionId.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = answerType.GET_ALL_ANSWERS;
         state.answers = action.payload;
       })
-      .addCase(getAnswers.rejected, (state, action: any) => {
+      .addCase(getAnswersByQuestionId.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = answerType.GET_ALL_ANSWERS;
+        state.message = action.payload;
+      })
+      .addCase(getAnswerById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAnswerById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = answerType.GET_ANSWER;
+        state.answer = action.payload;
+      })
+      .addCase(getAnswerById.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = answerType.GET_ANSWER;
         state.message = action.payload;
       })
       .addCase(paginateAnswers.pending, (state) => {

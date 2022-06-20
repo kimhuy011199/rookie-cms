@@ -15,14 +15,20 @@ const createAnswer = async (answerData: AnswerInputInterface) => {
 };
 
 // Get all answers by question id
-const getAnswers = async (questionId: string) => {
-  const response = await api().get(`${endpoint}/${questionId}`);
+const getAnswersByQuestionId = async (questionId: string) => {
+  const response = await api().get(`${endpoint}/questions/${questionId}`);
   return response.data;
 };
 
 // Get all answers
 const paginateAnswers = async (queryString: string) => {
   const response = await api().get(`${endpoint}?${queryString}`);
+  return response.data;
+};
+
+// Get all answers by answer id
+const getAnswerById = async (answerId: string) => {
+  const response = await api().get(`${endpoint}/${answerId}`);
   return response.data;
 };
 
@@ -49,8 +55,9 @@ const likeOrUnlikeAnswer = async (answerId: string) => {
 
 const answerService = {
   createAnswer,
-  getAnswers,
+  getAnswersByQuestionId,
   paginateAnswers,
+  getAnswerById,
   updateAnswer,
   deleteAnswer,
   likeOrUnlikeAnswer,
