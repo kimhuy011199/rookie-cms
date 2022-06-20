@@ -52,6 +52,23 @@
     },
     "no_tags": "No tags to show"
   },
+  "answers": {
+    "heading": "Answers",
+    "new": "Add answer",
+    "create_new_answer": "Create new answer",
+    "update_current_answer": "Update current answer",
+    "delete_answer": "Delete this answer?",
+    "label": {
+      "answer": "Answer",
+      "title": "Title",
+      "content": "Content",
+      "tags": "Tags",
+      "submit": "Submit",
+      "preview": "Preview",
+      "cancel": "Cancel"
+    },
+    "no_answers": "No answers to show"
+  },
   "placeholder": {
     "add_answer": "Leave your answer",
     "search": "Search ..."

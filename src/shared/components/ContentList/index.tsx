@@ -24,6 +24,8 @@ const ContentList = (props: ContentListInterface) => {
         return ['No.', 'Id', 'Title'];
       case CONTENT_TYPE.TAG:
         return ['No.', 'Id', 'Name'];
+      case CONTENT_TYPE.ANSWER:
+        return ['No.', 'Id', 'Content'];
       default:
         return ['No.', 'Id', 'Title'];
     }
