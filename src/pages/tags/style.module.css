@@ -3,10 +3,6 @@
   grid-template-columns: 1fr 4fr;
 }
 
-.questionsList {
-  @apply flex flex-col gap-4;
-}
-
 .header {
   @apply border-b border-dark-3 pb-4 mb-4;
 }
