@@ -83,7 +83,7 @@ const EditQuestion = () => {
         show={isError && message?.errorCode === 404}
         code={ERROR_CODE.NOT_FOUND}
       />
-      {question && question._id && (
+      {question && question._id === id && (
         <>
           <div className={style.container}>
             <h2 className={style.heading}>

@@ -83,7 +83,7 @@ const EditTag = () => {
         show={isError && message?.errorCode === 404}
         code={ERROR_CODE.NOT_FOUND}
       />
-      {tag && tag._id && (
+      {tag && tag._id === id && (
         <>
           <div className={style.container}>
             <h2 className={style.heading}>{t('tags.update_current_tag')}</h2>
