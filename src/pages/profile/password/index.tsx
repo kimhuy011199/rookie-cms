@@ -10,7 +10,6 @@ import { changePassword, reset } from '../../../stores/auth/authSlice';
 import style from './style.module.css';
 import { toast } from 'react-toastify';
 import { authType } from '../../../stores/auth/authType';
-import Avatar from '../../../shared/components/Avatar';
 
 export interface PasswordInputInterface {
   oldPassword: string;
