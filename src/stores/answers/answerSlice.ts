@@ -210,7 +210,7 @@ export const answerSlice = createSlice({
       .addCase(deleteAnswer.fulfilled, (state: any, action: any) => {
         state.isLoading = false;
         state.isSuccess = answerType.DELETE_ANSWER;
-        state.answers = state.answers.filter(
+        state.answers.list = state.answers.list.filter(
           (answer: Answer) => answer._id !== action.payload.id
         );
       })
