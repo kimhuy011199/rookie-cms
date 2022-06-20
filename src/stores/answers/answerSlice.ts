@@ -47,6 +47,19 @@ export const getAnswers = createAsyncThunk(
   }
 );
 
+// Get all answers
+export const paginateAnswers = createAsyncThunk(
+  `answer/${answerType.PAGINATE_ANSWERS}`,
+  async (queryString: string, thunkAPI) => {
+    try {
+      return await answerService.paginateAnswers(queryString);
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Update user answer
 export const updateAnswer = createAsyncThunk(
   `answer/${answerType.UPDATE_ANSWER}`,
@@ -123,6 +136,19 @@ export const answerSlice = createSlice({
       .addCase(getAnswers.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = answerType.GET_ALL_ANSWERS;
+        state.message = action.payload;
+      })
+      .addCase(paginateAnswers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(paginateAnswers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = answerType.PAGINATE_ANSWERS;
+        state.answers = action.payload;
+      })
+      .addCase(paginateAnswers.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = answerType.PAGINATE_ANSWERS;
         state.message = action.payload;
       })
       .addCase(updateAnswer.pending, (state) => {

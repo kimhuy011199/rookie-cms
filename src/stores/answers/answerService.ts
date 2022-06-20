@@ -20,6 +20,12 @@ const getAnswers = async (questionId: string) => {
   return response.data;
 };
 
+// Get all answers
+const paginateAnswers = async (queryString: string) => {
+  const response = await api().get(`${endpoint}?${queryString}`);
+  return response.data;
+};
+
 // Update user answer
 const updateAnswer = async (
   answerId: string,
@@ -44,6 +50,7 @@ const likeOrUnlikeAnswer = async (answerId: string) => {
 const answerService = {
   createAnswer,
   getAnswers,
+  paginateAnswers,
   updateAnswer,
   deleteAnswer,
   likeOrUnlikeAnswer,

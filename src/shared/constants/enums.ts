@@ -31,4 +31,5 @@ export enum USER_ACTIONS {
 export enum CONTENT_TYPE {
   QUESTION = 'questions',
   TAG = 'tags',
+  ANSWER = 'answers',
 }
