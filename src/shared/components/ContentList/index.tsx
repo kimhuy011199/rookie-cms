@@ -10,6 +10,7 @@ interface ContentListInterface {
     totalPages: number;
     currentPage: number;
     totalItems: number;
+    itemsPerPage: number;
   };
   type: string;
   emptyListContent?: string;
@@ -43,14 +44,18 @@ const ContentList = (props: ContentListInterface) => {
         </div>
         {data.list.length > 0 ? (
           <ul className={style.list}>
-            {data.list.map((item: any, index: number) => (
-              <li
-                key={item?._id ? item?._id + index : index}
-                className={style.item}
-              >
-                <ContentItem item={item} type={type} />
-              </li>
-            ))}
+            {data.list.map((item: any, index: number) => {
+              const noNumber =
+                (data.currentPage - 1) * data.itemsPerPage + index + 1;
+              return (
+                <li
+                  key={item?._id ? item?._id + index : index}
+                  className={style.item}
+                >
+                  <ContentItem item={item} type={type} noNumber={noNumber} />
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <h4 className={style.emptyListContent}>{emptyListContent}</h4>
