@@ -4,6 +4,7 @@ import { tagType } from './tagType';
 import tagService from './tagService';
 
 const initialState = {
+  tagsList: [] as Tag[],
   tags: [] as Tag[],
   tag: null,
   isError: '',
@@ -11,6 +12,19 @@ const initialState = {
   isLoading: false,
   message: '',
 };
+
+// Get all tags
+export const getTags = createAsyncThunk(
+  `tags/${tagType.GET_TAGS}`,
+  async (_, thunkAPI) => {
+    try {
+      return await tagService.getTags();
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 // Get all pagination tags
 export const getPaginationTags = createAsyncThunk(
@@ -92,6 +106,19 @@ export const tagSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getTags.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getTags.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = tagType.GET_TAGS;
+        state.tagsList = action.payload;
+      })
+      .addCase(getTags.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = tagType.GET_TAGS;
+        state.message = action.payload;
+      })
       .addCase(getPaginationTags.pending, (state) => {
         state.isLoading = true;
       })

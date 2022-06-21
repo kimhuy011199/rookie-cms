@@ -16,7 +16,7 @@ const TagsCheckDialog = (props: TagsCheckDialogInterface) => {
   const { currentTags, setTags, close } = props;
   const [tagsOnDialog, setTagsOnDialog] = useState(currentTags);
   const { t } = useTranslation();
-  const { tags: allTags } = useSelector((state: any) => state.tags);
+  const { tagsList } = useSelector((state: any) => state.tags);
 
   const isTagIncluded = (chosenTag: Tag) => {
     return tagsOnDialog.findIndex((tag) => tag._id === chosenTag._id) !== -1;
@@ -43,8 +43,8 @@ const TagsCheckDialog = (props: TagsCheckDialogInterface) => {
     <Dialog close={close}>
       <h3 className={style.heading}>{t('dialog.tag')}</h3>
       <div>
-        {allTags.length > 0 &&
-          allTags.map((tag: Tag) => (
+        {tagsList.length > 0 &&
+          tagsList.map((tag: Tag) => (
             <button
               className={`${style.button} ${
                 isTagIncluded(tag) && style.active

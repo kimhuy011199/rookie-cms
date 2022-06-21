@@ -5,11 +5,17 @@ const endpoint = ENDPOINT.TAGS;
 
 // Get all pagination tags
 const getPaginationTags = async (queryString: string) => {
-  const response = await api().get(`${endpoint}/pagination?${queryString}`);
+  const response = await api().get(`${endpoint}?${queryString}`);
   return response.data;
 };
 
-// Get all pagination tags
+// Get all tags
+const getTags = async () => {
+  const response = await api().get(`${endpoint}/all`);
+  return response.data;
+};
+
+// Create tag
 const createTag = async (tagData: any) => {
   const response = await api().post(endpoint, tagData);
   return response.data;
@@ -35,6 +41,7 @@ const deleteTag = async (tagId: string) => {
 
 const tagService = {
   getPaginationTags,
+  getTags,
   createTag,
   getTagById,
   updateTag,
