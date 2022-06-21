@@ -47,7 +47,8 @@
       "tag": "Tag",
       "name": "Name",
       "submit": "Submit",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "search": "Result for name "
     },
     "no_tags": "No tags to show"
   },
@@ -67,7 +68,8 @@
       "like_count": "Likes number",
       "preview": "Preview",
       "submit": "Submit",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "search": "Result for question id "
     },
     "no_answers": "No answers to show"
   },
@@ -88,7 +90,8 @@
       "linkedin": "LinkedIn",
       "submit": "Submit",
       "preview": "Preview",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "search": "Result for display name "
     },
     "no_users": "No users to show"
   },
@@ -165,5 +168,8 @@
       "settings": "User Settings",
       "change_pass": "Change Password"
     }
+  },
+  "common": {
+    "entries_found": "entries found"
   }
 }

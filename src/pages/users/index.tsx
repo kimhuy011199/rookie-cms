@@ -43,10 +43,8 @@ const Users = () => {
       <Spinner isLoading={isLoading} />
       <div className={style.container}>
         <div className={style.main}>
-          <Heading type={CONTENT_TYPE.USER} />
-          {users?.list?.length > 0 && (
-            <ContentList data={users} type={CONTENT_TYPE.USER} />
-          )}
+          <Heading type={CONTENT_TYPE.USER} entriesFound={users?.totalItems} />
+          {users?.list && <ContentList data={users} type={CONTENT_TYPE.USER} />}
         </div>
       </div>
     </>

@@ -41,10 +41,8 @@ const Tags = () => {
       <Spinner isLoading={isLoading} />
       <div className={style.container}>
         <div className={style.main}>
-          <Heading type={CONTENT_TYPE.TAG} />
-          {tags?.list?.length > 0 && (
-            <ContentList data={tags} type={CONTENT_TYPE.TAG} />
-          )}
+          <Heading type={CONTENT_TYPE.TAG} entriesFound={tags?.totalItems} />
+          {tags?.list && <ContentList data={tags} type={CONTENT_TYPE.TAG} />}
         </div>
       </div>
     </>

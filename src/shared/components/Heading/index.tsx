@@ -6,10 +6,11 @@ import style from './style.module.css';
 
 interface HeadingProps {
   type: string;
+  entriesFound?: number;
 }
 
 const Heading = (props: HeadingProps) => {
-  const { type } = props;
+  const { type, entriesFound } = props;
 
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
@@ -18,21 +19,26 @@ const Heading = (props: HeadingProps) => {
 
   return (
     <div className={style.headingContainer}>
-      <div className={style.header}>
+      <div className={style.content}>
         <h2 className={style.heading}>{t(`${type}.heading`)}</h2>
-        <div className={style.actions}>
-          <SearchEntries type={type} />
-          <Link className={style.link} to={`/${type}/new`}>
-            {t(`${type}.new`)}
-          </Link>
+        <div className={style.sub}>
+          {searchValue && (
+            <p>
+              <span>{t(`${type}.label.search`)}</span>
+              <span className={style.for}>{searchValue}</span>
+            </p>
+          )}
+          <p>
+            {entriesFound} {t('common.entries_found')}
+          </p>
         </div>
       </div>
-      {searchValue && (
-        <p className={style.search}>
-          {t('questions.label.search')}
-          <span className={style.for}>{searchValue}</span>
-        </p>
-      )}
+      <div className={style.actions}>
+        <SearchEntries type={type} />
+        <Link className={style.link} to={`/${type}/new`}>
+          {t(`${type}.new`)}
+        </Link>
+      </div>
     </div>
   );
 };

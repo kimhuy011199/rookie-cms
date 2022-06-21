@@ -37,9 +37,9 @@ const SearchEntries = (props: SearchEntriesInterface) => {
           placeholder={t(`placeholder.${type}_search`)}
           {...register('value')}
         />
-        <button className={style.btn}>
+        {/* <button className={style.btn}>
           <IoSearchSharp className={style.icon} />
-        </button>
+        </button> */}
       </form>
     </div>
   );

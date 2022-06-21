@@ -43,8 +43,11 @@ function Questions() {
       <Spinner isLoading={isLoading} />
       <div className={style.container}>
         <div className={style.main}>
-          <Heading type={CONTENT_TYPE.QUESTION} />
-          {questions?.list?.length > 0 && (
+          <Heading
+            type={CONTENT_TYPE.QUESTION}
+            entriesFound={questions?.totalItems}
+          />
+          {questions?.list && (
             <ContentList data={questions} type={CONTENT_TYPE.QUESTION} />
           )}
         </div>

@@ -43,8 +43,11 @@ const Answers = () => {
       <Spinner isLoading={isLoading} />
       <div className={style.container}>
         <div className={style.main}>
-          <Heading type={CONTENT_TYPE.ANSWER} />
-          {answers?.list?.length > 0 && (
+          <Heading
+            type={CONTENT_TYPE.ANSWER}
+            entriesFound={answers?.totalItems}
+          />
+          {answers?.list && (
             <ContentList data={answers} type={CONTENT_TYPE.ANSWER} />
           )}
         </div>
