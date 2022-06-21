@@ -13,6 +13,7 @@ import DeleteEntryDialog from '../../../shared/components/Dialog/dialogs/delete-
 import {
   deleteAnswer,
   getAnswerById,
+  reset,
   updateAnswer,
 } from '../../../stores/answers/answerSlice';
 import { answerType } from '../../../stores/answers/answerType';
@@ -55,6 +56,7 @@ const EditAnswer = () => {
     if (isSuccess === answerType.UPDATE_ANSWER) {
       toast(t('toast.update_answer_success'));
       navigate('/answers');
+      reset();
     }
     if (isSuccess === answerType.DELETE_ANSWER) {
       toast(t('toast.delete_answer_success'));
@@ -83,7 +85,7 @@ const EditAnswer = () => {
         show={isError && message?.errorCode === 404}
         code={ERROR_CODE.NOT_FOUND}
       />
-      {answer && answer._id === id && (
+      {answer && answer._id === id && isSuccess === answerType.GET_ANSWER && (
         <>
           <div className={style.container}>
             <h2 className={style.heading}>

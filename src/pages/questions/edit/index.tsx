@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {
   deleteQuestion,
   getQuestionById,
+  reset,
   updateQuestion,
 } from '../../../stores/questions/questionSlice';
 import style from './style.module.css';
@@ -17,6 +18,7 @@ import { toast } from 'react-toastify';
 import DeleteEntry from '../../../shared/components/DeleteEntry';
 import { useDialog } from '../../../shared/components/Dialog/Provider';
 import DeleteEntryDialog from '../../../shared/components/Dialog/dialogs/delete-entry';
+import { getTags } from '../../../stores/tags/tagSlice';
 
 const EditQuestion = () => {
   const { id } = useParams();
@@ -28,6 +30,7 @@ const EditQuestion = () => {
   const { question, isLoading, isError, message, isSuccess } = useSelector(
     (state: any) => state.questions
   );
+  const { allTags } = useSelector((state: any) => state.tags);
 
   const showDeleteDialog = () => {
     const handleDelete = () => {
@@ -55,6 +58,7 @@ const EditQuestion = () => {
     if (isSuccess === questionType.UPDATE_QUESTION) {
       toast(t('toast.update_question_success'));
       navigate('/questions');
+      reset();
     }
     if (isSuccess === questionType.DELETE_QUESTION) {
       toast(t('toast.delete_question_success'));
@@ -72,6 +76,10 @@ const EditQuestion = () => {
     }
   }, [isError, t]);
 
+  useEffect(() => {
+    dispatch(getTags());
+  }, [allTags, dispatch]);
+
   const submitForm = (data: any) => {
     dispatch(updateQuestion({ id: question._id, updatedData: data }));
   };
@@ -83,25 +91,27 @@ const EditQuestion = () => {
         show={isError && message?.errorCode === 404}
         code={ERROR_CODE.NOT_FOUND}
       />
-      {question && question._id === id && (
-        <>
-          <div className={style.container}>
-            <h2 className={style.heading}>
-              {t('questions.update_current_question')}
-            </h2>
-            <QuestionForm
-              submitFunc={submitForm}
-              title={question.title}
-              tags={question.tags}
-              content={question.content}
-            />
-            <DeleteEntry
-              showDeleteDialog={showDeleteDialog}
-              content={t('questions.delete_question')}
-            />
-          </div>
-        </>
-      )}
+      {question &&
+        question._id === id &&
+        isSuccess === questionType.GET_QUESTION_BY_ID && (
+          <>
+            <div className={style.container}>
+              <h2 className={style.heading}>
+                {t('questions.update_current_question')}
+              </h2>
+              <QuestionForm
+                submitFunc={submitForm}
+                title={question.title}
+                tags={question.tags}
+                content={question.content}
+              />
+              <DeleteEntry
+                showDeleteDialog={showDeleteDialog}
+                content={t('questions.delete_question')}
+              />
+            </div>
+          </>
+        )}
     </>
   );
 };

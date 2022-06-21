@@ -13,6 +13,7 @@ import DeleteEntryDialog from '../../../shared/components/Dialog/dialogs/delete-
 import {
   deleteTag,
   getTagById,
+  reset,
   updateTag,
 } from '../../../stores/tags/tagSlice';
 import { tagType } from '../../../stores/tags/tagType';
@@ -54,6 +55,7 @@ const EditTag = () => {
     if (isSuccess === tagType.UPDATE_TAG) {
       toast(t('toast.update_tag_success'));
       navigate('/tags');
+      reset();
     }
     if (isSuccess === tagType.DELETE_TAG) {
       toast(t('toast.delete_tag_success'));
@@ -83,7 +85,7 @@ const EditTag = () => {
         show={isError && message?.errorCode === 404}
         code={ERROR_CODE.NOT_FOUND}
       />
-      {tag && tag._id === id && (
+      {tag && tag._id === id && tagType.GET_TAG && (
         <>
           <div className={style.container}>
             <h2 className={style.heading}>{t('tags.update_current_tag')}</h2>

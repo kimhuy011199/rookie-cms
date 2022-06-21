@@ -13,6 +13,7 @@ import DeleteEntryDialog from '../../../shared/components/Dialog/dialogs/delete-
 import {
   deleteUser,
   getUserById,
+  reset,
   updateUser,
 } from '../../../stores/users/userSlice';
 import { userType } from '../../../stores/users/userType';
@@ -58,6 +59,7 @@ const EditUser = () => {
     if (isSuccess === userType.UPDATE_USER) {
       toast(t('toast.delete_user_success'));
       navigate('/users');
+      reset();
     }
   }, [isSuccess, navigate, user, t]);
 
@@ -82,7 +84,7 @@ const EditUser = () => {
         show={isError && message?.errorCode === 404}
         code={ERROR_CODE.NOT_FOUND}
       />
-      {user && user._id === id && (
+      {user && user._id === id && userType.GET_USER_BY_ID && (
         <>
           <div className={style.container}>
             <h2 className={style.heading}>{t('users.update_current_user')}</h2>
