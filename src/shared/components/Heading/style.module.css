@@ -1,5 +1,13 @@
 .headingContainer {
-  @apply flex justify-between items-center border-b border-dark-3 pb-4 mb-5;
+  @apply border-b border-dark-3 pb-4 mb-5;
+}
+
+.header {
+  @apply flex justify-between items-center;
+}
+
+.actions {
+  @apply flex gap-6;
 }
 
 .heading {
@@ -8,4 +16,12 @@
 
 .link {
   @apply bg-light-4 px-5 py-2 rounded-md ease-in duration-200 font-medium hover:bg-primary;
+}
+
+.search {
+  @apply mt-2;
+}
+
+.for {
+  @apply font-bold text-white text-lg;
 }

@@ -43,11 +43,7 @@ const Users = () => {
       <Spinner isLoading={isLoading} />
       <div className={style.container}>
         <div className={style.main}>
-          <Heading
-            heading={t('users.heading')}
-            addContentText={t('users.new')}
-            addContentLink="/users/new"
-          />
+          <Heading type={CONTENT_TYPE.USER} />
           {users?.list?.length > 0 && (
             <ContentList data={users} type={CONTENT_TYPE.USER} />
           )}

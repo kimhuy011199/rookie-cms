@@ -43,11 +43,7 @@ const Answers = () => {
       <Spinner isLoading={isLoading} />
       <div className={style.container}>
         <div className={style.main}>
-          <Heading
-            heading={t('answers.heading')}
-            addContentText={t('answers.new')}
-            addContentLink="/answers/new"
-          />
+          <Heading type={CONTENT_TYPE.ANSWER} />
           {answers?.list?.length > 0 && (
             <ContentList data={answers} type={CONTENT_TYPE.ANSWER} />
           )}

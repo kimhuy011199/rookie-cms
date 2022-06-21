@@ -43,11 +43,7 @@ function Questions() {
       <Spinner isLoading={isLoading} />
       <div className={style.container}>
         <div className={style.main}>
-          <Heading
-            heading={t('questions.heading')}
-            addContentText={t('questions.new')}
-            addContentLink="/questions/new"
-          />
+          <Heading type={CONTENT_TYPE.QUESTION} />
           {questions?.list?.length > 0 && (
             <ContentList data={questions} type={CONTENT_TYPE.QUESTION} />
           )}
