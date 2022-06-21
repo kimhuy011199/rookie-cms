@@ -32,7 +32,8 @@
       "tags": "Tags",
       "submit": "Submit",
       "preview": "Preview",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "search": "Result for title "
     },
     "no_questions": "No questions to show"
   },
@@ -64,6 +65,7 @@
       "user_id": "User ID",
       "created_at": "Created at",
       "like_count": "Likes number",
+      "preview": "Preview",
       "submit": "Submit",
       "cancel": "Cancel"
     },
@@ -91,7 +93,10 @@
     "no_users": "No users to show"
   },
   "placeholder": {
-    "search": "Search ..."
+    "answers_search": "Search answer by question id ...",
+    "questions_search": "Search question by title ...",
+    "tags_search": "Search tag by name ...",
+    "users_search": "Search user by display name ..."
   },
   "toast": {
     "create_question_success": "Create new question successfully",
