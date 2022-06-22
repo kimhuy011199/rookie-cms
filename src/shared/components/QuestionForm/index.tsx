@@ -13,6 +13,7 @@ import style from './style.module.css';
 import { Tag } from '../../constants/types/Tag';
 import EntryMetaData from '../EntryMetaData';
 import { CONTENT_TYPE } from '../../constants/enums';
+import ViewInfoInput from '../ViewInfoInput';
 
 export interface InputInterface {
   title: string;
@@ -61,10 +62,15 @@ const QuestionForm = (props: QuestionFormInterface) => {
     <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         {currentQuestion && (
-          <EntryMetaData
-            currentEntry={currentQuestion}
-            type={CONTENT_TYPE.QUESTION}
-          />
+          <>
+            <EntryMetaData
+              currentEntry={currentQuestion}
+              type={CONTENT_TYPE.QUESTION}
+            />
+            <FormGroup label={t('questions.label.user')} flexRow>
+              <ViewInfoInput id={currentQuestion.userId} />
+            </FormGroup>
+          </>
         )}
         <FormGroup
           label={t('questions.label.title')}

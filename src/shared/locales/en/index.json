@@ -28,6 +28,7 @@
     "label": {
       "question": "Question",
       "id": "Question ID",
+      "user": "User",
       "title": "Title",
       "content": "Content",
       "tags": "Tags",
