@@ -51,11 +51,11 @@ const QuestionForm = (props: QuestionFormInterface) => {
   };
 
   const previewQuestion = () => {
-    const [title, content] = getValues(['title', 'content']);
-    if (!title || !content) {
+    const content = getValues('content');
+    if (!content) {
       return;
     }
-    appendDialog(<PreviewDialog title={title} content={content} />);
+    appendDialog(<PreviewDialog content={content} />);
   };
 
   return (
@@ -68,7 +68,10 @@ const QuestionForm = (props: QuestionFormInterface) => {
               type={CONTENT_TYPE.QUESTION}
             />
             <FormGroup label={t('questions.label.user')} flexRow>
-              <ViewInfoInput id={currentQuestion.userId} />
+              <ViewInfoInput
+                previewEntry={currentQuestion.user}
+                type={CONTENT_TYPE.QUESTION}
+              />
             </FormGroup>
           </>
         )}

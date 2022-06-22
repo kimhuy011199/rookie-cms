@@ -65,8 +65,8 @@
       "id": "Answer ID",
       "answer": "Answer",
       "content": "Content",
-      "question_id": "Question ID",
-      "user_id": "User ID",
+      "question": "Question",
+      "user": "User",
       "created_at": "Created at",
       "like_count": "Likes number",
       "preview": "Preview",
@@ -127,6 +127,9 @@
     "delete_tag": "Delete tag",
     "delete_tag_content": "Are you sure to delete this tag?",
     "preview": "Preview",
+    "user_page": "Go to user page",
+    "user_info": "User info",
+    "question_info": "Question info",
     "tag": "Choose tags",
     "submit": "Submit",
     "delete": "Delete",
@@ -176,6 +179,7 @@
     "entries_found": "entries found",
     "no_entries": "No entries found! Add new one...",
     "created_at": "Created at",
-    "updated_at": "Updated at"
+    "updated_at": "Updated at",
+    "view_info": "View info"
   }
 }

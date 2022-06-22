@@ -1,3 +1,7 @@
 .input {
   @apply flex justify-between border border-dark-3 rounded-md p-2.5 py-2 w-full focus:outline-none bg-dark-1;
 }
+
+.viewInfo {
+  @apply text-primary uppercase text-sm font-semibold;
+}
