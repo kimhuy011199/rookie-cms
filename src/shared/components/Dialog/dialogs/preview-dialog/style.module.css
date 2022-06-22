@@ -1,3 +1,7 @@
 .heading {
   @apply text-xl font-semibold border-b border-dark-3 pb-4;
 }
+
+.tagsContainer {
+  @apply border-t border-dark-2 pt-4 mt-6 flex justify-end;
+}

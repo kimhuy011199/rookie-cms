@@ -70,7 +70,7 @@ const QuestionForm = (props: QuestionFormInterface) => {
             <FormGroup label={t('questions.label.user')} flexRow>
               <ViewInfoInput
                 previewEntry={currentQuestion.user}
-                type={CONTENT_TYPE.QUESTION}
+                type={CONTENT_TYPE.USER}
               />
             </FormGroup>
           </>
