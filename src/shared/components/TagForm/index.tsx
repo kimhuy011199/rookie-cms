@@ -8,6 +8,8 @@ import Button from '../Button';
 import style from './style.module.css';
 import { tagType } from '../../../stores/tags/tagType';
 import { reset } from '../../../stores/tags/tagSlice';
+import EntryMetaData from '../EntryMetaData';
+import { CONTENT_TYPE } from '../../constants/enums';
 
 interface TagFormInterface {
   submitFunc: Function;
@@ -47,25 +49,7 @@ const TagForm = (props: TagFormInterface) => {
     <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         {currentTag && (
-          <>
-            <FormGroup label={t('tags.label.tag_id')} flexRow>
-              <Input type="text" defaultValue={currentTag?._id} disabled />
-            </FormGroup>
-            <FormGroup label={t('tags.label.created_at')} flexRow>
-              <Input
-                type="text"
-                defaultValue={currentTag?.createdAt}
-                disabled
-              />
-            </FormGroup>
-            <FormGroup label={t('tags.label.updated_at')} flexRow>
-              <Input
-                type="text"
-                defaultValue={currentTag?.updatedAt}
-                disabled
-              />
-            </FormGroup>
-          </>
+          <EntryMetaData currentEntry={currentTag} type={CONTENT_TYPE.TAG} />
         )}
         <FormGroup
           label={t('tags.label.name')}

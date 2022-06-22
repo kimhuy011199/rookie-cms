@@ -11,6 +11,8 @@ import TextArea from '../TextArea';
 import TagInput from '../TagInput';
 import style from './style.module.css';
 import { Tag } from '../../constants/types/Tag';
+import EntryMetaData from '../EntryMetaData';
+import { CONTENT_TYPE } from '../../constants/enums';
 
 export interface InputInterface {
   title: string;
@@ -20,13 +22,11 @@ export interface InputInterface {
 
 interface QuestionFormInterface {
   submitFunc: Function;
-  title?: string;
-  content?: string;
-  tags?: Tag[];
+  currentQuestion?: any;
 }
 
 const QuestionForm = (props: QuestionFormInterface) => {
-  const { submitFunc, title = '', content = '', tags: defaultTag } = props;
+  const { submitFunc, currentQuestion } = props;
   const {
     register,
     getValues,
@@ -34,7 +34,9 @@ const QuestionForm = (props: QuestionFormInterface) => {
     formState: { errors },
   } = useForm<InputInterface>();
 
-  const [tags, setTags] = useState<Tag[]>(defaultTag ? defaultTag : []);
+  const [tags, setTags] = useState<Tag[]>(
+    currentQuestion?.tags ? currentQuestion?.tags : []
+  );
   const { appendDialog } = useDialog();
   const { t } = useTranslation();
 
@@ -58,6 +60,12 @@ const QuestionForm = (props: QuestionFormInterface) => {
   return (
     <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
+        {currentQuestion && (
+          <EntryMetaData
+            currentEntry={currentQuestion}
+            type={CONTENT_TYPE.QUESTION}
+          />
+        )}
         <FormGroup
           label={t('questions.label.title')}
           flexRow
@@ -65,7 +73,7 @@ const QuestionForm = (props: QuestionFormInterface) => {
         >
           <Input
             type="text"
-            defaultValue={title}
+            defaultValue={currentQuestion?.title}
             {...register('title', {
               required: 'Title is required',
               minLength: {
@@ -81,9 +89,9 @@ const QuestionForm = (props: QuestionFormInterface) => {
           error={errors.content?.message}
         >
           <TextArea
-            rows={12}
+            rows={8}
             canResized={false}
-            defaultValue={content}
+            defaultValue={currentQuestion?.content}
             {...register('content', {
               required: 'Content is required',
               minLength: {

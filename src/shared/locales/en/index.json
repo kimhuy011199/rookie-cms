@@ -27,6 +27,7 @@
     "delete_question": "Delete this question?",
     "label": {
       "question": "Question",
+      "tag_id": "Question ID",
       "title": "Title",
       "content": "Content",
       "tags": "Tags",
@@ -46,8 +47,6 @@
     "label": {
       "tag": "Tag",
       "tag_id": "Tag ID",
-      "created_at": "Created at",
-      "updated_at": "Updated at",
       "name": "Name",
       "submit": "Submit",
       "cancel": "Cancel",
@@ -174,6 +173,8 @@
   },
   "common": {
     "entries_found": "entries found",
-    "no_entries": "No entries found! Add new one..."
+    "no_entries": "No entries found! Add new one...",
+    "created_at": "Created at",
+    "updated_at": "Updated at"
   }
 }

@@ -101,9 +101,7 @@ const EditQuestion = () => {
               </h2>
               <QuestionForm
                 submitFunc={submitForm}
-                title={question.title}
-                tags={question.tags}
-                content={question.content}
+                currentQuestion={question}
               />
               <DeleteEntry
                 showDeleteDialog={showDeleteDialog}
