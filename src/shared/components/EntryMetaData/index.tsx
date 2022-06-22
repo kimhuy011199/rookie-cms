@@ -13,7 +13,7 @@ const EntryMetaData = (props: EntryMetaDataInterface) => {
   const { t } = useTranslation();
   return (
     <>
-      <FormGroup label={t(`${type}.label.tag_id`)} flexRow>
+      <FormGroup label={t(`${type}.label.id`)} flexRow>
         <Input type="text" defaultValue={currentEntry?._id} disabled />
       </FormGroup>
       <FormGroup label={t('common.created_at')} flexRow>

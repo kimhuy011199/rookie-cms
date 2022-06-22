@@ -27,7 +27,7 @@
     "delete_question": "Delete this question?",
     "label": {
       "question": "Question",
-      "tag_id": "Question ID",
+      "id": "Question ID",
       "title": "Title",
       "content": "Content",
       "tags": "Tags",
@@ -46,7 +46,7 @@
     "delete_tag": "Delete this tag?",
     "label": {
       "tag": "Tag",
-      "tag_id": "Tag ID",
+      "id": "Tag ID",
       "name": "Name",
       "submit": "Submit",
       "cancel": "Cancel",
@@ -61,7 +61,7 @@
     "update_current_answer": "Update current answer",
     "delete_answer": "Delete this answer?",
     "label": {
-      "answer_id": "Answer ID",
+      "id": "Answer ID",
       "answer": "Answer",
       "content": "Content",
       "question_id": "Question ID",
@@ -83,7 +83,7 @@
     "delete_user": "Delete this user?",
     "label": {
       "user": "User",
-      "user_id": "User ID",
+      "id": "User ID",
       "created_at": "Created at",
       "display_name": "Display name",
       "email": "Email",

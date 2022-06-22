@@ -9,6 +9,8 @@ import Button from '../Button';
 import TextArea from '../TextArea';
 import style from './style.module.css';
 import Input from '../Input';
+import EntryMetaData from '../EntryMetaData';
+import { CONTENT_TYPE } from '../../constants/enums';
 
 interface AnswerFormInterface {
   submitFunc: Function;
@@ -46,9 +48,12 @@ const AnswerForm = (props: AnswerFormInterface) => {
   return (
     <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
-        <FormGroup label={t('answers.label.answer_id')} flexRow>
-          <Input type="text" defaultValue={currentAnswer?._id} disabled />
-        </FormGroup>
+        {currentAnswer && (
+          <EntryMetaData
+            currentEntry={currentAnswer}
+            type={CONTENT_TYPE.ANSWER}
+          />
+        )}
         <FormGroup label={t('answers.label.question_id')} flexRow>
           <Input
             type="text"
