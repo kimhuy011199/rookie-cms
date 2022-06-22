@@ -1,0 +1,18 @@
+.container {
+  @apply rounded-full relative flex flex-col justify-center items-center gap-4 pt-2 pb-1;
+}
+
+.avatar {
+  @apply relative;
+  width: 7rem;
+  height: 7rem;
+}
+
+.email,
+.displayName {
+  @apply text-lg text-center;
+}
+
+.link {
+  @apply text-primary font-bold;
+}
