@@ -19,6 +19,11 @@
   min-width: 2.5rem;
 }
 
+.md {
+  min-height: 7rem;
+  min-width: 7rem;
+}
+
 .lg {
   min-height: 12rem;
   min-width: 12rem;

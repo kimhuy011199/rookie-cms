@@ -4,7 +4,7 @@ import { ReactComponent as DefaultAvatar } from '../../../assets/images/avatar.s
 
 interface AvatarInterface {
   user: any;
-  size?: 'sm' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
 }
 
 const Avatar = (props: AvatarInterface) => {
