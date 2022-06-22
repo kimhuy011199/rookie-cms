@@ -101,19 +101,6 @@ export const deleteAnswer = createAsyncThunk(
   }
 );
 
-// Like or unlike answer
-export const likeOrUnlikeAnswer = createAsyncThunk(
-  `answer/${answerType.LIKE_UNLIKE_ANSWER}`,
-  async (answerid: string, thunkAPI) => {
-    try {
-      return await answerService.likeOrUnlikeAnswer(answerid);
-    } catch (error: any) {
-      const message = error?.response?.data?.message;
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
 export const answerSlice = createSlice({
   name: 'answer',
   initialState,
@@ -183,19 +170,6 @@ export const answerSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateAnswer.fulfilled, (state, action) => {
-        const answerIndex = state.answers.findIndex(
-          (answer: Answer) => answer._id === action.payload._id
-        );
-        if (answerIndex !== -1) {
-          const updatedAnswer = {
-            ...action.payload,
-            user: state.answers[answerIndex].user,
-          };
-          const updatedAnswers = state.answers.map((answer: Answer) =>
-            answer._id === action.payload._id ? updatedAnswer : answer
-          );
-          state.answers = updatedAnswers;
-        }
         state.isLoading = false;
         state.isSuccess = answerType.UPDATE_ANSWER;
       })
@@ -217,31 +191,6 @@ export const answerSlice = createSlice({
       .addCase(deleteAnswer.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = answerType.DELETE_ANSWER;
-        state.message = action.payload;
-      })
-      .addCase(likeOrUnlikeAnswer.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(likeOrUnlikeAnswer.fulfilled, (state, action) => {
-        const answerIndex = state.answers.findIndex(
-          (answer: Answer) => answer._id === action.payload._id
-        );
-        if (answerIndex !== -1) {
-          const updatedAnswer = {
-            ...action.payload,
-            user: state.answers[answerIndex].user,
-          };
-          const updatedAnswers = state.answers.map((answer: Answer) =>
-            answer._id === action.payload._id ? updatedAnswer : answer
-          );
-          state.answers = updatedAnswers;
-        }
-        state.isLoading = false;
-        state.isSuccess = answerType.LIKE_UNLIKE_ANSWER;
-      })
-      .addCase(likeOrUnlikeAnswer.rejected, (state, action: any) => {
-        state.isLoading = false;
-        state.isError = answerType.LIKE_UNLIKE_ANSWER;
         state.message = action.payload;
       });
   },
