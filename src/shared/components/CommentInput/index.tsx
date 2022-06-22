@@ -55,9 +55,7 @@ const CommentInput = (props: CommentInputInterface) => {
 
   const previewQuestion = () => {
     const content = getValues('content');
-    appendDialog(
-      <PreviewDialog content={content} type={COMMENT_TYPE.COMMENT} />
-    );
+    appendDialog(<PreviewDialog content={content} />);
   };
 
   const handleSubmitForm = (inputData: InputInterface) => {

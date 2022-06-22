@@ -8,7 +8,6 @@ interface PreviewDialogInterface {
   title?: string;
   content: string;
   close?: Function;
-  type?: number;
 }
 
 const PreviewDialog = (props: PreviewDialogInterface) => {
