@@ -170,6 +170,7 @@
     }
   },
   "common": {
-    "entries_found": "entries found"
+    "entries_found": "entries found",
+    "no_entries": "No entries found! Add new one..."
   }
 }

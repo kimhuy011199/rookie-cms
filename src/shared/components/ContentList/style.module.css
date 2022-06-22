@@ -18,3 +18,19 @@
 .pagination {
   @apply flex justify-end mt-1;
 }
+
+.emptyContainer {
+  @apply flex flex-col justify-center items-center p-6;
+}
+
+.noEntry {
+  @apply p-4;
+}
+
+.link {
+  @apply bg-primary px-5 py-2 rounded-md ease-in duration-200 font-medium mb-2;
+}
+
+.icon {
+  @apply w-52 -mb-4;
+}

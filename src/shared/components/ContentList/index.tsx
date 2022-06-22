@@ -1,7 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { CONTENT_TYPE } from '../../constants/enums';
 import ContentItem from '../ContentItem';
 import Pagination from '../Pagination';
+import { ReactComponent as NoEntries } from '../../../assets/images/no-entries.svg';
 import style from './style.module.css';
 
 interface ContentListInterface {
@@ -13,12 +16,12 @@ interface ContentListInterface {
     itemsPerPage: number;
   };
   type: string;
-  emptyListContent?: string;
   children?: any;
 }
 
 const ContentList = (props: ContentListInterface) => {
-  const { data, emptyListContent, type } = props;
+  const { data, type } = props;
+  const { t } = useTranslation();
   const getColHeading = () => {
     switch (type) {
       case CONTENT_TYPE.QUESTION:
@@ -58,7 +61,13 @@ const ContentList = (props: ContentListInterface) => {
             })}
           </ul>
         ) : (
-          <h4 className={style.emptyListContent}>{emptyListContent}</h4>
+          <div className={style.emptyContainer}>
+            <NoEntries className={style.icon} />
+            <span className={style.noEntry}>{t('common.no_entries')}</span>
+            <Link className={style.link} to={`/${type}/new`}>
+              {t(`${type}.new`)}
+            </Link>
+          </div>
         )}
       </div>
       {data.totalPages > 1 && (
