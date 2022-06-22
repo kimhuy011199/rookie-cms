@@ -11,11 +11,11 @@ import { reset } from '../../../stores/tags/tagSlice';
 
 interface TagFormInterface {
   submitFunc: Function;
-  tagName?: string;
+  currentTag?: any;
 }
 
 const TagForm = (props: TagFormInterface) => {
-  const { submitFunc, tagName = '' } = props;
+  const { submitFunc, currentTag } = props;
   const dispatch = useDispatch();
   const {
     register,
@@ -46,6 +46,27 @@ const TagForm = (props: TagFormInterface) => {
   return (
     <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
+        {currentTag && (
+          <>
+            <FormGroup label={t('tags.label.tag_id')} flexRow>
+              <Input type="text" defaultValue={currentTag?._id} disabled />
+            </FormGroup>
+            <FormGroup label={t('tags.label.created_at')} flexRow>
+              <Input
+                type="text"
+                defaultValue={currentTag?.createdAt}
+                disabled
+              />
+            </FormGroup>
+            <FormGroup label={t('tags.label.updated_at')} flexRow>
+              <Input
+                type="text"
+                defaultValue={currentTag?.updatedAt}
+                disabled
+              />
+            </FormGroup>
+          </>
+        )}
         <FormGroup
           label={t('tags.label.name')}
           flexRow
@@ -53,7 +74,7 @@ const TagForm = (props: TagFormInterface) => {
         >
           <Input
             type="text"
-            defaultValue={tagName}
+            defaultValue={currentTag?.name || ''}
             {...register('tagName', {
               required: 'Tag name is required',
             })}

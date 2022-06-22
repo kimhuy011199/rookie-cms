@@ -150,12 +150,12 @@ export const tagSlice = createSlice({
       })
       .addCase(getTagById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = tagType.GET_PAGINATION_TAGS;
+        state.isSuccess = tagType.GET_TAG;
         state.tag = action.payload;
       })
       .addCase(getTagById.rejected, (state, action: any) => {
         state.isLoading = false;
-        state.isError = tagType.GET_PAGINATION_TAGS;
+        state.isError = tagType.GET_TAG;
         state.message = action.payload;
       })
       .addCase(updateTag.pending, (state) => {

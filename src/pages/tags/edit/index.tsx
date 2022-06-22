@@ -85,11 +85,11 @@ const EditTag = () => {
         show={isError && message?.errorCode === 404}
         code={ERROR_CODE.NOT_FOUND}
       />
-      {tag && tag._id === id && tagType.GET_TAG && (
+      {tag && tag._id === id && isSuccess === tagType.GET_TAG && (
         <>
           <div className={style.container}>
             <h2 className={style.heading}>{t('tags.update_current_tag')}</h2>
-            <TagForm submitFunc={submitForm} tagName={tag.name} />
+            <TagForm submitFunc={submitForm} currentTag={tag} />
             <DeleteEntry
               showDeleteDialog={showDeleteDialog}
               content={t('tags.delete_tag')}
