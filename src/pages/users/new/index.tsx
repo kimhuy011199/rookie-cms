@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import style from './style.module.css';
 import { userType } from '../../../stores/users/userType';
-import AnswerForm from '../../../shared/components/AnswerForm';
 import { createUser } from '../../../stores/users/userSlice';
+import UserForm from '../../../shared/components/UserForm';
 
 const NewUser = () => {
   const { t } = useTranslation();
@@ -16,14 +16,13 @@ const NewUser = () => {
   const { isSuccess, isError } = useSelector((state: any) => state.users);
 
   const submitForm = (data: any) => {
-    console.log({ data });
-    // dispatch(createUser(data));
+    dispatch(createUser(data));
   };
 
   useEffect(() => {
     if (isSuccess === userType.CREATE_USER) {
-      toast(t('toast.create_answer_success'));
-      navigate('/answers');
+      toast(t('toast.create_user_success'));
+      navigate('/users');
     }
   }, [isSuccess, navigate, t]);
 
@@ -35,8 +34,8 @@ const NewUser = () => {
 
   return (
     <div className={style.container}>
-      <h2 className={style.heading}>{t('answers.create_new_answer')}</h2>
-      <AnswerForm submitFunc={submitForm} />
+      <h2 className={style.heading}>{t('users.create_new_user')}</h2>
+      <UserForm submitFunc={submitForm} />
     </div>
   );
 };
