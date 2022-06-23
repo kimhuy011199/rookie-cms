@@ -7,7 +7,6 @@ import style from './style.module.css';
 import { userType } from '../../../stores/users/userType';
 import AnswerForm from '../../../shared/components/AnswerForm';
 import { createUser } from '../../../stores/users/userSlice';
-import { clearChooseQuestion } from '../../../stores/answers/answerSlice';
 
 const NewUser = () => {
   const { t } = useTranslation();
@@ -20,10 +19,6 @@ const NewUser = () => {
     console.log({ data });
     // dispatch(createUser(data));
   };
-
-  useEffect(() => {
-    dispatch(clearChooseQuestion());
-  }, []);
 
   useEffect(() => {
     if (isSuccess === userType.CREATE_USER) {

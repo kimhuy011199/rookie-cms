@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import style from './style.module.css';
-import { createAnswer } from '../../../stores/answers/answerSlice';
+import {
+  clearChooseQuestion,
+  createAnswer,
+} from '../../../stores/answers/answerSlice';
 import { answerType } from '../../../stores/answers/answerType';
 import AnswerForm from '../../../shared/components/AnswerForm';
 
@@ -18,6 +21,10 @@ const NewAnswer = () => {
   const submitForm = (data: any) => {
     dispatch(createAnswer(data));
   };
+
+  useEffect(() => {
+    dispatch(clearChooseQuestion());
+  }, []);
 
   useEffect(() => {
     if (isSuccess === answerType.CREATE_ANSWER) {

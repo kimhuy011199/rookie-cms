@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -20,11 +20,12 @@ interface AnswerFormInterface {
 
 const AnswerForm = (props: AnswerFormInterface) => {
   const { submitFunc, currentAnswer } = props;
+  const [questionError, setQuestionError] = useState('');
   const {
     register,
     getValues,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitted },
   } = useForm();
 
   const { appendDialog } = useDialog();
@@ -35,7 +36,10 @@ const AnswerForm = (props: AnswerFormInterface) => {
   );
 
   const handleSubmitForm = (data: any) => {
-    submitFunc(data);
+    if (!currentQuestion) {
+      return;
+    }
+    submitFunc({ ...data, questionId: currentQuestion._id });
   };
 
   const previewAnswer = () => {
@@ -45,6 +49,12 @@ const AnswerForm = (props: AnswerFormInterface) => {
     }
     appendDialog(<PreviewDialog content={content} />);
   };
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setQuestionError(!currentQuestion ? t('answers.no_question') : '');
+    }
+  }, [currentQuestion, isSubmitted]);
 
   return (
     <div className={style.form}>
@@ -70,7 +80,11 @@ const AnswerForm = (props: AnswerFormInterface) => {
             </FormGroup>
           </>
         )}
-        <FormGroup label={t('questions.label.question')} flexRow>
+        <FormGroup
+          label={t('questions.label.question')}
+          flexRow
+          error={questionError}
+        >
           <ViewInfoInput
             previewEntry={currentQuestion || ''}
             type={CONTENT_TYPE.QUESTION}

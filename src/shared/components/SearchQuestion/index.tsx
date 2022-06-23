@@ -44,7 +44,6 @@ const SearchEntries = (props: SearchEntriesInterface) => {
     closeDialog();
   };
 
-  console.log({ questions });
   return (
     <>
       <div className={style.search}>

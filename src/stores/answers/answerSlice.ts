@@ -132,7 +132,6 @@ export const answerSlice = createSlice({
       .addCase(createAnswer.fulfilled, (state: any, action: any) => {
         state.isLoading = false;
         state.isSuccess = answerType.CREATE_ANSWER;
-        state.answers = [...state.answers, action.payload];
       })
       .addCase(createAnswer.rejected, (state, action: any) => {
         state.isLoading = false;
