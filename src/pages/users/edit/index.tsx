@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import style from './style.module.css';
 import Spinner from '../../../shared/components/Spinner';
 import Error from '../../../shared/components/Error';
@@ -14,15 +14,18 @@ import {
   deleteUser,
   getUserById,
   reset,
+  resetNewPassword,
   updateUser,
 } from '../../../stores/users/userSlice';
 import { userType } from '../../../stores/users/userType';
 import UserForm from '../../../shared/components/UserForm';
+import ResetPassword from '../../../shared/components/ResetPassword';
 
 const EditUser = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
   const { appendDialog } = useDialog();
 
@@ -52,11 +55,14 @@ const EditUser = () => {
   }, [id, dispatch]);
 
   useEffect(() => {
+    if (isSuccess === userType.RESET_PASSWORD) {
+      toast(t('toast.change_password_success'));
+    }
     if (isSuccess === userType.UPDATE_USER) {
       toast(t('toast.update_user_success'));
       navigate('/users');
     }
-    if (isSuccess === userType.UPDATE_USER) {
+    if (isSuccess === userType.DELETE_USER) {
       toast(t('toast.delete_user_success'));
       navigate('/users');
       reset();
@@ -67,11 +73,16 @@ const EditUser = () => {
     if (
       isError === userType.GET_USER_BY_ID ||
       isError === userType.UPDATE_USER ||
-      isError === userType.DELETE_USER
+      isError === userType.DELETE_USER ||
+      isError === userType.RESET_PASSWORD
     ) {
       toast(t('toast.unsuccess'));
     }
   }, [isError, t]);
+
+  useEffect(() => {
+    dispatch(resetNewPassword());
+  }, [pathname]);
 
   const submitForm = (data: any) => {
     dispatch(updateUser({ id: user._id, updatedData: data }));
@@ -93,6 +104,7 @@ const EditUser = () => {
               showDeleteDialog={showDeleteDialog}
               content={t('users.delete_user')}
             />
+            <ResetPassword userId={user?._id} />
           </div>
         </>
       )}

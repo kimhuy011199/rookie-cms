@@ -6,6 +6,7 @@
     "label": {
       "email": "Email",
       "password": "Password",
+      "password2": "Confirm",
       "submit": "Submit"
     },
     "login": {
@@ -87,6 +88,7 @@
       "user": "User",
       "id": "User ID",
       "created_at": "Created at",
+      "role": "Role",
       "display_name": "Display name",
       "email": "Email",
       "about": "About",
@@ -97,7 +99,9 @@
       "cancel": "Cancel",
       "search": "Result for display name "
     },
-    "no_users": "No users to show"
+    "no_users": "No users to show",
+    "reset_password": "Reset this user's password?",
+    "new_password": "New password: "
   },
   "placeholder": {
     "answers_search": "Search answer by question id ...",
@@ -116,9 +120,11 @@
     "create_answer_success": "Create new answer successfully",
     "update_answer_success": "Update answer successfully",
     "delete_answer_success": "Delete answer successfully",
-    "update_user_success": "Your profile was updated",
-    "update_avatar_success": "Your avatar was updated",
-    "change_password_success": "Your password was updated",
+    "create_user_success": "Create new user successfully",
+    "update_user_success": "Update user successfully",
+    "delete_user_success": "Delete user successfully",
+    "update_avatar_success": "User avatar was updated",
+    "change_password_success": "User password was updated",
     "unsuccess": "There was an error. Try again!"
   },
   "dialog": {
@@ -128,6 +134,9 @@
     "delete_question_content": "Are you sure to delete this question?",
     "delete_tag": "Delete tag",
     "delete_tag_content": "Are you sure to delete this tag?",
+    "reset_pass": "Reset Password",
+    "reset_pass_title": "Reset password",
+    "reset_pass_content": "Are you sure to reset user's password?",
     "preview": "Preview",
     "choose_question": "Choose question",
     "user_page": "Go to user page",

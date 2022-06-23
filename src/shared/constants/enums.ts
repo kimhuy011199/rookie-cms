@@ -33,3 +33,8 @@ export enum CONTENT_TYPE {
   ANSWER = 'answers',
   USER = 'users',
 }
+
+export enum USER_ROLE {
+  MEMBER = 'MEMBER',
+  ADMIN = 'ADMIN',
+}

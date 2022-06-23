@@ -7,4 +7,5 @@ export interface User {
   linkGithub?: string;
   linkLinkedIn?: string;
   avatarImg?: string;
+  role?: string;
 }
