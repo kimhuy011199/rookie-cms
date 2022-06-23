@@ -7,6 +7,7 @@ import { questionType } from '../../../stores/questions/questionType';
 import { toast } from 'react-toastify';
 import QuestionForm from '../../../shared/components/QuestionForm';
 import style from './style.module.css';
+import { getTags } from '../../../stores/tags/tagSlice';
 
 const NewQuestion = () => {
   const { t } = useTranslation();
@@ -14,6 +15,7 @@ const NewQuestion = () => {
   const dispatch = useDispatch();
 
   const { isSuccess, isError } = useSelector((state: any) => state.questions);
+  const { allTags } = useSelector((state: any) => state.tags);
 
   const submitForm = (data: any) => {
     dispatch(createQuestion(data));
@@ -31,6 +33,10 @@ const NewQuestion = () => {
       toast(t('toast.unsuccess'));
     }
   }, [isError, t]);
+
+  useEffect(() => {
+    dispatch(getTags());
+  }, [allTags, dispatch]);
 
   return (
     <div className={style.container}>

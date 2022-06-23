@@ -130,6 +130,8 @@
   "dialog": {
     "delete_answer": "Delete answer",
     "delete_answer_content": "Are you sure to delete this answer?",
+    "delete_user": "Delete user",
+    "delete_user_content": "Are you sure to delete this user?",
     "delete_question": "Delete question",
     "delete_question_content": "Are you sure to delete this question?",
     "delete_tag": "Delete tag",
