@@ -1,6 +1,7 @@
 import api from '../../core/api.service';
 import authStorageService from '../../core/authStorage.service';
 import { ENDPOINT } from '../../shared/constants/constants';
+import { USER_ROLE } from '../../shared/constants/enums';
 import { LoginUserInterface } from './authSlice';
 
 const endpoint = ENDPOINT.USERS;
@@ -9,8 +10,10 @@ const endpoint = ENDPOINT.USERS;
 const login = async (userData: LoginUserInterface) => {
   const response = await api().post(`${endpoint}/login`, userData);
   if (response.data) {
-    const { token } = response.data;
-    authStorageService().setToken(token);
+    const { token, role } = response.data;
+    if (role === USER_ROLE.ADMIN) {
+      authStorageService().setToken(token);
+    }
   }
   return response.data;
 };

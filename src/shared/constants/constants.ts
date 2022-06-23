@@ -13,6 +13,8 @@ export const TAB_LIST = [
   { text: 'Tags', link: '/tags' },
 ];
 
+export const PERMISSTION_DENIED = 'Permission denied';
+
 export const ZINDEX_DEFAULT = 1000;
 export const TAGS_ITEMS_SIZE = 2;
 export const MARKDOWN_LINK =

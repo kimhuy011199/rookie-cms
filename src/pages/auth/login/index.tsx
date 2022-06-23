@@ -14,6 +14,7 @@ import {
 import { ReactComponent as Logo } from '../../../assets/images/favicon.svg';
 import style from '../style.module.css';
 import { authType } from '../../../stores/auth/authType';
+import { USER_ROLE } from '../../../shared/constants/enums';
 
 export interface LoginUserInterface {
   email: string;
@@ -36,7 +37,7 @@ function Login() {
   );
 
   useEffect(() => {
-    if (isSuccess === authType.LOGIN || user) {
+    if (user?.role === USER_ROLE.ADMIN) {
       navigate('/');
     }
 

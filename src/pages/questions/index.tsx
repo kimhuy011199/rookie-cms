@@ -11,7 +11,7 @@ import Heading from '../../shared/components/Heading';
 import ContentList from '../../shared/components/ContentList';
 import { CONTENT_TYPE } from '../../shared/constants/enums';
 
-function Questions() {
+const Questions = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -54,6 +54,6 @@ function Questions() {
       </div>
     </>
   );
-}
+};
 
 export default Questions;

@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import authStorageService from '../../core/authStorage.service';
 import { authType } from './authType';
 import authService from './authService';
+import { USER_ROLE } from '../../shared/constants/enums';
+import { PERMISSTION_DENIED } from '../../shared/constants/constants';
 
 export interface LoginUserInterface {
   email: string;
@@ -95,8 +97,14 @@ export const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = authType.LOGIN;
-        state.user = action.payload;
+        if (action.payload?.role === USER_ROLE.ADMIN) {
+          state.isSuccess = authType.LOGIN;
+          state.user = action.payload;
+        } else {
+          state.isError = authType.LOGIN;
+          state.message = PERMISSTION_DENIED;
+          state.user = null;
+        }
       })
       .addCase(login.rejected, (state, action: any) => {
         state.isLoading = false;

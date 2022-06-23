@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
 import Button from '../../components/Button';
 import { useTranslation } from 'react-i18next';
 import UserMenu from '../../components/UserMenu';
+import { USER_ROLE } from '../../constants/enums';
 
 function Header() {
   const { user } = useSelector((state: any) => state.auth);
@@ -21,15 +22,9 @@ function Header() {
             </Link>
           </h1>
         </div>
-        {/* <SearchQuestion /> */}
         <ul className={styles.list}>
-          {user ? (
+          {user && user?.role === USER_ROLE.ADMIN ? (
             <>
-              {/* <li className={styles.item}>
-                <Link className={styles.link} to="/questions/ask">
-                  <Button label={t('header.ask')} variant="primary" />
-                </Link>
-              </li> */}
               <li className={styles.item}>
                 <span>{user?.email}</span>
               </li>
