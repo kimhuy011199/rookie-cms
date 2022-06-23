@@ -102,7 +102,8 @@
     "answers_search": "Search answer by question id ...",
     "questions_search": "Search question by title ...",
     "tags_search": "Search tag by name ...",
-    "users_search": "Search user by display name ..."
+    "users_search": "Search user by display name ...",
+    "question_search_dialog": "Search question by title or id"
   },
   "toast": {
     "create_question_success": "Create new question successfully",
@@ -127,6 +128,7 @@
     "delete_tag": "Delete tag",
     "delete_tag_content": "Are you sure to delete this tag?",
     "preview": "Preview",
+    "choose_question": "Choose question",
     "user_page": "Go to user page",
     "user_info": "User info",
     "question_info": "Question info",
@@ -180,6 +182,7 @@
     "no_entries": "No entries found! Add new one...",
     "created_at": "Created at",
     "updated_at": "Updated at",
-    "view_info": "View info"
+    "view_info": "View info",
+    "change": "Change"
   }
 }

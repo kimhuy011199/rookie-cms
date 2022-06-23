@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { Answer } from '../../shared/constants/types/Answer';
 import { answerType } from './answerType';
 import answerService from './answerService';
@@ -11,6 +11,7 @@ export interface AnswerInputInterface {
 const initialState = {
   answers: [] as Answer[],
   answer: null,
+  currentQuestion: null,
   isError: '',
   isSuccess: '',
   isLoading: false,
@@ -101,6 +102,17 @@ export const deleteAnswer = createAsyncThunk(
   }
 );
 
+// Choose current question
+export const chooseQuestion = createAction(
+  answerType.CHOOSE_QUESTION,
+  (payload: any) => ({ payload })
+);
+
+// Clear current question
+export const clearChooseQuestion = createAction(
+  answerType.CLEAR_CURRENT_QUESTION
+);
+
 export const answerSlice = createSlice({
   name: 'answer',
   initialState,
@@ -147,6 +159,7 @@ export const answerSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = answerType.GET_ANSWER;
         state.answer = action.payload;
+        state.currentQuestion = action.payload.question;
       })
       .addCase(getAnswerById.rejected, (state, action: any) => {
         state.isLoading = false;
@@ -192,6 +205,12 @@ export const answerSlice = createSlice({
         state.isLoading = false;
         state.isError = answerType.DELETE_ANSWER;
         state.message = action.payload;
+      })
+      .addCase(chooseQuestion, (state, action) => {
+        state.currentQuestion = action.payload;
+      })
+      .addCase(clearChooseQuestion, (state) => {
+        state.currentQuestion = null;
       });
   },
 });

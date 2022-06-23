@@ -10,6 +10,12 @@ const createQuestion = async (questionData: QuestionInputInterface) => {
   return response.data;
 };
 
+// Search questions
+const searchQuestions = async (queryString: string) => {
+  const response = await api().get(`${endpoint}/all?search=${queryString}`);
+  return response.data;
+};
+
 // Get all questions
 const getQuestions = async (queryString: string) => {
   const response = await api().get(`${endpoint}?${queryString}`);
@@ -40,6 +46,7 @@ const deleteQuestion = async (questionId: string) => {
 const questionService = {
   createQuestion,
   getQuestions,
+  searchQuestions,
   getQuestionById,
   updateQuestion,
   deleteQuestion,

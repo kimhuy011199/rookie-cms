@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { questionType } from './questionType';
 import questionService from './questionService';
 
@@ -11,6 +11,7 @@ export interface QuestionInputInterface {
 const initialState = {
   questions: {},
   question: null,
+  searchQuestions: [],
   isError: '',
   isSuccess: '',
   isLoading: false,
@@ -31,6 +32,19 @@ export const createQuestion = createAsyncThunk(
 );
 
 // Get all questions
+export const searchQuestions = createAsyncThunk(
+  `question/${questionType.SEARCH_QUESTIONS}`,
+  async (queryString: string, thunkAPI) => {
+    try {
+      return await questionService.searchQuestions(queryString);
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get questions
 export const getQuestions = createAsyncThunk(
   `question/${questionType.GET_ALL_QUESTIONS}`,
   async (queryString: string, thunkAPI) => {
@@ -84,6 +98,11 @@ export const deleteQuestion = createAsyncThunk(
   }
 );
 
+// Clear search questions
+export const clearSearchQuestions = createAction(
+  questionType.CLEAR_SEARCH_QUESTIONS
+);
+
 export const questionSlice = createSlice({
   name: 'question',
   initialState,
@@ -126,6 +145,19 @@ export const questionSlice = createSlice({
         state.isError = questionType.GET_ALL_QUESTIONS;
         state.message = action.payload;
       })
+      .addCase(searchQuestions.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(searchQuestions.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = questionType.GET_ALL_QUESTIONS;
+        state.searchQuestions = action.payload;
+      })
+      .addCase(searchQuestions.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = questionType.GET_ALL_QUESTIONS;
+        state.message = action.payload;
+      })
       .addCase(getQuestionById.pending, (state) => {
         state.isLoading = true;
       })
@@ -163,6 +195,9 @@ export const questionSlice = createSlice({
         state.isLoading = false;
         state.isError = questionType.DELETE_QUESTION;
         state.message = action.payload;
+      })
+      .addCase(clearSearchQuestions, (state) => {
+        state.searchQuestions = [];
       });
   },
 });

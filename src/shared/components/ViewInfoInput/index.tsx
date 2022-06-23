@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CONTENT_TYPE } from '../../constants/enums';
 import PreviewDialog from '../Dialog/dialogs/preview-dialog';
+import SearchQuestionDialog from '../Dialog/dialogs/search-question';
 import UserProfileDialog from '../Dialog/dialogs/user-profile';
 import { useDialog } from '../Dialog/Provider';
 import style from './style.module.css';
@@ -25,7 +26,9 @@ const ViewInfoInput = (props: ViewInfoInputInterface) => {
     }
   };
 
-  const handleViewAction = () => {};
+  const handleViewAction = () => {
+    appendDialog(<SearchQuestionDialog />);
+  };
 
   return (
     <div className={style.input}>

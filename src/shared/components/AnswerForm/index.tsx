@@ -11,6 +11,7 @@ import style from './style.module.css';
 import Input from '../Input';
 import EntryMetaData from '../EntryMetaData';
 import { CONTENT_TYPE } from '../../constants/enums';
+import ViewInfoInput from '../ViewInfoInput';
 
 interface AnswerFormInterface {
   submitFunc: Function;
@@ -29,7 +30,7 @@ const AnswerForm = (props: AnswerFormInterface) => {
   const { appendDialog } = useDialog();
   const { t } = useTranslation();
 
-  const { isLoading, isError, message } = useSelector(
+  const { isLoading, isError, message, currentQuestion } = useSelector(
     (state: any) => state.answers
   );
 
@@ -49,23 +50,31 @@ const AnswerForm = (props: AnswerFormInterface) => {
     <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         {currentAnswer && (
-          <EntryMetaData
-            currentEntry={currentAnswer}
-            type={CONTENT_TYPE.ANSWER}
-          />
+          <>
+            <EntryMetaData
+              currentEntry={currentAnswer}
+              type={CONTENT_TYPE.ANSWER}
+            />
+            <FormGroup label={t('answers.label.user')} flexRow>
+              <ViewInfoInput
+                previewEntry={currentAnswer.user}
+                type={CONTENT_TYPE.USER}
+              />
+            </FormGroup>
+            <FormGroup label={t('answers.label.like_count')} flexRow>
+              <Input
+                type="text"
+                defaultValue={currentAnswer?.likesCount}
+                disabled
+              />
+            </FormGroup>
+          </>
         )}
-        <FormGroup label={t('answers.label.question_id')} flexRow>
-          <Input
-            type="text"
-            defaultValue={currentAnswer?.questionId}
-            disabled
+        <FormGroup label={t('questions.label.question')} flexRow>
+          <ViewInfoInput
+            previewEntry={currentQuestion || ''}
+            type={CONTENT_TYPE.QUESTION}
           />
-        </FormGroup>
-        <FormGroup label={t('answers.label.user_id')} flexRow>
-          <Input type="text" defaultValue={currentAnswer?.userId} disabled />
-        </FormGroup>
-        <FormGroup label={t('answers.label.created_at')} flexRow>
-          <Input type="text" defaultValue={currentAnswer?.createdAt} disabled />
         </FormGroup>
         <FormGroup
           label={t('answers.label.content')}
@@ -83,13 +92,6 @@ const AnswerForm = (props: AnswerFormInterface) => {
                 message: 'Content must be have at least 50 characters',
               },
             })}
-          />
-        </FormGroup>
-        <FormGroup label={t('answers.label.like_count')} flexRow>
-          <Input
-            type="text"
-            defaultValue={currentAnswer?.likesCount}
-            disabled
           />
         </FormGroup>
         <div className={style.footer}>

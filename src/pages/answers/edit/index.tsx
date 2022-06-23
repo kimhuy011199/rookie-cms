@@ -26,9 +26,8 @@ const EditAnswer = () => {
   const { t } = useTranslation();
   const { appendDialog } = useDialog();
 
-  const { answer, isLoading, isError, message, isSuccess } = useSelector(
-    (state: any) => state.answers
-  );
+  const { answer, isLoading, isError, message, isSuccess, currentQuestion } =
+    useSelector((state: any) => state.answers);
 
   const showDeleteDialog = () => {
     const handleDelete = () => {
@@ -75,7 +74,16 @@ const EditAnswer = () => {
   }, [isError, t]);
 
   const submitForm = (data: any) => {
-    dispatch(updateAnswer({ id: answer._id, updatedData: data }));
+    dispatch(
+      updateAnswer({
+        id: answer._id,
+        updatedData: {
+          ...data,
+          questionId: currentQuestion._id,
+          question: currentQuestion,
+        },
+      })
+    );
   };
 
   return (
