@@ -2,11 +2,15 @@
   @apply flex justify-between border border-dark-3 rounded-md p-2.5 py-2 w-full focus:outline-none bg-dark-1;
 }
 
-.viewInfo,
-.change {
+.actions {
+  @apply flex gap-4;
+}
+
+.info,
+.action {
   @apply text-primary uppercase text-sm font-semibold;
 }
 
-.change {
-  @apply mr-4 text-light-1;
+.action {
+  @apply text-light-1;
 }

@@ -14,7 +14,12 @@ import {
   PASSWORD_PATTERN,
 } from '../../constants/patterns';
 import EntryMetaData from '../EntryMetaData';
-import { CONTENT_TYPE, USER_ROLE } from '../../constants/enums';
+import {
+  CONTENT_TYPE,
+  INPUT_BUTTON_ACTION,
+  USER_ROLE,
+} from '../../constants/enums';
+import InputButton from '../InputButton';
 
 interface UserFormInterface {
   submitFunc: Function;
@@ -188,6 +193,15 @@ const UserForm = (props: UserFormInterface) => {
             defaultValue={currentUser?.role || USER_ROLE.MEMBER}
           />
         </FormGroup>
+        {currentUser && (
+          <FormGroup label={t('questions.label.user')} flexRow>
+            <InputButton
+              entry={currentUser}
+              actionType={INPUT_BUTTON_ACTION.CHANGE_AVATAR}
+              content={currentUser.avatarImg || t('users.no_avatar')}
+            />
+          </FormGroup>
+        )}
         <div className={style.footer}>
           <div>
             {isError && <span className={style.serverError}>{message}</span>}

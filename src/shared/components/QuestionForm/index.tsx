@@ -12,8 +12,8 @@ import TagInput from '../TagInput';
 import style from './style.module.css';
 import { Tag } from '../../constants/types/Tag';
 import EntryMetaData from '../EntryMetaData';
-import { CONTENT_TYPE } from '../../constants/enums';
-import ViewInfoInput from '../ViewInfoInput';
+import { CONTENT_TYPE, INPUT_BUTTON_ACTION } from '../../constants/enums';
+import InputButton from '../InputButton';
 
 export interface InputInterface {
   title: string;
@@ -68,9 +68,10 @@ const QuestionForm = (props: QuestionFormInterface) => {
               type={CONTENT_TYPE.QUESTION}
             />
             <FormGroup label={t('questions.label.user')} flexRow>
-              <ViewInfoInput
-                previewEntry={currentQuestion.user}
-                type={CONTENT_TYPE.USER}
+              <InputButton
+                entry={currentQuestion.user}
+                viewType={INPUT_BUTTON_ACTION.VIEW_USER}
+                content={currentQuestion.user._id}
               />
             </FormGroup>
           </>

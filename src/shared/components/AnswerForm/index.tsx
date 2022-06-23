@@ -10,8 +10,8 @@ import TextArea from '../TextArea';
 import style from './style.module.css';
 import Input from '../Input';
 import EntryMetaData from '../EntryMetaData';
-import { CONTENT_TYPE } from '../../constants/enums';
-import ViewInfoInput from '../ViewInfoInput';
+import { CONTENT_TYPE, INPUT_BUTTON_ACTION } from '../../constants/enums';
+import InputButton from '../InputButton';
 
 interface AnswerFormInterface {
   submitFunc: Function;
@@ -66,9 +66,10 @@ const AnswerForm = (props: AnswerFormInterface) => {
               type={CONTENT_TYPE.ANSWER}
             />
             <FormGroup label={t('answers.label.user')} flexRow>
-              <ViewInfoInput
-                previewEntry={currentAnswer.user}
-                type={CONTENT_TYPE.USER}
+              <InputButton
+                entry={currentAnswer.user}
+                viewType={INPUT_BUTTON_ACTION.VIEW_USER}
+                content={currentAnswer.user._id}
               />
             </FormGroup>
             <FormGroup label={t('answers.label.like_count')} flexRow>
@@ -85,9 +86,11 @@ const AnswerForm = (props: AnswerFormInterface) => {
           flexRow
           error={questionError}
         >
-          <ViewInfoInput
-            previewEntry={currentQuestion || ''}
-            type={CONTENT_TYPE.QUESTION}
+          <InputButton
+            entry={currentQuestion || ''}
+            actionType={INPUT_BUTTON_ACTION.CHANGE_QUESTION}
+            viewType={INPUT_BUTTON_ACTION.VIEW_QUESTION}
+            content={currentQuestion?._id || t('answers.no_question')}
           />
         </FormGroup>
         <FormGroup

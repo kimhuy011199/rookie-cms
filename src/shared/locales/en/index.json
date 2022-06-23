@@ -100,6 +100,7 @@
       "search": "Result for display name "
     },
     "no_users": "No users to show",
+    "no_avatar": "No avatar to show",
     "reset_password": "Reset this user's password?",
     "new_password": "New password: "
   },
@@ -141,6 +142,7 @@
     "reset_pass_content": "Are you sure to reset user's password?",
     "preview": "Preview",
     "choose_question": "Choose question",
+    "choose_avatar": "Choose avatar",
     "user_page": "Go to user page",
     "user_info": "User info",
     "question_info": "Question info",
