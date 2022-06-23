@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { CONTENT_TYPE, INPUT_BUTTON_ACTION } from '../../constants/enums';
+import { INPUT_BUTTON_ACTION } from '../../constants/enums';
 import PreviewDialog from '../Dialog/dialogs/preview-dialog';
 import SearchQuestionDialog from '../Dialog/dialogs/search-question';
 import UploadAvatarDialog from '../Dialog/dialogs/upload-avatar';

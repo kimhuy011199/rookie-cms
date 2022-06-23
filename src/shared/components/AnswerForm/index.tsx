@@ -54,7 +54,7 @@ const AnswerForm = (props: AnswerFormInterface) => {
     if (isSubmitted) {
       setQuestionError(!currentQuestion ? t('answers.no_question') : '');
     }
-  }, [currentQuestion, isSubmitted]);
+  }, [currentQuestion, isSubmitted, t]);
 
   return (
     <div className={style.form}>

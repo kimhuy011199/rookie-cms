@@ -8,7 +8,7 @@ import {
 } from '../../../stores/auth/authSlice';
 import {
   reset as resetUpdateEntry,
-  updateAvatar as updateAvatar,
+  updateAvatar,
 } from '../../../stores/users/userSlice';
 import style from './style.module.css';
 import { toast } from 'react-toastify';
@@ -130,6 +130,8 @@ const UploadAvatar = (props: UploadAvatarInterface) => {
     isEntrySuccess,
     isEntryLoading,
     dispatch,
+    changeEntryAvatar,
+    currentEntry,
   ]);
 
   return (

@@ -1,9 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { IoSearchSharp } from 'react-icons/io5';
-import { Question } from '../../../../constants/types/Question';
-import Input from '../../../Input';
 import SearchQuestion from '../../../SearchQuestion';
 import { Dialog } from '../../Provider';
 import style from './style.module.css';

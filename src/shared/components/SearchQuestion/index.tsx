@@ -26,7 +26,7 @@ const SearchEntries = (props: SearchEntriesInterface) => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm<SearchInputInterface>();
 
-  const { searchQuestions: questions, isLoading } = useSelector(
+  const { searchQuestions: questions } = useSelector(
     (state: any) => state.questions
   );
 

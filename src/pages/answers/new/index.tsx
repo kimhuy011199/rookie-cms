@@ -24,7 +24,7 @@ const NewAnswer = () => {
 
   useEffect(() => {
     dispatch(clearChooseQuestion());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (isSuccess === answerType.CREATE_ANSWER) {

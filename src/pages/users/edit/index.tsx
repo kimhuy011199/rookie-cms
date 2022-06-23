@@ -86,7 +86,7 @@ const EditUser = () => {
 
   useEffect(() => {
     dispatch(resetNewPassword());
-  }, [pathname]);
+  }, [pathname, dispatch]);
 
   const submitForm = (data: any) => {
     dispatch(updateUser({ id: user._id, updatedData: data }));
