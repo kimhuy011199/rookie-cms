@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { userType } from './userType';
 import userService from './userService';
 
@@ -15,6 +15,7 @@ const initialState = {
   isSuccess: '',
   isLoading: false,
   message: '',
+  newPassword: '',
 };
 
 // Create new user
@@ -82,6 +83,24 @@ export const deleteUser = createAsyncThunk(
       return thunkAPI.rejectWithValue(message);
     }
   }
+);
+
+// Reset password
+export const resetPassword = createAsyncThunk(
+  `user/${userType.RESET_PASSWORD}`,
+  async (id: string, thunkAPI) => {
+    try {
+      return await userService.resetPassword(id);
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Reset new password data
+export const resetNewPassword = createAction(
+  `user/${userType.RESET_NEW_PASSWORD}`
 );
 
 export const userSlice = createSlice({
@@ -160,6 +179,22 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.isError = userType.DELETE_USER;
         state.message = action.payload;
+      })
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(resetPassword.fulfilled, (state: any, action: any) => {
+        state.isLoading = false;
+        state.isSuccess = userType.RESET_PASSWORD;
+        state.newPassword = action.payload;
+      })
+      .addCase(resetPassword.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = userType.RESET_PASSWORD;
+        state.message = action.payload;
+      })
+      .addCase(resetNewPassword, (state) => {
+        state.newPassword = '';
       });
   },
 });

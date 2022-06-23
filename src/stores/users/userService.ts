@@ -34,12 +34,19 @@ const deleteUser = async (userId: string) => {
   return response.data;
 };
 
+// Reset password
+const resetPassword = async (userId: string) => {
+  const response = await api().post(`${endpoint}/reset-password/${userId}`);
+  return response.data;
+};
+
 const userService = {
   createUser,
   getUsers,
   getUserById,
   updateUser,
   deleteUser,
+  resetPassword,
 };
 
 export default userService;
