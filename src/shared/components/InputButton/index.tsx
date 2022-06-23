@@ -12,7 +12,7 @@ interface InputButtonInterface {
   entry: any;
   viewType?: string;
   actionType?: string;
-  content: string;
+  content: any;
 }
 
 const InputButton = (props: InputButtonInterface) => {

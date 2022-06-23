@@ -14,3 +14,9 @@
   @apply block mx-auto mt-1 text-red-500;
   margin-left: 10.5rem;
 }
+
+.avatar {
+  @apply w-8 h-8 mr-3 relative;
+  min-width: 2rem;
+  min-height: 2rem;
+}

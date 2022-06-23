@@ -6,6 +6,10 @@ import {
   reset as resetUpdateUser,
   updateUser,
 } from '../../../stores/auth/authSlice';
+import {
+  reset as resetUpdateEntry,
+  updateAvatar as updateAvatar,
+} from '../../../stores/users/userSlice';
 import style from './style.module.css';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
@@ -13,8 +17,15 @@ import { ReactComponent as DefaultAvatar } from '../../../assets/images/avatar.s
 import { authType } from '../../../stores/auth/authType';
 import { uploadType } from '../../../stores/uploads/uploadType';
 import LoadingIcon from '../LoadingIcon';
+import { User } from '../../constants/types/User';
 
-const UploadAvatar = () => {
+interface UploadAvatarInterface {
+  changeEntryAvatar?: boolean;
+  currentEntry?: User;
+}
+
+const UploadAvatar = (props: UploadAvatarInterface) => {
+  const { changeEntryAvatar = false, currentEntry } = props;
   const [inputValue, setInputValue] = useState<any>('');
   const [previewImgSrc, setPreviewImgSrc] = useState<any>('');
   const [selectedFile, setSelectedFile] = useState<any>();
@@ -26,6 +37,9 @@ const UploadAvatar = () => {
     isSuccess: isUpdateSuccess,
     isLoading: isUpdateLoading,
   } = useSelector((state: any) => state.auth);
+  const { isSuccess: isEntrySuccess, isLoading: isEntryLoading } = useSelector(
+    (state: any) => state.users
+  );
   const { data, isLoading, isSuccess } = useSelector(
     (state: any) => state.upload
   );
@@ -74,7 +88,16 @@ const UploadAvatar = () => {
   useEffect(() => {
     if (isSuccess === uploadType.UPLOAD_IMG) {
       // Update user when uploading image to cloudinary is done
-      dispatch(updateUser({ _id: user._id, avatarImg: data.url }));
+      if (changeEntryAvatar && currentEntry) {
+        dispatch(
+          updateAvatar({
+            id: currentEntry._id,
+            updatedData: { avatarImg: data.url },
+          })
+        );
+      } else {
+        dispatch(updateUser({ _id: user._id, avatarImg: data.url }));
+      }
     }
 
     return () => {
@@ -89,21 +112,40 @@ const UploadAvatar = () => {
       isUpdateSuccess === authType.UPDATE_USER &&
       isSuccess === uploadType.UPLOAD_IMG
     ) {
-      toast(t('toast.update_user_success'));
+      toast(t('toast.update_avatar_success'));
     }
 
     return () => {
-      dispatch(resetUpdateUser());
+      if (changeEntryAvatar && currentEntry) {
+        dispatch(resetUpdateEntry());
+      } else {
+        dispatch(resetUpdateUser());
+      }
     };
-  }, [dispatch, isUpdateSuccess, isUpdateLoading, t, isSuccess]);
+  }, [
+    t,
+    isSuccess,
+    isUpdateSuccess,
+    isUpdateLoading,
+    isEntrySuccess,
+    isEntryLoading,
+    dispatch,
+  ]);
 
   return (
     <div className={style.container}>
       <div className={style.imgContainer}>
-        {!user?.avatarImg && !previewImgSrc && (
+        {(!currentEntry?.avatarImg || !user?.avatarImg) && !previewImgSrc && (
           <DefaultAvatar className={style.preview} />
         )}
-        {user?.avatarImg && !previewImgSrc && (
+        {changeEntryAvatar && currentEntry?.avatarImg && !previewImgSrc && (
+          <img
+            src={currentEntry?.avatarImg}
+            alt="avatar"
+            className={style.preview}
+          />
+        )}
+        {!changeEntryAvatar && user?.avatarImg && !previewImgSrc && (
           <img src={user?.avatarImg} alt="avatar" className={style.preview} />
         )}
         {previewImgSrc && (

@@ -58,6 +58,9 @@ const EditUser = () => {
     if (isSuccess === userType.RESET_PASSWORD) {
       toast(t('toast.change_password_success'));
     }
+    if (isSuccess === userType.UPDATE_AVATAR) {
+      toast(t('toast.update_avatar_success'));
+    }
     if (isSuccess === userType.UPDATE_USER) {
       toast(t('toast.update_user_success'));
       navigate('/users');
@@ -74,7 +77,8 @@ const EditUser = () => {
       isError === userType.GET_USER_BY_ID ||
       isError === userType.UPDATE_USER ||
       isError === userType.DELETE_USER ||
-      isError === userType.RESET_PASSWORD
+      isError === userType.RESET_PASSWORD ||
+      isError === userType.UPDATE_AVATAR
     ) {
       toast(t('toast.unsuccess'));
     }

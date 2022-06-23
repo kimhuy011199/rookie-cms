@@ -72,6 +72,19 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+// Upload avatar
+export const updateAvatar = createAsyncThunk(
+  `user/${userType.UPDATE_AVATAR}`,
+  async (data: any, thunkAPI) => {
+    try {
+      return await userService.updateUser(data.id, data.updatedData);
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Delete user
 export const deleteUser = createAsyncThunk(
   `user/${userType.DELETE_USER}`,
@@ -166,6 +179,19 @@ export const userSlice = createSlice({
       .addCase(updateUser.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = userType.UPDATE_USER;
+        state.message = action.payload;
+      })
+      .addCase(updateAvatar.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = userType.UPDATE_AVATAR;
+        state.user = action.payload;
+      })
+      .addCase(updateAvatar.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = userType.UPDATE_AVATAR;
         state.message = action.payload;
       })
       .addCase(deleteUser.pending, (state) => {

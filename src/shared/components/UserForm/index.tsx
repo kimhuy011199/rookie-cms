@@ -20,6 +20,7 @@ import {
   USER_ROLE,
 } from '../../constants/enums';
 import InputButton from '../InputButton';
+import Avatar from '../Avatar';
 
 interface UserFormInterface {
   submitFunc: Function;
@@ -198,7 +199,15 @@ const UserForm = (props: UserFormInterface) => {
             <InputButton
               entry={currentUser}
               actionType={INPUT_BUTTON_ACTION.CHANGE_AVATAR}
-              content={currentUser.avatarImg || t('users.no_avatar')}
+              content={
+                currentUser ? (
+                  <div className={style.avatar}>
+                    <Avatar user={currentUser} />
+                  </div>
+                ) : (
+                  t('users.no_avatar')
+                )
+              }
             />
           </FormGroup>
         )}
