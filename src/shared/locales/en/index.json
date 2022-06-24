@@ -147,6 +147,7 @@
     "user_info": "User info",
     "question_info": "Question info",
     "tag": "Choose tags",
+    "search_tag": "Enter tag name...",
     "submit": "Submit",
     "delete": "Delete",
     "cancel": "Cancel"

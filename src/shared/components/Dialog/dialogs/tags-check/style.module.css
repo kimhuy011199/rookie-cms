@@ -1,5 +1,5 @@
 .heading {
-  @apply text-xl font-semibold border-b border-dark-3 pb-4 mb-4;
+  @apply text-xl font-semibold;
 }
 
 .button {
@@ -8,4 +8,8 @@
 
 .active {
   @apply bg-primary text-dark-2;
+}
+
+.input {
+  @apply border bg-dark-2 border-dark-3 rounded-md p-2.5 py-2 block w-full focus:outline-none focus:outline-primary disabled:bg-dark-1 my-4;
 }
