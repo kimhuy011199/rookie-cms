@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { IoSearchSharp } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import Input from '../Input';
 import style from './style.module.css';
@@ -37,9 +36,6 @@ const SearchEntries = (props: SearchEntriesInterface) => {
           placeholder={t(`placeholder.${type}_search`)}
           {...register('value')}
         />
-        {/* <button className={style.btn}>
-          <IoSearchSharp className={style.icon} />
-        </button> */}
       </form>
     </div>
   );

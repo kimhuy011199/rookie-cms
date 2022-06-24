@@ -14,7 +14,6 @@ const Heading = (props: HeadingProps) => {
 
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
-  const currentPage = searchParams.get('page') || '1';
   const searchValue = searchParams.get('search') || '';
 
   return (
