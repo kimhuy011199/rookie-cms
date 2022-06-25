@@ -206,5 +206,8 @@
     "updated_at": "Updated at",
     "view_info": "View info",
     "change": "Change"
+  },
+  "upload": {
+    "limit_size": "Maximum size of image: 200kb"
   }
 }

@@ -29,6 +29,7 @@ const UploadAvatar = (props: UploadAvatarInterface) => {
   const [inputValue, setInputValue] = useState<any>('');
   const [previewImgSrc, setPreviewImgSrc] = useState<any>('');
   const [selectedFile, setSelectedFile] = useState<any>();
+  const [isLargeFile, setIsLargeFile] = useState(false);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -49,6 +50,7 @@ const UploadAvatar = (props: UploadAvatarInterface) => {
     if (!file) {
       return;
     }
+    setIsLargeFile(file.size >= 200000);
     previewFile(file);
     setSelectedFile(file);
     setInputValue(e.target.value);
@@ -135,53 +137,60 @@ const UploadAvatar = (props: UploadAvatarInterface) => {
   ]);
 
   return (
-    <div className={style.container}>
-      <div className={style.imgContainer}>
-        {(!currentEntry?.avatarImg || !user?.avatarImg) && !previewImgSrc && (
-          <DefaultAvatar className={style.preview} />
+    <>
+      <div className={style.container}>
+        <div className={style.imgContainer}>
+          {(!currentEntry?.avatarImg || !user?.avatarImg) && !previewImgSrc && (
+            <DefaultAvatar className={style.preview} />
+          )}
+          {changeEntryAvatar && currentEntry?.avatarImg && !previewImgSrc && (
+            <img
+              src={currentEntry?.avatarImg}
+              alt="avatar"
+              className={style.preview}
+            />
+          )}
+          {!changeEntryAvatar && user?.avatarImg && !previewImgSrc && (
+            <img src={user?.avatarImg} alt="avatar" className={style.preview} />
+          )}
+          {previewImgSrc && (
+            <img src={previewImgSrc} alt="avatar" className={style.preview} />
+          )}
+        </div>
+        {!isLoading ? (
+          <label htmlFor="avatar" className={style.input}>
+            <span className={style.tooltip}>
+              {t('settings.label.choose_image')}
+            </span>
+          </label>
+        ) : (
+          <div className={style.loading}>
+            <LoadingIcon />
+          </div>
         )}
-        {changeEntryAvatar && currentEntry?.avatarImg && !previewImgSrc && (
-          <img
-            src={currentEntry?.avatarImg}
-            alt="avatar"
-            className={style.preview}
-          />
-        )}
-        {!changeEntryAvatar && user?.avatarImg && !previewImgSrc && (
-          <img src={user?.avatarImg} alt="avatar" className={style.preview} />
-        )}
-        {previewImgSrc && (
-          <img src={previewImgSrc} alt="avatar" className={style.preview} />
-        )}
+        <input
+          hidden
+          type="file"
+          name="avatar"
+          id="avatar"
+          disabled={isLoading}
+          onChange={handleInputValueChange}
+          value={inputValue}
+        />
+        <button
+          className={style.submit}
+          onClick={handleSubmitFile}
+          disabled={!selectedFile || isLoading || !inputValue || isLargeFile}
+        >
+          <MdCameraAlt className={style.icon} />
+        </button>
       </div>
-      {!isLoading ? (
-        <label htmlFor="avatar" className={style.input}>
-          <span className={style.tooltip}>
-            {t('settings.label.choose_image')}
-          </span>
-        </label>
-      ) : (
-        <div className={style.loading}>
-          <LoadingIcon />
+      {isLargeFile && (
+        <div className={style.largeFile}>
+          <span>{t('upload.limit_size')}</span>
         </div>
       )}
-      <input
-        hidden
-        type="file"
-        name="avatar"
-        id="avatar"
-        disabled={isLoading}
-        onChange={handleInputValueChange}
-        value={inputValue}
-      />
-      <button
-        className={style.submit}
-        onClick={handleSubmitFile}
-        disabled={!selectedFile || isLoading || !inputValue}
-      >
-        <MdCameraAlt className={style.icon} />
-      </button>
-    </div>
+    </>
   );
 };
 

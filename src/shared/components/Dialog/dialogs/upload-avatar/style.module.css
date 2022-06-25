@@ -1,7 +1,7 @@
 .container {
-  @apply flex flex-col gap-8 items-center pb-2;
+  @apply flex flex-col items-center pb-2;
 }
 
 .heading {
-  @apply text-center font-semibold uppercase text-lg;
+  @apply text-center font-semibold uppercase text-lg mb-6;
 }

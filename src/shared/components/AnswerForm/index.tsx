@@ -77,13 +77,6 @@ const AnswerForm = (props: AnswerFormInterface) => {
                 content={currentAnswer?.likesCount}
               />
             </FormGroup>
-            <FormGroup label={t('answers.label.like_count')} flexRow>
-              <Input
-                type="text"
-                defaultValue={currentAnswer?.likesCount}
-                disabled
-              />
-            </FormGroup>
           </>
         )}
         <FormGroup
