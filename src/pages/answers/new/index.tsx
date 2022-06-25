@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import style from './style.module.css';
 import {
   clearChooseQuestion,
+  clearChooseUser,
   createAnswer,
 } from '../../../stores/answers/answerSlice';
 import { answerType } from '../../../stores/answers/answerType';
@@ -24,6 +25,7 @@ const NewAnswer = () => {
 
   useEffect(() => {
     dispatch(clearChooseQuestion());
+    dispatch(clearChooseUser());
   }, [dispatch]);
 
   useEffect(() => {

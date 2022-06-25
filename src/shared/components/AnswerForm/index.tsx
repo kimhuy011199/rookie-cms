@@ -21,6 +21,7 @@ interface AnswerFormInterface {
 const AnswerForm = (props: AnswerFormInterface) => {
   const { submitFunc, currentAnswer } = props;
   const [questionError, setQuestionError] = useState('');
+  const [userError, setUserError] = useState('');
   const {
     register,
     getValues,
@@ -31,15 +32,18 @@ const AnswerForm = (props: AnswerFormInterface) => {
   const { appendDialog } = useDialog();
   const { t } = useTranslation();
 
-  const { isLoading, isError, message, currentQuestion } = useSelector(
-    (state: any) => state.answers
-  );
+  const { isLoading, isError, message, currentQuestion, currentUser } =
+    useSelector((state: any) => state.answers);
 
   const handleSubmitForm = (data: any) => {
-    if (!currentQuestion) {
+    if (!currentQuestion || !currentUser) {
       return;
     }
-    submitFunc({ ...data, questionId: currentQuestion._id });
+    submitFunc({
+      ...data,
+      userId: currentUser._id,
+      questionId: currentQuestion._id,
+    });
   };
 
   const previewAnswer = () => {
@@ -53,8 +57,9 @@ const AnswerForm = (props: AnswerFormInterface) => {
   useEffect(() => {
     if (isSubmitted) {
       setQuestionError(!currentQuestion ? t('answers.no_question') : '');
+      setUserError(!currentUser ? t('answers.no_user') : '');
     }
-  }, [currentQuestion, isSubmitted, t]);
+  }, [currentQuestion, currentUser, isSubmitted, t]);
 
   return (
     <div className={style.form}>
@@ -65,13 +70,6 @@ const AnswerForm = (props: AnswerFormInterface) => {
               currentEntry={currentAnswer}
               type={CONTENT_TYPE.ANSWER}
             />
-            <FormGroup label={t('answers.label.user')} flexRow>
-              <InputButton
-                entry={currentAnswer.user}
-                viewType={INPUT_BUTTON_ACTION.VIEW_USER}
-                content={currentAnswer.user._id}
-              />
-            </FormGroup>
             <FormGroup label={t('answers.label.like_count')} flexRow>
               <Input
                 type="text"
@@ -91,6 +89,14 @@ const AnswerForm = (props: AnswerFormInterface) => {
             actionType={INPUT_BUTTON_ACTION.CHANGE_QUESTION}
             viewType={INPUT_BUTTON_ACTION.VIEW_QUESTION}
             content={currentQuestion?._id || t('answers.no_question')}
+          />
+        </FormGroup>
+        <FormGroup label={t('questions.label.user')} flexRow error={userError}>
+          <InputButton
+            entry={currentUser || ''}
+            actionType={INPUT_BUTTON_ACTION.CHANGE_USER}
+            viewType={INPUT_BUTTON_ACTION.VIEW_USER}
+            content={currentUser?._id || t('answers.no_user')}
           />
         </FormGroup>
         <FormGroup

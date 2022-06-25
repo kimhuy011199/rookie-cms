@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { INPUT_BUTTON_ACTION } from '../../constants/enums';
+import { INPUT_BUTTON_ACTION, SEARCH_TYPE } from '../../constants/enums';
 import PreviewDialog from '../Dialog/dialogs/preview-dialog';
-import SearchQuestionDialog from '../Dialog/dialogs/search-question';
+import SearchEntryDialog from '../Dialog/dialogs/search-entry';
 import UploadAvatarDialog from '../Dialog/dialogs/upload-avatar';
 import UserProfileDialog from '../Dialog/dialogs/user-profile';
 import { useDialog } from '../Dialog/Provider';
@@ -34,7 +34,10 @@ const InputButton = (props: InputButtonInterface) => {
   const handleAction = () => {
     switch (actionType) {
       case INPUT_BUTTON_ACTION.CHANGE_QUESTION:
-        appendDialog(<SearchQuestionDialog />);
+        appendDialog(<SearchEntryDialog type={SEARCH_TYPE.QUESTION} />);
+        break;
+      case INPUT_BUTTON_ACTION.CHANGE_USER:
+        appendDialog(<SearchEntryDialog type={SEARCH_TYPE.USER} />);
         break;
       case INPUT_BUTTON_ACTION.CHANGE_AVATAR:
         appendDialog(<UploadAvatarDialog user={entry} />);

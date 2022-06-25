@@ -76,7 +76,9 @@
       "search": "Result for question id "
     },
     "no_answers": "No answers to show",
-    "no_question": "Choose question to answer"
+    "no_users": "No user to show",
+    "no_question": "Choose question to answer",
+    "no_user": "Choose user answer"
   },
   "users": {
     "heading": "Users",
@@ -109,7 +111,8 @@
     "questions_search": "Search by `[tag] title` or question id ...",
     "tags_search": "Search by name ...",
     "users_search": "Search by display name ...",
-    "question_search_dialog": "Search by title or id"
+    "question_search_dialog": "Search by title or id",
+    "user_search_dialog": "Search by display name or id"
   },
   "toast": {
     "create_question_success": "Create new question successfully",
@@ -142,6 +145,7 @@
     "reset_pass_content": "Are you sure to reset user's password?",
     "preview": "Preview",
     "choose_question": "Choose question",
+    "choose_user": "Choose user",
     "choose_avatar": "Choose avatar",
     "user_page": "Go to user page",
     "user_info": "User info",
