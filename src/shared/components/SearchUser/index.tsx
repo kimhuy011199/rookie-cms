@@ -8,7 +8,6 @@ import { chooseUser as chooseUserQuestion } from '../../../stores/questions/ques
 import { clearSearchUsers, searchUsers } from '../../../stores/users/userSlice';
 import { USER_FOR } from '../../constants/enums';
 import { User } from '../../constants/types/User';
-import Avatar from '../Avatar';
 import Input from '../Input';
 import UserItem from '../UserItem';
 import style from './style.module.css';

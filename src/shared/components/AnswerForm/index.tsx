@@ -8,7 +8,6 @@ import FormGroup from '../FormGroup';
 import Button from '../Button';
 import TextArea from '../TextArea';
 import style from './style.module.css';
-import Input from '../Input';
 import EntryMetaData from '../EntryMetaData';
 import { CONTENT_TYPE, INPUT_BUTTON_ACTION } from '../../constants/enums';
 import InputButton from '../InputButton';

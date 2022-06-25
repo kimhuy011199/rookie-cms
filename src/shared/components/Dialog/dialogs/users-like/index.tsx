@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getUsersLikeByAnswerId } from '../../../../../stores/answers/answerSlice';
 import { User } from '../../../../constants/types/User';
 import UserItem from '../../../UserItem';
 import { Dialog } from '../../Provider';
