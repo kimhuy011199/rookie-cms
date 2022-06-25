@@ -16,6 +16,12 @@ const getUsers = async (queryString: string) => {
   return response.data;
 };
 
+// Search users
+const searchUsers = async (queryString: string) => {
+  const response = await api().get(`${endpoint}/all?search=${queryString}`);
+  return response.data;
+};
+
 // Get user by id
 const getUserById = async (userId: string) => {
   const response = await api().get(`${endpoint}/${userId}`);
@@ -43,6 +49,7 @@ const resetPassword = async (userId: string) => {
 const userService = {
   createUser,
   getUsers,
+  searchUsers,
   getUserById,
   updateUser,
   deleteUser,

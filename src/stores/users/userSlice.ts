@@ -11,6 +11,7 @@ export interface UserInputInterface {
 const initialState = {
   users: {},
   user: null,
+  searchUsers: [],
   isError: '',
   isSuccess: '',
   isLoading: false,
@@ -37,6 +38,19 @@ export const getUsers = createAsyncThunk(
   async (queryString: string, thunkAPI) => {
     try {
       return await userService.getUsers(queryString);
+    } catch (error: any) {
+      const message = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get all users
+export const searchUsers = createAsyncThunk(
+  `user/${userType.SEARCH_USER}`,
+  async (queryString: string, thunkAPI) => {
+    try {
+      return await userService.searchUsers(queryString);
     } catch (error: any) {
       const message = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(message);
@@ -116,6 +130,9 @@ export const resetNewPassword = createAction(
   `user/${userType.RESET_NEW_PASSWORD}`
 );
 
+// Clear search questions
+export const clearSearchUsers = createAction(userType.CLEAR_SEARCH_USERS);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -153,6 +170,19 @@ export const userSlice = createSlice({
       .addCase(getUsers.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = userType.GET_ALL_USERS;
+        state.message = action.payload;
+      })
+      .addCase(searchUsers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(searchUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = userType.SEARCH_USER;
+        state.searchUsers = action.payload;
+      })
+      .addCase(searchUsers.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = userType.SEARCH_USER;
         state.message = action.payload;
       })
       .addCase(getUserById.pending, (state) => {
@@ -221,6 +251,9 @@ export const userSlice = createSlice({
       })
       .addCase(resetNewPassword, (state) => {
         state.newPassword = '';
+      })
+      .addCase(clearSearchUsers, (state) => {
+        state.searchUsers = [];
       });
   },
 });
