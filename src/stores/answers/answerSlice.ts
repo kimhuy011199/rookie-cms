@@ -12,6 +12,7 @@ const initialState = {
   answers: [] as Answer[],
   answer: null,
   currentQuestion: null,
+  currentUser: null,
   isError: '',
   isSuccess: '',
   isLoading: false,
@@ -113,6 +114,15 @@ export const clearChooseQuestion = createAction(
   answerType.CLEAR_CURRENT_QUESTION
 );
 
+// Choose current user
+export const chooseUser = createAction(
+  answerType.CHOOSE_USER,
+  (payload: any) => ({ payload })
+);
+
+// Clear current user
+export const clearChooseUser = createAction(answerType.CLEAR_CURRENT_USER);
+
 export const answerSlice = createSlice({
   name: 'answer',
   initialState,
@@ -210,6 +220,12 @@ export const answerSlice = createSlice({
       })
       .addCase(clearChooseQuestion, (state) => {
         state.currentQuestion = null;
+      })
+      .addCase(chooseUser, (state, action) => {
+        state.currentUser = action.payload;
+      })
+      .addCase(clearChooseUser, (state) => {
+        state.currentUser = null;
       });
   },
 });
