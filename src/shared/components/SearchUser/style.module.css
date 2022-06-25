@@ -14,14 +14,6 @@
   @apply flex flex-col gap-2 mt-4;
 }
 
-.item {
-  @apply px-4 py-3 border border-dark-3 rounded-lg cursor-pointer;
-}
-
-.title {
-  @apply font-semibold;
-}
-
 .content {
   @apply text-light-3 overflow-hidden mt-1.5;
   display: -webkit-box;

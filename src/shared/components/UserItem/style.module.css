@@ -1,0 +1,19 @@
+.item {
+  @apply p-3 border border-dark-3 rounded-lg cursor-pointer;
+}
+
+.title {
+  @apply font-semibold;
+}
+
+.avatar {
+  @apply w-8 h-8 relative;
+}
+
+.user {
+  @apply flex items-center gap-4;
+}
+
+.content {
+  @apply m-0;
+}

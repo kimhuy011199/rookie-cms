@@ -8,7 +8,9 @@ import { chooseUser as chooseUserQuestion } from '../../../stores/questions/ques
 import { clearSearchUsers, searchUsers } from '../../../stores/users/userSlice';
 import { USER_FOR } from '../../constants/enums';
 import { User } from '../../constants/types/User';
+import Avatar from '../Avatar';
 import Input from '../Input';
+import UserItem from '../UserItem';
 import style from './style.module.css';
 
 export interface SearchInputInterface {
@@ -66,14 +68,11 @@ const SearchUser = (props: SearchUserInterface) => {
       {users.length > 0 ? (
         <ul className={style.list}>
           {users.map((item: User) => (
-            <li
-              className={style.item}
+            <UserItem
               key={item._id}
-              onClick={() => handleChooseUser(item)}
-            >
-              <h3 className={style.title}>{item.displayName}</h3>
-              <p className={style.content}>{item.email}</p>
-            </li>
+              user={item}
+              handleClick={handleChooseUser}
+            />
           ))}
         </ul>
       ) : (

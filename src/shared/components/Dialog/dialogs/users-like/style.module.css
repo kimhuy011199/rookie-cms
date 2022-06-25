@@ -1,0 +1,26 @@
+.heading {
+  @apply text-xl font-semibold pb-4;
+}
+
+.form {
+  @apply flex w-full;
+}
+
+.btn {
+  @apply bg-dark-3 rounded-md px-3 ml-1.5 hover:bg-primary;
+}
+
+.icon {
+  @apply text-xl;
+}
+
+.list {
+  @apply flex flex-col gap-2 relative;
+}
+
+.noUsersLike {
+  @apply text-center absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

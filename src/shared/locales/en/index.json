@@ -152,6 +152,8 @@
     "user_info": "User info",
     "question_info": "Question info",
     "tag": "Choose tags",
+    "users_like": "Users like this answer",
+    "no_users_like": "No one likes this answer",
     "search_tag": "Enter tag name...",
     "submit": "Submit",
     "delete": "Delete",

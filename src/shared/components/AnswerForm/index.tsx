@@ -71,6 +71,13 @@ const AnswerForm = (props: AnswerFormInterface) => {
               type={CONTENT_TYPE.ANSWER}
             />
             <FormGroup label={t('answers.label.like_count')} flexRow>
+              <InputButton
+                entry={currentAnswer || ''}
+                viewType={INPUT_BUTTON_ACTION.VIEW_USERS_LIKE}
+                content={currentAnswer?.likesCount}
+              />
+            </FormGroup>
+            <FormGroup label={t('answers.label.like_count')} flexRow>
               <Input
                 type="text"
                 defaultValue={currentAnswer?.likesCount}

@@ -13,6 +13,7 @@ import DeleteEntryDialog from '../../../shared/components/Dialog/dialogs/delete-
 import {
   deleteAnswer,
   getAnswerById,
+  getUsersLikeByAnswerId,
   reset,
   updateAnswer,
 } from '../../../stores/answers/answerSlice';
@@ -48,6 +49,7 @@ const EditAnswer = () => {
   useEffect(() => {
     if (id) {
       dispatch(getAnswerById(id));
+      dispatch(getUsersLikeByAnswerId(id));
     }
   }, [id, dispatch]);
 
@@ -93,7 +95,7 @@ const EditAnswer = () => {
         show={isError && message?.errorCode === 404}
         code={ERROR_CODE.NOT_FOUND}
       />
-      {answer && answer._id === id && isSuccess === answerType.GET_ANSWER && (
+      {answer && answer._id === id && (
         <>
           <div className={style.container}>
             <h2 className={style.heading}>

@@ -9,6 +9,7 @@ import PreviewDialog from '../Dialog/dialogs/preview-dialog';
 import SearchEntryDialog from '../Dialog/dialogs/search-entry';
 import UploadAvatarDialog from '../Dialog/dialogs/upload-avatar';
 import UserProfileDialog from '../Dialog/dialogs/user-profile';
+import UsersLikeDialog from '../Dialog/dialogs/users-like';
 import { useDialog } from '../Dialog/Provider';
 import style from './style.module.css';
 
@@ -27,6 +28,9 @@ const InputButton = (props: InputButtonInterface) => {
     switch (viewType) {
       case INPUT_BUTTON_ACTION.VIEW_QUESTION:
         appendDialog(<PreviewDialog {...entry} />);
+        break;
+      case INPUT_BUTTON_ACTION.VIEW_USERS_LIKE:
+        appendDialog(<UsersLikeDialog />);
         break;
       case INPUT_BUTTON_ACTION.VIEW_USER:
         if (entry) {
