@@ -20,6 +20,12 @@ const getAnswersByQuestionId = async (questionId: string) => {
   return response.data;
 };
 
+// Get users like by answer id
+const getUsersLikeByAnswerId = async (answerId: string) => {
+  const response = await api().get(`${endpoint}/likes/${answerId}`);
+  return response.data;
+};
+
 // Get all answers
 const paginateAnswers = async (queryString: string) => {
   const response = await api().get(`${endpoint}?${queryString}`);
@@ -61,6 +67,7 @@ const answerService = {
   updateAnswer,
   deleteAnswer,
   likeOrUnlikeAnswer,
+  getUsersLikeByAnswerId,
 };
 
 export default answerService;

@@ -13,6 +13,7 @@ const initialState = {
   answer: null,
   currentQuestion: null,
   currentUser: null,
+  usersLike: null,
   isError: '',
   isSuccess: '',
   isLoading: false,
@@ -68,6 +69,21 @@ export const getAnswerById = createAsyncThunk(
   async (id: string, thunkAPI) => {
     try {
       return await answerService.getAnswerById(id);
+    } catch (error: any) {
+      const errorCode = error?.response?.status;
+      const message = error?.response?.data?.message;
+      const errorResponse = { errorCode, message };
+      return thunkAPI.rejectWithValue(errorResponse);
+    }
+  }
+);
+
+// Get answer by id
+export const getUsersLikeByAnswerId = createAsyncThunk(
+  `answer/${answerType.GET_USERS_LIKE_BY_ANSWER_ID}`,
+  async (id: string, thunkAPI) => {
+    try {
+      return await answerService.getUsersLikeByAnswerId(id);
     } catch (error: any) {
       const errorCode = error?.response?.status;
       const message = error?.response?.data?.message;
@@ -159,6 +175,19 @@ export const answerSlice = createSlice({
       .addCase(getAnswersByQuestionId.rejected, (state, action: any) => {
         state.isLoading = false;
         state.isError = answerType.GET_ALL_ANSWERS;
+        state.message = action.payload;
+      })
+      .addCase(getUsersLikeByAnswerId.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUsersLikeByAnswerId.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = answerType.GET_USERS_LIKE_BY_ANSWER_ID;
+        state.usersLike = action.payload;
+      })
+      .addCase(getUsersLikeByAnswerId.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.isError = answerType.GET_USERS_LIKE_BY_ANSWER_ID;
         state.message = action.payload;
       })
       .addCase(getAnswerById.pending, (state) => {
