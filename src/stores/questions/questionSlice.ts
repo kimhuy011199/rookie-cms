@@ -12,6 +12,7 @@ const initialState = {
   questions: {},
   question: null,
   searchQuestions: [],
+  currentUser: null,
   isError: '',
   isSuccess: '',
   isLoading: false,
@@ -103,6 +104,15 @@ export const clearSearchQuestions = createAction(
   questionType.CLEAR_SEARCH_QUESTIONS
 );
 
+// Choose current user
+export const chooseUser = createAction(
+  questionType.CHOOSE_USER,
+  (payload: any) => ({ payload })
+);
+
+// Clear current user
+export const clearChooseUser = createAction(questionType.CLEAR_CURRENT_USER);
+
 export const questionSlice = createSlice({
   name: 'question',
   initialState,
@@ -165,6 +175,7 @@ export const questionSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = questionType.GET_QUESTION_BY_ID;
         state.question = action.payload;
+        state.currentUser = action.payload.user;
       })
       .addCase(getQuestionById.rejected, (state, action: any) => {
         state.isLoading = false;
@@ -198,6 +209,12 @@ export const questionSlice = createSlice({
       })
       .addCase(clearSearchQuestions, (state) => {
         state.searchQuestions = [];
+      })
+      .addCase(chooseUser, (state, action) => {
+        state.currentUser = action.payload;
+      })
+      .addCase(clearChooseUser, (state) => {
+        state.currentUser = null;
       });
   },
 });

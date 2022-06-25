@@ -38,7 +38,8 @@
       "cancel": "Cancel",
       "search": "Result for title "
     },
-    "no_questions": "No questions to show"
+    "no_questions": "No questions to show",
+    "no_user": "Choose user ask question"
   },
   "tags": {
     "heading": "Tags",

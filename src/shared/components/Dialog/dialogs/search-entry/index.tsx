@@ -9,6 +9,7 @@ import style from './style.module.css';
 interface SearchEntryDialogInterface {
   close?: Function;
   type?: number;
+  userFor?: string;
 }
 
 export interface SearchInputInterface {
@@ -16,7 +17,7 @@ export interface SearchInputInterface {
 }
 
 const SearchEntryDialog = (props: SearchEntryDialogInterface) => {
-  const { close, type } = props;
+  const { close, type, userFor = '' } = props;
   const { t } = useTranslation();
 
   const inlineStyle = {
@@ -36,7 +37,7 @@ const SearchEntryDialog = (props: SearchEntryDialogInterface) => {
       case SEARCH_TYPE.QUESTION:
         return <SearchQuestion closeDialog={closeDialog} />;
       case SEARCH_TYPE.USER:
-        return <SearchUser closeDialog={closeDialog} />;
+        return <SearchUser closeDialog={closeDialog} userFor={userFor} />;
     }
   };
 

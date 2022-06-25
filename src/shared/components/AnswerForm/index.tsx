@@ -94,7 +94,7 @@ const AnswerForm = (props: AnswerFormInterface) => {
         <FormGroup label={t('questions.label.user')} flexRow error={userError}>
           <InputButton
             entry={currentUser || ''}
-            actionType={INPUT_BUTTON_ACTION.CHANGE_USER}
+            actionType={INPUT_BUTTON_ACTION.CHANGE_USER_ANSWER}
             viewType={INPUT_BUTTON_ACTION.VIEW_USER}
             content={currentUser?._id || t('answers.no_user')}
           />

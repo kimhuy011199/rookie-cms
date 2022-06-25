@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { IoSearchSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
-import { chooseUser } from '../../../stores/answers/answerSlice';
+import { chooseUser as chooseUserAnswer } from '../../../stores/answers/answerSlice';
+import { chooseUser as chooseUserQuestion } from '../../../stores/questions/questionSlice';
 import { clearSearchUsers, searchUsers } from '../../../stores/users/userSlice';
+import { USER_FOR } from '../../constants/enums';
 import { User } from '../../constants/types/User';
 import Input from '../Input';
 import style from './style.module.css';
@@ -15,10 +17,11 @@ export interface SearchInputInterface {
 
 export interface SearchUserInterface {
   closeDialog: Function;
+  userFor: string;
 }
 
 const SearchUser = (props: SearchUserInterface) => {
-  const { closeDialog } = props;
+  const { closeDialog, userFor } = props;
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm<SearchInputInterface>();
@@ -33,8 +36,15 @@ const SearchUser = (props: SearchUserInterface) => {
     dispatch(searchUsers(value));
   };
 
-  const handleChooseUser = (item: User) => {
-    dispatch(chooseUser(item));
+  const handleChooseUser = (item: any) => {
+    switch (userFor) {
+      case USER_FOR.ANSWER:
+        dispatch(chooseUserAnswer(item));
+        break;
+      case USER_FOR.QUESTION:
+        dispatch(chooseUserQuestion(item));
+        break;
+    }
     dispatch(clearSearchUsers());
     closeDialog();
   };

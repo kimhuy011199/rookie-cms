@@ -41,12 +41,12 @@ const QuestionForm = (props: QuestionFormInterface) => {
   const { appendDialog } = useDialog();
   const { t } = useTranslation();
 
-  const { isLoading, isError, message } = useSelector(
+  const { isLoading, isError, message, currentUser } = useSelector(
     (state: any) => state.questions
   );
 
   const handleSubmitForm = (data: InputInterface) => {
-    const submitData = { ...data, tags };
+    const submitData = { ...data, reqUserId: currentUser._id, tags };
     submitFunc(submitData);
   };
 
@@ -62,20 +62,19 @@ const QuestionForm = (props: QuestionFormInterface) => {
     <div className={style.form}>
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         {currentQuestion && (
-          <>
-            <EntryMetaData
-              currentEntry={currentQuestion}
-              type={CONTENT_TYPE.QUESTION}
-            />
-            <FormGroup label={t('questions.label.user')} flexRow>
-              <InputButton
-                entry={currentQuestion.user}
-                viewType={INPUT_BUTTON_ACTION.VIEW_USER}
-                content={currentQuestion.user._id}
-              />
-            </FormGroup>
-          </>
+          <EntryMetaData
+            currentEntry={currentQuestion}
+            type={CONTENT_TYPE.QUESTION}
+          />
         )}
+        <FormGroup label={t('questions.label.user')} flexRow>
+          <InputButton
+            entry={currentUser || ''}
+            actionType={INPUT_BUTTON_ACTION.CHANGE_USER_QUESTION}
+            viewType={INPUT_BUTTON_ACTION.VIEW_USER}
+            content={currentUser?._id || t('questions.no_user')}
+          />
+        </FormGroup>
         <FormGroup
           label={t('questions.label.title')}
           flexRow

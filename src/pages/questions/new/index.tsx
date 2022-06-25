@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { createQuestion } from '../../../stores/questions/questionSlice';
+import {
+  clearChooseUser,
+  createQuestion,
+} from '../../../stores/questions/questionSlice';
 import { questionType } from '../../../stores/questions/questionType';
 import { toast } from 'react-toastify';
 import QuestionForm from '../../../shared/components/QuestionForm';
@@ -20,6 +23,10 @@ const NewQuestion = () => {
   const submitForm = (data: any) => {
     dispatch(createQuestion(data));
   };
+
+  useEffect(() => {
+    dispatch(clearChooseUser());
+  }, [dispatch]);
 
   useEffect(() => {
     if (isSuccess === questionType.CREATE_QUESTION) {
