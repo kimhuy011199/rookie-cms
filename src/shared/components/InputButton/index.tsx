@@ -25,7 +25,9 @@ const InputButton = (props: InputButtonInterface) => {
         appendDialog(<PreviewDialog {...entry} />);
         break;
       case INPUT_BUTTON_ACTION.VIEW_USER:
-        appendDialog(<UserProfileDialog user={entry} />);
+        if (entry) {
+          appendDialog(<UserProfileDialog user={entry} />);
+        }
         break;
       default:
     }

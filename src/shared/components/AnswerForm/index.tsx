@@ -41,7 +41,7 @@ const AnswerForm = (props: AnswerFormInterface) => {
     }
     submitFunc({
       ...data,
-      userId: currentUser._id,
+      reqUserId: currentUser._id,
       questionId: currentQuestion._id,
     });
   };

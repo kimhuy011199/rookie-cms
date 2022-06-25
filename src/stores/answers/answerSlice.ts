@@ -169,6 +169,7 @@ export const answerSlice = createSlice({
         state.isSuccess = answerType.GET_ANSWER;
         state.answer = action.payload;
         state.currentQuestion = action.payload.question;
+        state.currentUser = action.payload.user;
       })
       .addCase(getAnswerById.rejected, (state, action: any) => {
         state.isLoading = false;
