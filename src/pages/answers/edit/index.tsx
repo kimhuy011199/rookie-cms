@@ -67,7 +67,7 @@ const EditAnswer = () => {
 
   useEffect(() => {
     if (
-      isError === answerType.GET_ANSWER ||
+      isError === answerType.GET_ANSWER_BY_ID ||
       isError === answerType.UPDATE_ANSWER ||
       isError === answerType.DELETE_ANSWER
     ) {

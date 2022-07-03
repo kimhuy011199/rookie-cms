@@ -37,20 +37,7 @@ export const createAnswer = createAsyncThunk(
   }
 );
 
-// Get all answers by question id
-export const getAnswersByQuestionId = createAsyncThunk(
-  `answer/${answerType.GET_ALL_ANSWERS}`,
-  async (questionId: string, thunkAPI) => {
-    try {
-      return await answerService.getAnswersByQuestionId(questionId);
-    } catch (error: any) {
-      const message = error?.response?.data?.message;
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-// Get all answers
+// Paginate answers
 export const paginateAnswers = createAsyncThunk(
   `answer/${answerType.PAGINATE_ANSWERS}`,
   async (queryString: string, thunkAPI) => {
@@ -65,7 +52,7 @@ export const paginateAnswers = createAsyncThunk(
 
 // Get answer by id
 export const getAnswerById = createAsyncThunk(
-  `answer/${answerType.GET_ANSWER}`,
+  `answer/${answerType.GET_ANSWER_BY_ID}`,
   async (id: string, thunkAPI) => {
     try {
       return await answerService.getAnswerById(id);
@@ -78,7 +65,7 @@ export const getAnswerById = createAsyncThunk(
   }
 );
 
-// Get answer by id
+// Get user like by answer id
 export const getUsersLikeByAnswerId = createAsyncThunk(
   `answer/${answerType.GET_USERS_LIKE_BY_ANSWER_ID}`,
   async (id: string, thunkAPI) => {
@@ -93,7 +80,7 @@ export const getUsersLikeByAnswerId = createAsyncThunk(
   }
 );
 
-// Update user answer
+// Update answer
 export const updateAnswer = createAsyncThunk(
   `answer/${answerType.UPDATE_ANSWER}`,
   async (data: any, thunkAPI) => {
@@ -106,7 +93,7 @@ export const updateAnswer = createAsyncThunk(
   }
 );
 
-// Delete user answer
+// Delete answer
 export const deleteAnswer = createAsyncThunk(
   `answer/${answerType.DELETE_ANSWER}`,
   async (id: string, thunkAPI) => {
@@ -164,19 +151,6 @@ export const answerSlice = createSlice({
         state.isError = answerType.CREATE_ANSWER;
         state.message = action.payload;
       })
-      .addCase(getAnswersByQuestionId.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getAnswersByQuestionId.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = answerType.GET_ALL_ANSWERS;
-        state.answers = action.payload;
-      })
-      .addCase(getAnswersByQuestionId.rejected, (state, action: any) => {
-        state.isLoading = false;
-        state.isError = answerType.GET_ALL_ANSWERS;
-        state.message = action.payload;
-      })
       .addCase(getUsersLikeByAnswerId.pending, (state) => {
         state.isLoading = true;
       })
@@ -195,14 +169,14 @@ export const answerSlice = createSlice({
       })
       .addCase(getAnswerById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = answerType.GET_ANSWER;
+        state.isSuccess = answerType.GET_ANSWER_BY_ID;
         state.answer = action.payload;
         state.currentQuestion = action.payload.question;
         state.currentUser = action.payload.user;
       })
       .addCase(getAnswerById.rejected, (state, action: any) => {
         state.isLoading = false;
-        state.isError = answerType.GET_ANSWER;
+        state.isError = answerType.GET_ANSWER_BY_ID;
         state.message = action.payload;
       })
       .addCase(paginateAnswers.pending, (state) => {
