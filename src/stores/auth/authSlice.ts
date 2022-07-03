@@ -35,7 +35,7 @@ export const login = createAsyncThunk(
   }
 );
 
-// Get current user
+// Get current user info
 export const getUserMe = createAsyncThunk(
   `auth/${authType.GET_USER_ME}`,
   async (_, thunkAPI) => {

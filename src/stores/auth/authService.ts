@@ -18,7 +18,7 @@ const login = async (userData: LoginUserInterface) => {
   return response.data;
 };
 
-// Login user
+// Get current user info
 const getUserMe = async () => {
   const response = await api().get(`${endpoint}/me`);
   return response.data;
