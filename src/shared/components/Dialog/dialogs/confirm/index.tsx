@@ -31,22 +31,26 @@ const ConfirmDialog = (props: ConfirmDialogOptions) => {
   };
 
   return (
-    <Dialog {...otherProps} showCloseBtn={false} close={close}>
-      <h3 className={style.title}>{title}</h3>
-      <p className={style.content}>{content}</p>
-      <div className={style.actions}>
-        <Button
-          label={cancelBtnText}
-          type="button"
-          variant="blank"
-          handleFuncion={close}
-        />
-        <Button
-          label={submitBtnText}
-          variant="primary"
-          handleFuncion={handleSubmit}
-        />
-      </div>
+    <Dialog {...otherProps}>
+      <Dialog.Header heading={title} close={close} />
+      <Dialog.Body>
+        <p className={style.content}>{content}</p>
+      </Dialog.Body>
+      <Dialog.Footer>
+        <div className={style.actions}>
+          <Button
+            label={cancelBtnText}
+            type="button"
+            variant="blank"
+            handleFuncion={close}
+          />
+          <Button
+            label={submitBtnText}
+            variant="primary"
+            handleFuncion={handleSubmit}
+          />
+        </div>
+      </Dialog.Footer>
     </Dialog>
   );
 };

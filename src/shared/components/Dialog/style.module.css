@@ -1,5 +1,5 @@
 .dialogWrapper {
-  @apply fixed flex justify-center items-center inset-0;
+  @apply fixed flex justify-center items-center inset-0 overflow-hidden;
 }
 
 .dialogBackdrop {
@@ -7,9 +7,33 @@
 }
 
 .dialogContainer {
-  @apply relative z-50 bg-dark-1 max-w-md w-full rounded-xl p-5 border border-dark-3;
+  @apply relative z-50 bg-dark-1 w-full rounded-xl border border-dark-3 overflow-hidden;
+}
+
+.dialogHeader {
+  @apply px-5 py-3.5 border-b border-b-dark-3 bg-dark-2 text-lg font-semibold absolute w-full;
+}
+
+.dialogBody {
+  @apply px-5 py-3 pt-16 overflow-y-auto;
+}
+
+.dialogFooter {
+  @apply px-5 py-4;
 }
 
 .close {
-  @apply absolute right-4 top-6 text-white text-lg;
+  @apply absolute right-4 top-5 text-white text-lg;
+}
+
+.sm {
+  width: 25rem;
+}
+
+.md {
+  width: 30rem;
+}
+
+.lg {
+  width: 45rem;
 }

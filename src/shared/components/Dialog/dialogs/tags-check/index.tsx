@@ -51,29 +51,31 @@ const TagsCheckDialog = (props: TagsCheckDialogInterface) => {
   };
 
   return (
-    <Dialog close={close}>
-      <h3 className={style.heading}>{t('dialog.tag')}</h3>
-      <input
-        className={style.input}
-        type="text"
-        placeholder={t('dialog.search_tag')}
-        value={searchValue}
-        onChange={handleChangeValue}
-      />
-      <div>
-        {filterTags.length > 0 &&
-          filterTags.map((tag: Tag) => (
-            <button
-              className={`${style.button} ${
-                isTagIncluded(tag) && style.active
-              }`}
-              key={tag._id}
-              onClick={() => handleChooseTag(tag)}
-            >
-              {tag.name}
-            </button>
-          ))}
-      </div>
+    <Dialog>
+      <Dialog.Header heading={t('dialog.tag')} close={close} />
+      <Dialog.Body>
+        <input
+          className={style.input}
+          type="text"
+          placeholder={t('dialog.search_tag')}
+          value={searchValue}
+          onChange={handleChangeValue}
+        />
+        <div>
+          {filterTags.length > 0 &&
+            filterTags.map((tag: Tag) => (
+              <button
+                className={`${style.button} ${
+                  isTagIncluded(tag) && style.active
+                }`}
+                key={tag._id}
+                onClick={() => handleChooseTag(tag)}
+              >
+                {tag.name}
+              </button>
+            ))}
+        </div>
+      </Dialog.Body>
     </Dialog>
   );
 };

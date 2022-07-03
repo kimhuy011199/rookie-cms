@@ -58,3 +58,9 @@ export enum USER_FOR {
   ANSWER = 'ANSWER',
   QUESTION = 'QUESTION',
 }
+
+export enum DIALOG_SIZE {
+  SM = 0,
+  MD = 1,
+  LG = 2,
+}

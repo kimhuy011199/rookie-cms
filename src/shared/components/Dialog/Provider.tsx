@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import { ZINDEX_DEFAULT } from '../../constants/constants';
 import style from './style.module.css';
 import { IoMdClose } from 'react-icons/io';
+import { DIALOG_SIZE } from '../../constants/enums';
 
 interface DialogContextInterface {
   appendDialog: (props: any) => void;
@@ -106,22 +107,46 @@ const DialogProvider = (props: any) => {
 };
 
 const Dialog = (props: any) => {
-  const { showCloseBtn = true, inlineStyle, close } = props;
+  const { inlineStyle, size = DIALOG_SIZE.SM } = props;
+  const getSizeClass = () => {
+    switch (size) {
+      case DIALOG_SIZE.SM:
+        return style.sm;
+      case DIALOG_SIZE.MD:
+        return style.md;
+      case DIALOG_SIZE.LG:
+        return style.lg;
+    }
+  };
 
   return (
     <div
       style={inlineStyle}
-      className={style.dialogContainer}
+      className={`${style.dialogContainer} ${getSizeClass()}`}
       onClick={(e) => e.stopPropagation()}
     >
-      {showCloseBtn && (
-        <button className={style.close} onClick={close}>
-          <IoMdClose />
-        </button>
-      )}
       {props.children}
     </div>
   );
 };
+
+Dialog.Header = (props: any) => (
+  <div className={style.dialogHeader}>
+    <h3>{props.heading}</h3>
+    <button className={style.close} onClick={props.close}>
+      <IoMdClose />
+    </button>
+  </div>
+);
+
+Dialog.Body = (props: any) => (
+  <div className={style.dialogBody} style={props.inlineStyle}>
+    {props.children}
+  </div>
+);
+
+Dialog.Footer = (props: any) => (
+  <div className={style.dialogFooter}>{props.children}</div>
+);
 
 export { DialogProvider, Dialog, useDialog };

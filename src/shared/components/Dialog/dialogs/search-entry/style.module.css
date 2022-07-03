@@ -1,15 +1,7 @@
-.heading {
-  @apply text-xl font-semibold pb-4;
+.content {
+  @apply max-h-96 mt-3;
 }
 
-.form {
-  @apply flex w-full;
-}
-
-.btn {
-  @apply bg-dark-3 rounded-md px-3 ml-1.5 hover:bg-primary;
-}
-
-.icon {
-  @apply text-xl;
+.main {
+  @apply pb-4;
 }

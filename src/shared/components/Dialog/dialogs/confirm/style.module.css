@@ -1,9 +1,5 @@
-.title {
-  @apply font-bold text-lg;
-}
-
 .content {
-  @apply mt-1.5 mb-8;
+  @apply mt-4 mb-4;
 }
 
 .actions {
