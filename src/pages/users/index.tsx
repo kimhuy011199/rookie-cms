@@ -9,7 +9,7 @@ import Heading from '../../shared/components/Heading';
 import ContentList from '../../shared/components/ContentList';
 import { CONTENT_TYPE } from '../../shared/constants/enums';
 import { userType } from '../../stores/users/userType';
-import { getUsers, reset } from '../../stores/users/userSlice';
+import { paginateUsers, reset } from '../../stores/users/userSlice';
 
 const Users = () => {
   const { t } = useTranslation();
@@ -24,14 +24,14 @@ const Users = () => {
   );
 
   useEffect(() => {
-    if (isError === userType.GET_ALL_USERS) {
+    if (isError === userType.PAGINATE_USERS) {
       toast(t('toast.unsuccess'));
     }
   }, [isError, t]);
 
   useEffect(() => {
     const queryString = `page=${currentPage}&search=${searchValue}`;
-    dispatch(getUsers(queryString));
+    dispatch(paginateUsers(queryString));
 
     return () => {
       dispatch(reset());

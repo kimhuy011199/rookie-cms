@@ -4,14 +4,14 @@ import { UserInputInterface } from './userSlice';
 
 const endpoint = ENDPOINT.USERS;
 
-// Create new user
+// Create user
 const createUser = async (questionData: UserInputInterface) => {
   const response = await api().post(endpoint, questionData);
   return response.data;
 };
 
-// Get all users
-const getUsers = async (queryString: string) => {
+// Paginate users
+const paginateUsers = async (queryString: string) => {
   const response = await api().get(`${endpoint}?${queryString}`);
   return response.data;
 };
@@ -48,7 +48,7 @@ const resetPassword = async (userId: string) => {
 
 const userService = {
   createUser,
-  getUsers,
+  paginateUsers,
   searchUsers,
   getUserById,
   updateUser,

@@ -19,7 +19,7 @@ const initialState = {
   newPassword: '',
 };
 
-// Create new user
+// Create user
 export const createUser = createAsyncThunk(
   `user/${userType.CREATE_USER}`,
   async (userData: UserInputInterface, thunkAPI) => {
@@ -32,12 +32,12 @@ export const createUser = createAsyncThunk(
   }
 );
 
-// Get all users
-export const getUsers = createAsyncThunk(
-  `user/${userType.GET_ALL_USERS}`,
+// Paginate users
+export const paginateUsers = createAsyncThunk(
+  `user/${userType.PAGINATE_USERS}`,
   async (queryString: string, thunkAPI) => {
     try {
-      return await userService.getUsers(queryString);
+      return await userService.paginateUsers(queryString);
     } catch (error: any) {
       const message = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(message);
@@ -45,9 +45,9 @@ export const getUsers = createAsyncThunk(
   }
 );
 
-// Get all users
+// Search users
 export const searchUsers = createAsyncThunk(
-  `user/${userType.SEARCH_USER}`,
+  `user/${userType.SEARCH_USERS}`,
   async (queryString: string, thunkAPI) => {
     try {
       return await userService.searchUsers(queryString);
@@ -131,7 +131,7 @@ export const resetNewPassword = createAction(
 );
 
 // Clear search questions
-export const clearSearchUsers = createAction(userType.CLEAR_SEARCH_USERS);
+export const clearSearchUsers = createAction(userType.CLEAR_SEARCH_USERSS);
 
 export const userSlice = createSlice({
   name: 'user',
@@ -159,17 +159,17 @@ export const userSlice = createSlice({
         state.isError = userType.CREATE_USER;
         state.message = action.payload;
       })
-      .addCase(getUsers.pending, (state) => {
+      .addCase(paginateUsers.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getUsers.fulfilled, (state, action) => {
+      .addCase(paginateUsers.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = userType.GET_ALL_USERS;
+        state.isSuccess = userType.PAGINATE_USERS;
         state.users = action.payload;
       })
-      .addCase(getUsers.rejected, (state, action: any) => {
+      .addCase(paginateUsers.rejected, (state, action: any) => {
         state.isLoading = false;
-        state.isError = userType.GET_ALL_USERS;
+        state.isError = userType.PAGINATE_USERS;
         state.message = action.payload;
       })
       .addCase(searchUsers.pending, (state) => {
@@ -177,12 +177,12 @@ export const userSlice = createSlice({
       })
       .addCase(searchUsers.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = userType.SEARCH_USER;
+        state.isSuccess = userType.SEARCH_USERS;
         state.searchUsers = action.payload;
       })
       .addCase(searchUsers.rejected, (state, action: any) => {
         state.isLoading = false;
-        state.isError = userType.SEARCH_USER;
+        state.isError = userType.SEARCH_USERS;
         state.message = action.payload;
       })
       .addCase(getUserById.pending, (state) => {
