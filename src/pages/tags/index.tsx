@@ -9,7 +9,7 @@ import Heading from '../../shared/components/Heading';
 import ContentList from '../../shared/components/ContentList';
 import { CONTENT_TYPE } from '../../shared/constants/enums';
 import { tagType } from '../../stores/tags/tagType';
-import { getPaginationTags, reset } from '../../stores/tags/tagSlice';
+import { paginateTags, reset } from '../../stores/tags/tagSlice';
 
 const Tags = () => {
   const { t } = useTranslation();
@@ -22,14 +22,14 @@ const Tags = () => {
   const { tags, isLoading, isError } = useSelector((state: any) => state.tags);
 
   useEffect(() => {
-    if (isError === tagType.GET_PAGINATION_TAGS) {
+    if (isError === tagType.PAGINATE_TAGS) {
       toast(t('toast.unsuccess'));
     }
   }, [isError, t]);
 
   useEffect(() => {
     const queryString = `page=${currentPage}&search=${searchValue}`;
-    dispatch(getPaginationTags(queryString));
+    dispatch(paginateTags(queryString));
 
     return () => {
       dispatch(reset());

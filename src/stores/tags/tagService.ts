@@ -4,7 +4,7 @@ import { ENDPOINT } from '../../shared/constants/constants';
 const endpoint = ENDPOINT.TAGS;
 
 // Get all pagination tags
-const getPaginationTags = async (queryString: string) => {
+const paginateTags = async (queryString: string) => {
   const response = await api().get(`${endpoint}?${queryString}`);
   return response.data;
 };
@@ -40,7 +40,7 @@ const deleteTag = async (tagId: string) => {
 };
 
 const tagService = {
-  getPaginationTags,
+  paginateTags,
   getTags,
   createTag,
   getTagById,

@@ -26,12 +26,12 @@ export const getTags = createAsyncThunk(
   }
 );
 
-// Get all pagination tags
-export const getPaginationTags = createAsyncThunk(
-  `tags/${tagType.GET_PAGINATION_TAGS}`,
+// Paginate tags
+export const paginateTags = createAsyncThunk(
+  `tags/${tagType.PAGINATE_TAGS}`,
   async (queryString: string, thunkAPI) => {
     try {
-      return await tagService.getPaginationTags(queryString);
+      return await tagService.paginateTags(queryString);
     } catch (error: any) {
       const message = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(message);
@@ -119,17 +119,17 @@ export const tagSlice = createSlice({
         state.isError = tagType.GET_TAGS;
         state.message = action.payload;
       })
-      .addCase(getPaginationTags.pending, (state) => {
+      .addCase(paginateTags.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getPaginationTags.fulfilled, (state, action) => {
+      .addCase(paginateTags.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = tagType.GET_PAGINATION_TAGS;
+        state.isSuccess = tagType.PAGINATE_TAGS;
         state.tags = action.payload;
       })
-      .addCase(getPaginationTags.rejected, (state, action: any) => {
+      .addCase(paginateTags.rejected, (state, action: any) => {
         state.isLoading = false;
-        state.isError = tagType.GET_PAGINATION_TAGS;
+        state.isError = tagType.PAGINATE_TAGS;
         state.message = action.payload;
       })
       .addCase(createTag.pending, (state) => {
