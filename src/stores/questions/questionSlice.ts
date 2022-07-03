@@ -19,7 +19,7 @@ const initialState = {
   message: '',
 };
 
-// Create new question
+// Create question
 export const createQuestion = createAsyncThunk(
   `question/${questionType.CREATE_QUESTION}`,
   async (questionData: QuestionInputInterface, thunkAPI) => {
@@ -32,7 +32,7 @@ export const createQuestion = createAsyncThunk(
   }
 );
 
-// Get all questions
+// Search questions
 export const searchQuestions = createAsyncThunk(
   `question/${questionType.SEARCH_QUESTIONS}`,
   async (queryString: string, thunkAPI) => {
@@ -45,9 +45,9 @@ export const searchQuestions = createAsyncThunk(
   }
 );
 
-// Get questions
+// Paignate questions
 export const getQuestions = createAsyncThunk(
-  `question/${questionType.GET_ALL_QUESTIONS}`,
+  `question/${questionType.PAGINATE_QUESTIONS}`,
   async (queryString: string, thunkAPI) => {
     try {
       return await questionService.getQuestions(queryString);
@@ -73,7 +73,7 @@ export const getQuestionById = createAsyncThunk(
   }
 );
 
-// Update user question
+// Update question
 export const updateQuestion = createAsyncThunk(
   `question/${questionType.UPDATE_QUESTION}`,
   async (data: any, thunkAPI) => {
@@ -86,7 +86,7 @@ export const updateQuestion = createAsyncThunk(
   }
 );
 
-// Delete user question
+// Delete question
 export const deleteQuestion = createAsyncThunk(
   `question/${questionType.DELETE_QUESTION}`,
   async (id: string, thunkAPI) => {
@@ -144,7 +144,7 @@ export const questionSlice = createSlice({
       })
       .addCase(getQuestions.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = questionType.GET_ALL_QUESTIONS;
+        state.isSuccess = questionType.PAGINATE_QUESTIONS;
         state.questions = {
           ...action.payload,
           list: action.payload.questionsList,
@@ -152,7 +152,7 @@ export const questionSlice = createSlice({
       })
       .addCase(getQuestions.rejected, (state, action: any) => {
         state.isLoading = false;
-        state.isError = questionType.GET_ALL_QUESTIONS;
+        state.isError = questionType.PAGINATE_QUESTIONS;
         state.message = action.payload;
       })
       .addCase(searchQuestions.pending, (state) => {
@@ -160,12 +160,12 @@ export const questionSlice = createSlice({
       })
       .addCase(searchQuestions.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = questionType.GET_ALL_QUESTIONS;
+        state.isSuccess = questionType.PAGINATE_QUESTIONS;
         state.searchQuestions = action.payload;
       })
       .addCase(searchQuestions.rejected, (state, action: any) => {
         state.isLoading = false;
-        state.isError = questionType.GET_ALL_QUESTIONS;
+        state.isError = questionType.PAGINATE_QUESTIONS;
         state.message = action.payload;
       })
       .addCase(getQuestionById.pending, (state) => {

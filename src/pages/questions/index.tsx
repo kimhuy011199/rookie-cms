@@ -24,7 +24,7 @@ const Questions = () => {
   );
 
   useEffect(() => {
-    if (isError === questionType.GET_ALL_QUESTIONS) {
+    if (isError === questionType.PAGINATE_QUESTIONS) {
       toast(t('toast.unsuccess'));
     }
   }, [isError, t]);

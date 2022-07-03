@@ -4,7 +4,7 @@ import { QuestionInputInterface } from './questionSlice';
 
 const endpoint = ENDPOINT.QUESIONS;
 
-// Create new question
+// Create question
 const createQuestion = async (questionData: QuestionInputInterface) => {
   const response = await api().post(endpoint, questionData);
   return response.data;
@@ -16,7 +16,7 @@ const searchQuestions = async (queryString: string) => {
   return response.data;
 };
 
-// Get all questions
+// Paginate questions
 const getQuestions = async (queryString: string) => {
   const response = await api().get(`${endpoint}?${queryString}`);
   return response.data;
@@ -28,7 +28,7 @@ const getQuestionById = async (questionId: string) => {
   return response.data;
 };
 
-// Update user question
+// Update question
 const updateQuestion = async (
   questionId: string,
   data: QuestionInputInterface
@@ -37,7 +37,7 @@ const updateQuestion = async (
   return response.data;
 };
 
-// Delete user question
+// Delete question
 const deleteQuestion = async (questionId: string) => {
   const response = await api().delete(`${endpoint}/${questionId}`);
   return response.data;
