@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { TAGS_ITEMS_SIZE } from '../../../../constants/constants';
+import { DIALOG_SIZE } from '../../../../constants/enums';
 import { Tag } from '../../../../constants/types/Tag';
 import { Dialog } from '../../Provider';
 import style from './style.module.css';
@@ -51,7 +52,7 @@ const TagsCheckDialog = (props: TagsCheckDialogInterface) => {
   };
 
   return (
-    <Dialog>
+    <Dialog size={DIALOG_SIZE.XL}>
       <Dialog.Header heading={t('dialog.tag')} close={close} />
       <Dialog.Body>
         <input

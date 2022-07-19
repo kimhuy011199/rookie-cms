@@ -116,6 +116,8 @@ const Dialog = (props: any) => {
         return style.md;
       case DIALOG_SIZE.LG:
         return style.lg;
+      case DIALOG_SIZE.XL:
+        return style.xl;
     }
   };
 
